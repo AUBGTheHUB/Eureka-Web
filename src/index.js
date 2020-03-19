@@ -33,8 +33,8 @@ function NavbarUnimorph() {
                     />
                 </Navbar.Brand>
 
-//                 <Nav className="mr-auto">
-//                 </Nav>
+                <Nav className="mr-auto">
+                </Nav>
 
                 <Nav>
                     <Nav.Link href="#about">About the project</Nav.Link>
