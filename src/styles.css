@@ -7,4 +7,26 @@
 
  .jumbotronstyle {
      min-height: 450px;
+     background-color:transparent !important; 
  }
+
+ .colored_info {
+    background-color: #D3D3D3;
+    /* background-image: url("/src/MediumLogoUniMorph.png") */
+ }
+
+ .infopar {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-left: 20%;
+    margin-right: 20%;
+  }
+
+  .text {
+    position: absolute;
+    color: red;
+  }
+
+  .centered_text{
+    text-align: center
+  }
