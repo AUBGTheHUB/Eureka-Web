@@ -125,7 +125,6 @@ function SearchSection() {
                 </div>
 
                 <div className="col-md-8 col-xs-8 col-sm-8">
-
                     <div className="row">
                         <InputGroup className="mb-3">
                             <InputGroup.Append>
