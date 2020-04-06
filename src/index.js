@@ -13,10 +13,13 @@ import { InputGroup } from 'react-bootstrap';
 import { Card } from 'react-bootstrap';
 
 
+
 const App = () => (
     <div>
         Hello world!!!!!!!!!!!!!!!!!!!!!!!!!!
+        
     </div>
+
 )
 
 function NavbarUnimorph() {
@@ -25,7 +28,7 @@ function NavbarUnimorph() {
             <Navbar bg="light" variant="light">
                 <Navbar.Brand href="#home">
                     <img
-                        src="/src/Mu_logo3.svg"
+                        src="/src/visuals/favicon_logo.svg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
@@ -52,7 +55,7 @@ function HeaderLogo() {
     return (
         <div className="HeaderLogo">
             <Jumbotron className="jumbotronstyle">
-                <img className="center-block" src="/src/LogoUniMorph4.png" />
+                <img className="center-block" src="/src/visuals/LogoUniMorph.png" />
             </Jumbotron>
         </div>
     )
@@ -64,8 +67,8 @@ function ContributeDownload() {
             <div className="col-md-2 col-xs-2 col-sm-2">
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4 justify-content-between">
-                <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src="/src/contribueimg.png" />
+                <Card style={{ width: '25rem' }}>
+                    <Card.Img variant="top" src="/src/visuals/knowledge_icon11.svg" />
                     <Card.Body>
                         <Card.Title>Contribute to the Base</Card.Title>
                         <Card.Text>
@@ -77,8 +80,8 @@ function ContributeDownload() {
                 </Card>
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4">
-                <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src="/src/contribueimg.png" />
+                <Card style={{ width: '25rem' }}>
+                    <Card.Img variant="top" src="/src/visuals/globe_iconn.svg" />
                     <Card.Body>
                         <Card.Title>Download Data</Card.Title>
                         <Card.Text>
@@ -129,9 +132,12 @@ function SearchSection() {
                         <InputGroup className="mb-3">
                             <InputGroup.Append>
                                 <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
-                                    <Dropdown.Item href="#/action-1">Bulgarian</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">English</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">English</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Bulgarian</Dropdown.Item>
                                     <Dropdown.Item href="#/action-3">Albanian</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-4">Azeri</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-5">Turkmen</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-5">Kyrgyz</Dropdown.Item>
                                 </DropdownButton>
                             </InputGroup.Append>
                             <FormControl
@@ -155,6 +161,9 @@ function SearchSection() {
 }
 
 
+
+
+
 ReactDOM.render(
     <NavbarUnimorph />,
     document.getElementById('root')
@@ -170,6 +179,10 @@ ReactDOM.render(
 ReactDOM.render(
     <SearchSection />,
     document.getElementById('search')
+)
+ReactDOM.render(
+    <ContributeDownload />,
+    document.getElementById('contribute_download')
 )
 ReactDOM.render(
     <ContributeDownload />,

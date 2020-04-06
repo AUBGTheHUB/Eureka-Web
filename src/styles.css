@@ -11,7 +11,8 @@
  }
 
  .colored_info {
-    background: url("/src/BackgroundAboutSection.png") no-repeat center fixed;
+    background: url("/src/visuals/AboutSectionBG.png") no-repeat center fixed;
+    -moz-background-inline-policy: bounding-box;
     background-size: cover;
     padding-bottom: 5%;
     padding-top: 5%;
@@ -34,6 +35,7 @@
   }
 
   .searchform {
-    padding-top: 3%;
-    padding-bottom: 3%;
+    padding-top: 15%;
+    padding-bottom: 15%;
     }
+
