@@ -9,7 +9,7 @@ export default function ContributeDownload() {
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4 justify-content-between">
                 <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src="../src/contribueimg.png" />
+                    <Card.Img variant="top" src="../visuals/knowledge_icon11.svg" />
                     <Card.Body>
                         <Card.Title>Contribute to the Base</Card.Title>
                         <Card.Text>
@@ -22,7 +22,7 @@ export default function ContributeDownload() {
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4">
                 <Card style={{ width: '20rem' }}>
-                    <Card.Img variant="top" src="../src/contribueimg.png" />
+                    <Card.Img variant="top" src="../visuals/globe_iconn.svg" />
                     <Card.Body>
                         <Card.Title>Download Data</Card.Title>
                         <Card.Text>

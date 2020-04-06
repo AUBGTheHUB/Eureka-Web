@@ -9,7 +9,7 @@ export default function NavbarUnimorph() {
             <Navbar bg="light" variant="light">
                 <Navbar.Brand href="#home">
                     <img
-                        src="/src/Mu_logo3.svg"
+                        src="./visuals/favicon_logo.svg"
                         width="30"
                         height="30"
                         className="d-inline-block align-top"
