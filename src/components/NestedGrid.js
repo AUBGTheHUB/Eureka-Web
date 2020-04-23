@@ -88,8 +88,3 @@ export default function NestedGrid() {
     </div>
   );
 }
-
-// ReactDOM.render(
-//     <NestedGrid/>,
-//     document.getElementById('words')
-// )

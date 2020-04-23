@@ -12,9 +12,9 @@ export default function ContributeDownload() {
                     <Card.Img variant="top" src="/src/visuals/knowledge_icon11.svg" />
                     <Card.Body>
                         <Card.Title>Contribute to the Base</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
                             </Card.Text>
                         <Button variant="primary">Learn More</Button>
                     </Card.Body>
@@ -25,9 +25,9 @@ export default function ContributeDownload() {
                     <Card.Img variant="top" src="/src/visuals/globe_iconn.svg" />
                     <Card.Body>
                         <Card.Title>Download Data</Card.Title>
-                        <Card.Text>
-                            Some quick example text to build on the card title and make up the bulk of
-                            the card's content.
+                            <Card.Text>
+                                Some quick example text to build on the card title and make up the bulk of
+                                the card's content.
                             </Card.Text>
                         <Button variant="primary">Learn More</Button>
                     </Card.Body>

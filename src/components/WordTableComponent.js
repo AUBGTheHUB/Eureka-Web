@@ -1,71 +1,104 @@
 import React from 'react';
-import MaterialTable from 'material-table';
+import { Table, SplitButton, Dropdown } from 'react-bootstrap';
 
-export default function MaterialTableDemo() {
-  const [state, setState] = React.useState({
-    columns: [
-      { title: 'Name', field: 'name' },
-      { title: 'Surname', field: 'surname' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-      {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
-      },
-    ],
-    data: [
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
-      {
-        name: 'Zerya Betül',
-        surname: 'Baran',
-        birthYear: 2017,
-        birthCity: 34,
-      },
-    ],
-  });
+class WordTableComponent extends React.Component{
+  constructor(props) {
+    super(props)
+  }
 
-  return (
-    <MaterialTable
-      title="Editable Example"
-      columns={state.columns}
-      data={state.data}
-      editable={{
-        onRowAdd: (newData) =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-              setState((prevState) => {
-                const data = [prevState.data];
-                data.push(newData);
-                return { prevState, data };
-              });
-            }, 600);
-          }),
-        onRowUpdate: (newData, oldData) =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-              if (oldData) {
-                setState((prevState) => {
-                  const data = [prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { prevState, data };
-                });
-              }
-            }, 600);
-          }),
-        onRowDelete: (oldData) =>
-          new Promise((resolve) => {
-            setTimeout(() => {
-              resolve();
-              setState((prevState) => {
-                const data = [prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { prevState, data };
-              });
-            }, 600);
-          }),
-      }}
-    />
-  );
+  render(){
+    return(
+      <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Dimension</th>
+              <th>Feature</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td> 1 </td>
+              <td>
+                <SplitButton
+                  key={'Secondary'}
+                  id={'dropdown-split-variants-secondary'}
+                  variant={'secondary'}
+                  title={'Available Dimensions'}
+                >
+                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" active>
+                      Active Item
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                </SplitButton>{' '}
+              </td>
+              <td>
+                  <SplitButton
+                      key={'Secondary'}
+                      id={'dropdown-split-variants-secondary'}
+                      variant={'secondary'}
+                      title={'Available Features'}
+                    >
+                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" active>
+                      Active Item
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                  </SplitButton>{' '}
+              </td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+                  <SplitButton
+                      key={'Secondary'}
+                      id={'dropdown-split-variants-secondary'}
+                      variant={'secondary'}
+                      title={'Available Dimensions'}
+                    >
+                      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                      <Dropdown.Item eventKey="3" active>
+                        Active Item
+                      </Dropdown.Item>
+                      <Dropdown.Divider />
+                      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                  </SplitButton>{' '}
+              </td>
+              <td>
+                <SplitButton
+                    key={'Secondary'}
+                    id={'dropdown-split-variants-secondary'}
+                    variant={'secondary'}
+                    title={'Available Features'}
+                  >
+                    <Dropdown.Item eventKey="1">Action</Dropdown.Item>
+                    <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+                    <Dropdown.Item eventKey="3" active>
+                      Active Item
+                    </Dropdown.Item>
+                    <Dropdown.Divider />
+                    <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+                  </SplitButton>{' '}
+              </td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td colSpan="2">Larry the Bird</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </Table>
+        )
+  }
 }
+
+export default WordTableComponent;

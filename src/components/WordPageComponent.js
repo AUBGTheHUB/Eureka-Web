@@ -1,10 +1,10 @@
 import React from 'react';
-import MaterialTableDemo from './WordTableComponent'
+import WordTableComponent from './WordTableComponent'
 
 export default function WordComponent(){
     return(
         <div>
-            <MaterialTableDemo/>
+            <WordTableComponent/>
         </div>
     )
 }

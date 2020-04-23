@@ -11,12 +11,12 @@
  }
 
  .colored_info {
-    background: url("/src/visuals/AboutSectionBG.png") no-repeat center fixed;
-    -moz-background-inline-policy: bounding-box;
-    background-size: cover;
-    padding-bottom: 5%;
-    padding-top: 5%;
+    background-color:#F5F5F5;
  }
+
+ .colored_search_bar {
+  background-color:#F5F5F5;
+}
 
  .infopar {
     margin-top: 1%;
@@ -39,3 +39,8 @@
     padding-bottom: 15%;
     }
 
+  .btn_search:hover
+  {
+  background-image:none;
+  background-color:#00087E;
+  }

@@ -15,9 +15,9 @@ function LandingComponent() {
         <div>
             <NavbarUnimorph/>
             <HeaderLogo/>
-            <AboutUsSection/>
             <SearchSection/>
             <ContributeDownload/>
+            <AboutUsSection/>
             <Footer/>
         </div>
     )
@@ -40,7 +40,6 @@ const routing = (
       </div>
     </Router>
   )
-
 
 ReactDOM.render(
     routing,
