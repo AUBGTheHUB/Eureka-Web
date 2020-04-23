@@ -33,7 +33,7 @@ class SearchSection extends React.Component {
                 <div className="row searchform">
                     <div className="col-md-3 col-xs-3 col-sm-3">
                     </div>
-
+                    
                     <div className="col-md-6 col-xs-6 col-sm-5">
                         <div className="row">
                             <InputGroup className="mb-3">

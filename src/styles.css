@@ -34,10 +34,29 @@
     text-align: center
   }
 
+  .pos_text{
+    text-align: right;
+    margin-top:21px;
+    font-size: larger;
+  }
+
+  .pos_component{
+    margin-top: 5%;
+  }
+
   .searchform {
     padding-top: 15%;
     padding-bottom: 15%;
     }
+  
+  .lemmatext {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    }
+  
+  .related_words{
+    font-size: medium;
+  }
 
   .btn_search:hover
   {
