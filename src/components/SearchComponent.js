@@ -20,6 +20,9 @@ export default function SearchSection() {
                                     <Dropdown.Item href="#/action-1">Bulgarian</Dropdown.Item>
                                     <Dropdown.Item href="#/action-2">English</Dropdown.Item>
                                     <Dropdown.Item href="#/action-3">Albanian</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-4">Azeri</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-5">Turkmen</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-6">Kyrgyz</Dropdown.Item>
                                 </DropdownButton>
                             </InputGroup.Append>
                             <FormControl
@@ -32,6 +35,10 @@ export default function SearchSection() {
                             </InputGroup.Append>
                         </InputGroup>
                     </div>
+
+
+
+
 
                 </div>
 
