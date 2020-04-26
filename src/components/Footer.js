@@ -62,7 +62,7 @@ function Footer() {
                     <div class="col-sm-4 col-md-4 col-lg-4"></div>
                     <div class="col-md-4 col-sm-4 col-xs-4">
                         <p class="copyright-text" >Copyright &copy; 2020 All Rights Reserved by
-         <a href="#">TheHubAUBG</a>.
+         <a href="#"> TheHubAUBG</a>.
             </p>
                     </div>
 
