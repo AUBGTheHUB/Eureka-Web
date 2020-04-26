@@ -22,6 +22,7 @@ const SearchSection = () => {
                     <div className="row">
                         <InputGroup className="mb-3">
                             <InputGroup.Append>
+
                                 <DropdownButton style={{maxHeight: "28px"}} variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
                                     {languages.map((language, i) => {
                                         return <Dropdown.Item as="button" key={i}>{ language.name }</Dropdown.Item>
@@ -39,6 +40,10 @@ const SearchSection = () => {
                             </InputGroup.Append>
                         </InputGroup>
                     </div>
+
+
+
+
 
                 </div>
 

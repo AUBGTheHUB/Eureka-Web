@@ -5,10 +5,10 @@ import Button from '@material-ui/core/Button';
 export default function ContributeDownload() {
     return (
         <div className="row">
-            <div className="col-md-2 col-xs-2 col-sm-2">
+            <div className="col-md-3 col-xs-3 col-sm-3">
             </div>
-            <div className="col-md-4 col-xs-4 col-sm-4 justify-content-between">
-                <Card style={{ width: '20rem' }}>
+            <div className="col-md-3 col-xs-3 col-sm-3 justify-content-between">
+                <Card style={{ width: '22rem' }}>
                     <Card.Img variant="top" src="/src/visuals/knowledge_icon11.svg" />
                     <Card.Body>
                         <Card.Title>Contribute to the Base</Card.Title>
@@ -21,7 +21,7 @@ export default function ContributeDownload() {
                 </Card>
             </div>
             <div className="col-md-4 col-xs-4 col-sm-4">
-                <Card style={{ width: '20rem' }}>
+                <Card style={{ width: '22rem' }}>
                     <Card.Img variant="top" src="/src/visuals/globe_iconn.svg" />
                     <Card.Body>
                         <Card.Title>Download Data</Card.Title>
