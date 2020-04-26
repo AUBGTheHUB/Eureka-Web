@@ -1,44 +1,62 @@
 import React from 'react';
+import { useState } from 'react';
 import MaterialTable from 'material-table';
 
-export default function MaterialTableDemo() {
-  const [state, setState] = React.useState({
-    columns: [
-      { title: 'Name', field: 'name' },
-      { title: 'Surname', field: 'surname' },
-      { title: 'Birth Year', field: 'birthYear', type: 'numeric' },
-      {
-        title: 'Birth Place',
-        field: 'birthCity',
-        lookup: { 34: 'İstanbul', 63: 'Şanlıurfa' },
+// columns don't need to be in state of the component, since they are static.
+// separated words into own state
+
+const WordTable = () => {
+  const columns = [
+    { title: 'name', field: 'name' },
+    { title: 'language', field: 'language' },
+    { title: 'dimension', field: 'dimension', type: 'numeric' },
+    {
+      title: 'lemma',
+      field: 'lemma',
+    }
+  ]
+  const [ words, setWords ] = useState([
+      { 
+        name: 'Food', 
+        language: 'English', 
+        dimension: 2, 
+        lemma: 'food'
       },
-    ],
-    data: [
-      { name: 'Mehmet', surname: 'Baran', birthYear: 1987, birthCity: 63 },
       {
-        name: 'Zerya Betül',
-        surname: 'Baran',
-        birthYear: 2017,
-        birthCity: 34,
-      },
-    ],
-  });
+        name: 'Баница',
+        language: 'Bulgarian',
+        dimension: 3,
+        lemma: 'баница',
+      }
+  ])
+  // these functions then could be expanded, so that they send post, put, delete requests
+  const onRowAdd = (newWord) => {
+    const newWords = words.concat(newWord)
+    console.log(newWords)
+    setWords(newWords)
+  }
+
+  const onRowUpdate = (newWord, oldWord) => {
+    let newWords = words.filter(word => word.name != oldWord.name)
+    newWords = newWords.concat(newWord)
+    setWords(newWords)
+  }
+
+  const onRowDelete = (oldWord) => {
+    setWords(words.filter(word=> word.name !== oldWord.name))
+  }
 
   return (
     <MaterialTable
-      title="Editable Example"
-      columns={state.columns}
-      data={state.data}
+      title="Table of words"
+      columns={columns}
+      data={words}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
-                const data = [prevState.data];
-                data.push(newData);
-                return { prevState, data };
-              });
+              onRowAdd(newData);
             }, 600);
           }),
         onRowUpdate: (newData, oldData) =>
@@ -46,11 +64,7 @@ export default function MaterialTableDemo() {
             setTimeout(() => {
               resolve();
               if (oldData) {
-                setState((prevState) => {
-                  const data = [prevState.data];
-                  data[data.indexOf(oldData)] = newData;
-                  return { prevState, data };
-                });
+                onRowUpdate(newData, oldData);
               }
             }, 600);
           }),
@@ -58,14 +72,12 @@ export default function MaterialTableDemo() {
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
-                const data = [prevState.data];
-                data.splice(data.indexOf(oldData), 1);
-                return { prevState, data };
-              });
+              onRowDelete(oldData);
             }, 600);
           }),
       }}
     />
   );
 }
+
+export default WordTable

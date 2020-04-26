@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime.js'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
@@ -9,6 +10,7 @@ import ContributeDownload from './components/ContributeDownload';
 import HeaderLogo from './components/HeaderComponent';
 import SearchSection from './components/SearchComponent';
 import WordComponent from './components/WordPageComponent';
+
 
 function LandingComponent() {
     return(

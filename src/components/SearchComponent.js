@@ -1,11 +1,17 @@
-import React from 'react';
-import { FormControl } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
-import { Dropdown } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { FormControl, Button, DropdownButton, InputGroup, Dropdown } from 'react-bootstrap';
+import languageService from '../services/languages'
 
-export default function SearchSection() {
+const SearchSection = () => {
+    const [languages, setLanguages] = useState([])
+
+    useEffect(() => {
+        const getAll = async () => {
+            const languages = await languageService.getAll()
+            setLanguages(languages)
+        }
+        getAll()
+    }, [])
     return (
         <div className="container">
             <div className="row searchform">
@@ -16,10 +22,11 @@ export default function SearchSection() {
                     <div className="row">
                         <InputGroup className="mb-3">
                             <InputGroup.Append>
-                                <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
-                                    <Dropdown.Item href="#/action-1">Bulgarian</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">English</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Albanian</Dropdown.Item>
+                                <DropdownButton style={{maxHeight: "28px"}} variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
+                                    {languages.map((language, i) => {
+                                        return <Dropdown.Item as="button" key={i}>{ language.name }</Dropdown.Item>
+                                    })
+                                    }
                                 </DropdownButton>
                             </InputGroup.Append>
                             <FormControl
@@ -41,3 +48,5 @@ export default function SearchSection() {
         </div>
     )
 }
+
+export default SearchSection

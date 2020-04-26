@@ -12,7 +12,10 @@ module.exports = {
         rules: [{
             exclude: /node_modules/,
             test: /\.js$/,
-            loader: 'babel-loader'
+            loader: 'babel-loader',
+            options: {
+                presets: ['@babel/preset-env']
+            }
         },
         {
             exclude: /node_modules/,
@@ -26,9 +29,11 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
+        proxy: { "/api/**": { target: 'http://127.0.0.1:8000', secure: false } }
       },
     plugins: [
         new hwp({ template: path.join(__dirname, '/src/index.html') })
-    ]
+    ],
+    devtool: 'cheap-module-source-map'
 }
 

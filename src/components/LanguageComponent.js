@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NestedGrid from './NestedGrid';
 
-export default function LanguagePageComponent(){
+const LanguagePageComponent = () => {
+    const [ languages, setLanguages ] = useState([])
     return(
         <div>
             <div class="row">
@@ -17,3 +18,5 @@ export default function LanguagePageComponent(){
         </div>
     )
 }
+
+export default LanguagePageComponent
