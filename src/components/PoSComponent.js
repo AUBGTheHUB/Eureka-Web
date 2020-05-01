@@ -1,30 +1,26 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField'
-import BorderColorIcon from '@material-ui/icons/BorderColor';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import CreateIcon from '@material-ui/icons/Create';
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-      '& > *': {
-        margin: theme.spacing(1),
-        width: '25ch',
-      },
-    },
-  }));
 
-function makeaActive(e) {
-    document.getElementById('pos_field').disabled = false
-    console.log(document.getElementById('pos_field'))
-    e.preventDefault();
-  }
 
-export default function BasicTextFields() {
-    const classes = useStyles();
-  
-    return (
+  class PoSComponent extends React.Component {
+    constructor(props) {
+      super(props)
+    }
+
+    makeaActive(e) {
+      var current_property_enabled= document.getElementById('outlined-basic').disabled
+
+      document.getElementById('outlined-basic').disabled = !current_property_enabled
+
+      e.preventDefault();
+    }
+    
+    
+    render(){
+      return (
         
         <div className="row pos_component">
             <div className="col-md-3 col-sm-3 col-lg-3">
@@ -34,10 +30,10 @@ export default function BasicTextFields() {
             </div>
             <div className="col-md-3 col-sm-3 col-lg-3">
                 <div className="row">
-                    <form className={classes.root} noValidate autoComplete="off">
-                        <TextField id="standard-basic pos_field" label="PoS" disabled={true}/>
+                    <form noValidate autoComplete="off">
+                        <TextField id="outlined-basic" label="PoS" disabled={true} defaultValue="VBG" variant="outlined"/>
                     </form>
-                    <IconButton aria-label="create" className={classes.margin} size="medium">
+                    <IconButton aria-label="create" size="medium" onClick={this.makeaActive}>
                         <CreateIcon fontSize="inherit" />
                     </IconButton>
                 </div>
@@ -46,4 +42,7 @@ export default function BasicTextFields() {
             </div>
         </div>
     );
+    }
   }
+
+export default PoSComponent;

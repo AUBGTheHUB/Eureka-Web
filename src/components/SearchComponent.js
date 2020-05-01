@@ -9,6 +9,7 @@ import { InputGroup } from 'react-bootstrap';
 class SearchSection extends React.Component {
     constructor(props) {
         super(props)
+        
         this.languages = ["Bulgarian", "English", "Albanian", "Azeri", "Turkmen", "Kyrgyz"];
         this.languagesList = []
 
@@ -18,7 +19,6 @@ class SearchSection extends React.Component {
         
         this.myRef = React.createRef();
     }
-
     
     changeSelect(e) {
         localStorage.setItem('chosenLanguage', e.target.innerText)
