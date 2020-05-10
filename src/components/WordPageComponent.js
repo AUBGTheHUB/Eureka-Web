@@ -12,7 +12,6 @@ export default function WordComponent(){
             <NavbarLemma/>
             <SubmitDialog/>
             <LemmaSection/>
-            <PoSComponent/>
             <DimensionsComponent/>
         </div>
     )

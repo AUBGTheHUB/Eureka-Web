@@ -25,6 +25,11 @@
     margin-right: 20%;
   }
 
+  .feature_row {
+    margin-top: 3%;
+    margin-bottom: 3%;
+  }
+
   .text {
     position: absolute;
     color: red;
@@ -32,6 +37,13 @@
 
   .centered_text{
     text-align: center
+  }
+  .submit_button{
+    left: 50%;
+  }
+  .dropdown-toggle,
+  .dropdown-menu {
+    width: 100%;
   }
 
   .pos_text{
@@ -42,6 +54,10 @@
 
   .pos_component{
     margin-top: 5%;
+  }
+
+  .dimension{
+    margin-top: 2%;
   }
 
   .searchform {

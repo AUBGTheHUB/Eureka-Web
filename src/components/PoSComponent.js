@@ -2,7 +2,7 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton';
 import CreateIcon from '@material-ui/icons/Create';
-
+import Paper from '@material-ui/core/Paper';
 
 
   class PoSComponent extends React.Component {
@@ -26,10 +26,12 @@ import CreateIcon from '@material-ui/icons/Create';
             <div className="col-md-3 col-sm-3 col-lg-3">
             </div>
             <div className="col-md-3 col-sm-3 col-lg-3">
-                <div className="pos_text">Part of Speech :</div>
+                <Paper variant="outlined" square/>
+                <div className="pos_text">Part of Speech</div>
             </div>
             <div className="col-md-3 col-sm-3 col-lg-3">
                 <div className="row">
+                  <Paper variant="outlined" square/>
                     <form noValidate autoComplete="off">
                         <TextField id="outlined-basic" label="PoS" disabled={true} defaultValue="VBG" variant="outlined"/>
                     </form>
