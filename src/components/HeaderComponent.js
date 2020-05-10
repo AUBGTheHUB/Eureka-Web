@@ -5,7 +5,7 @@ export default function HeaderLogo() {
     return (
         <div className="HeaderLogo">
             <Jumbotron className="jumbotronstyle">
-                <img className="center-block" src="/src/visuals/LogoUniMorph.png" />
+                <img className="center-block" src="/assets/LogoUniMorph.png" />
             </Jumbotron>
         </div>
     )
