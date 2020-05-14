@@ -10,6 +10,7 @@ import HeaderLogo from './components/HeaderComponent';
 import SearchSection from './components/SearchComponent';
 import WordComponent from './components/WordPageComponent';
 import Footer from './components/Footer'
+import EditWordComponent from './components/EditWordComponent'
 
 function LandingComponent() {
     return (
@@ -32,6 +33,7 @@ const routing = (
             <Route exact path="/" component={LandingComponent} />
             <Route path="/language" component={LanguagePageComponent} />
             <Route path="/word" component={WordComponent} />
+            <Route path="/editword" component={EditWordComponent} />
         </div>
     </Router>
 )

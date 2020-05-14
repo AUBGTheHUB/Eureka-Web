@@ -9,7 +9,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 
-class DimensionsComponent extends React.Component {
+class WordInfoComponent extends React.Component {
     constructor(props) {
         super(props)
         
@@ -17,8 +17,8 @@ class DimensionsComponent extends React.Component {
             "dimensions":{"PoS":[["VBG", true], ["N", false]], "tense":[["feature 1", true], ["feature 2", false]], "person":[["feature 1", false], ["feature 2", true]], "dimension 1":[["feature 1", true], ["feature 2", false]],
                             "dimension 2":[["feature 1", true], ["feature 2", false]], "dimension 3":[["feature 1", true], ["feature 2", false]], 
                             "dimension 4":[["feature 1", true], ["feature 2", false]]},
-            "pos":"VBG",
-            "show":false
+            "show":false,
+            "root_lemma":"Слънце"
             }
     }
 
@@ -68,6 +68,16 @@ class DimensionsComponent extends React.Component {
             <div className="">
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
+                    
+                    <div className="col-md-4 col-sm-4 col-lg-4">
+                        <p>{this.state.root_lemma}</p>
+                    </div>
+
+                    <div className="col-md-4 col-sm-4 col-lg-4"></div>
+                </div>
+
+                <div className="row">
+                    <div className="col-md-4 col-sm-4 col-lg-4"></div>
                         <div className="col-sm-4 col-md-4 col-lg-4">
                             
                             {keys.map((value, index) => {
@@ -86,6 +96,7 @@ class DimensionsComponent extends React.Component {
                                     )
                             })}
                         </div>
+
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
                 </div>
                 <div className="row submit_button_1">
@@ -129,5 +140,5 @@ class DimensionsComponent extends React.Component {
     }
 }
 
-export default DimensionsComponent;
+export default WordInfoComponent;
 

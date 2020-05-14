@@ -41,6 +41,11 @@
   .submit_button{
     left: 50%;
   }
+
+  .submit_button_1{
+    margin-top: 5%;
+  }
+
   .dropdown-toggle,
   .dropdown-menu {
     width: 100%;
