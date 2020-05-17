@@ -6,4 +6,6 @@ Dockerfile
 README.md
 package-lock.json
 .gitignore
-
+.git
+.DS_Store
+.dockerignore
