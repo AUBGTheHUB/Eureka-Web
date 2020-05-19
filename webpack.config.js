@@ -8,6 +8,14 @@ module.exports = {
         path: path.join(__dirname, '/build'),
         publicPath: '/'
     },
+    devtool: 'cheap-module-source-map',
+    devServer: {
+        historyApiFallback: true,
+        host: '0.0.0.0',
+        headers: {
+            "Access-Control-Allow-Origin": "*"
+        }
+      },
     module: {
         rules: [{
             exclude: /node_modules/,
@@ -24,9 +32,6 @@ module.exports = {
         }
         ],
     },
-    devServer: {
-        historyApiFallback: true,
-      },
     plugins: [
         new hwp({ template: path.join(__dirname, '/src/index.html') })
     ]

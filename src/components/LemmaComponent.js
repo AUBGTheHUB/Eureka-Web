@@ -34,10 +34,10 @@ class LemmaSection extends React.Component {
         for (const [index, value] of this.related_words_grouped.entries()) {
             this.intenal_list = []
 
-            value.forEach(element => this.intenal_list.push(<div className="col-sm-2 col-md-2 col-lg-2">
+            value.forEach((element, index) => this.intenal_list.push(<div key={index} className="col-sm-2 col-md-2 col-lg-2">
                                                                 <div className="centered_text"><a href="/">{element}</a></div>
                                                             </div>))
-            this.related_words_list.push(<div className="row">
+            this.related_words_list.push(<div key={index} className="row">
                                             <div className="col-md-2 col-sm-2 col-lg-2"></div>
                                                 {this.intenal_list}
                                             <div className="col-md-2 col-sm-2 col-lg-2"></div>

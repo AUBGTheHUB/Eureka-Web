@@ -8,18 +8,32 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
+import utils from '../services/utilities'
+import config from '../constants'
+
+const baseUrl = config.url.API_URL;
+//random id to display different word at each refresh
+const randomId = Math.floor((Math.random()*4) + 1);
+
 
 class WordInfoComponent extends React.Component {
     constructor(props) {
         super(props)
         
         this.state = {
-            "dimensions":{"PoS":[["VBG", true], ["N", false]], "tense":[["feature 1", true], ["feature 2", false]], "person":[["feature 1", false], ["feature 2", true]], "dimension 1":[["feature 1", true], ["feature 2", false]],
-                            "dimension 2":[["feature 1", true], ["feature 2", false]], "dimension 3":[["feature 1", true], ["feature 2", false]], 
-                            "dimension 4":[["feature 1", true], ["feature 2", false]]},
+            "dimensions":{},
             "show":false,
             "root_lemma":"Слънце"
             }
+    }
+    componentDidMount(){
+        axios.get(`${baseUrl}/${randomId}/`).then(response => response.data)
+        .then(word => {
+            let formattedWord = utils.formatWord(word)
+            console.log(formattedWord)
+            this.setState({ "dimensions": formattedWord.dimensions})
+        })
     }
 
     change_feature(feature_value, dimension_value){
@@ -82,13 +96,13 @@ class WordInfoComponent extends React.Component {
                             
                             {keys.map((value, index) => {
                                 return(
-                                        <div className="row dimension">
+                                        <div key={index} className="row dimension">
                                             <div className="col-md-6 col-sm-6 col-lg-6"><div className="centered_text"><Paper variant="outlined" square/>{value}</div></div>
                                             <div className="col-md-6 col-sm-6 col-lg-6">
                                             <Paper variant="outlined" square/>
                                                 <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title={active_items[index]}>
                                                     {all_items[index].map((item_value, item_index) => 
-                                                        {return (<Dropdown.Item onClick={() => this.change_feature(item_value, value)}>{item_value}</Dropdown.Item>)}
+                                                        {return (<Dropdown.Item key={item_index} onClick={() => this.change_feature(item_value, value)}>{item_value}</Dropdown.Item>)}
                                                     )}
                                                 </DropdownButton>
                                             </div>
