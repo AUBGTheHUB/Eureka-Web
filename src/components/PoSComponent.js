@@ -26,12 +26,10 @@ import Paper from '@material-ui/core/Paper';
             <div className="col-md-3 col-sm-3 col-lg-3">
             </div>
             <div className="col-md-3 col-sm-3 col-lg-3">
-                <Paper variant="outlined" square/>
-                <div className="pos_text">Part of Speech</div>
+                <div className="pos_text">Part of Speech :</div>
             </div>
             <div className="col-md-3 col-sm-3 col-lg-3">
                 <div className="row">
-                  <Paper variant="outlined" square/>
                     <form noValidate autoComplete="off">
                         <TextField id="outlined-basic" label="PoS" disabled={true} defaultValue="VBG" variant="outlined"/>
                     </form>

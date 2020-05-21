@@ -8,13 +8,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
-import utils from '../services/utilities'
 import axios from 'axios'
 import config from '../constants'
 
-const baseUrl = config.url.API_URL
+const baseUrl = config.url.url.API_URL
 //random id to display different word at each refresh
-const randomId = Math.floor((Math.random()*10) + 1);
+const wordId = config.wordId.id.wordId
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 class DimensionsComponent extends React.Component {
@@ -22,17 +21,15 @@ class DimensionsComponent extends React.Component {
         super(props)
         this.state = {
             "dimensions": {},
-            "pos":"VBG",
+            "pos":"",
             "show":false
             }
     }
 
     componentDidMount(){
-        axios.get(`${baseUrl}/4/`).then(response => response.data)
+        axios.get(`${baseUrl}/${wordId}/`).then(response => response.data)
         .then(word => {
-            let formattedWord = utils.formatWord(word)
-            console.log(formattedWord)
-            this.setState({ "dimensions": formattedWord.dimensions})
+            this.setState({ "dimensions": word.dimensions, "pos": word.lemma.pos})
         })
     }
 
@@ -72,7 +69,9 @@ class DimensionsComponent extends React.Component {
         keys.forEach(element => {
             var key_items = []
             this.state.dimensions[element].forEach(item => {
-                key_items.push(item[0])
+                if(!key_items.includes(item[0])){
+                    key_items.push(item[0])
+                }
             });
             all_items.push(key_items);
             active_items.push(this.state.dimensions[element].filter(feature => feature[1] == true)[0][0])

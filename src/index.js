@@ -11,6 +11,7 @@ import SearchSection from './components/SearchComponent';
 import WordComponent from './components/WordPageComponent';
 import Footer from './components/Footer'
 import EditWordComponent from './components/EditWordComponent'
+import WordTableComponent from './components/WordTableComponent'
 
 function LandingComponent() {
     return (
@@ -34,6 +35,7 @@ const routing = (
             <Route path="/language" component={LanguagePageComponent} />
             <Route path="/word" component={WordComponent} />
             <Route path="/editword" component={EditWordComponent} />
+            <Route path="/wordTable" component={WordTableComponent} />
         </div>
     </Router>
 )

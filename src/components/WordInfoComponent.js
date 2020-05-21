@@ -9,12 +9,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
-import utils from '../services/utilities'
 import config from '../constants'
 
-const baseUrl = config.url.API_URL;
+const baseUrl = config.url.url.API_URL;
+const wordId = config.wordId.id.wordId
 //random id to display different word at each refresh
-const randomId = Math.floor((Math.random()*4) + 1);
 
 
 class WordInfoComponent extends React.Component {
@@ -24,15 +23,14 @@ class WordInfoComponent extends React.Component {
         this.state = {
             "dimensions":{},
             "show":false,
-            "root_lemma":"Слънце"
+            "root_lemma":""
             }
     }
     componentDidMount(){
-        axios.get(`${baseUrl}/${randomId}/`).then(response => response.data)
+        axios.get(`${baseUrl}/${wordId}/`).then(response => response.data)
         .then(word => {
-            let formattedWord = utils.formatWord(word)
-            console.log(formattedWord)
-            this.setState({ "dimensions": formattedWord.dimensions})
+            console.log(word.dimensions)
+            this.setState({ "dimensions": word.dimensions, "root_lemma": word.name})
         })
     }
 
@@ -72,7 +70,9 @@ class WordInfoComponent extends React.Component {
         keys.forEach(element => {
             var key_items = []
             this.state.dimensions[element].forEach(item => {
-                key_items.push(item[0])
+                if(!key_items.includes(item[0])){
+                    key_items.push(item[0])
+                }
             });
             all_items.push(key_items);
             active_items.push(this.state.dimensions[element].filter(feature => feature[1] == true)[0][0])
