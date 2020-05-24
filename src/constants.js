@@ -1,12 +1,12 @@
 const prod = {
   url: {
-    API_URL: 'http://unimorph.ethz.ch/api/words'
+    API_URL: 'http://unimorph.ethz.ch/api'
   }
 }
 
 const dev = {
   url: {
-    API_URL: 'http://127.0.0.1:8000/api/words'
+    API_URL: 'http://127.0.0.1:8000/api'
   }
 }
 

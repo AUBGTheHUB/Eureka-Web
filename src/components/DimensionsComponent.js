@@ -13,7 +13,6 @@ import config from '../constants'
 
 const baseUrl = config.url.url.API_URL
 //random id to display different word at each refresh
-const wordId = config.wordId.id.wordId
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 class DimensionsComponent extends React.Component {
@@ -22,12 +21,13 @@ class DimensionsComponent extends React.Component {
         this.state = {
             "dimensions": {},
             "pos":"",
-            "show":false
+            "show":false,
+            "word": props.word
             }
     }
 
     componentDidMount(){
-        axios.get(`${baseUrl}/${wordId}/`).then(response => response.data)
+        axios.get(`${baseUrl}/words/${'bear'}/`).then(response => response.data)
         .then(word => {
             this.setState({ "dimensions": word.dimensions, "pos": word.lemma.pos})
         })

@@ -4,7 +4,6 @@ const baseUrl = 'http://127.0.0.1:8000/api/words'
 
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
-
 const getAll = async () => {
   const response = await axios.get(baseUrl)
   return response.data

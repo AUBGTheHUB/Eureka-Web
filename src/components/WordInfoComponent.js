@@ -1,5 +1,5 @@
 import React from 'react';
-import { DropdownButton } from 'react-bootstrap';
+import { DropdownButton, DropdownItem } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import Paper from '@material-ui/core/Paper';
 import Dialog from '@material-ui/core/Dialog';
@@ -12,7 +12,7 @@ import axios from 'axios'
 import config from '../constants'
 
 const baseUrl = config.url.url.API_URL;
-const wordId = config.wordId.id.wordId
+axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 //random id to display different word at each refresh
 
 
@@ -23,14 +23,18 @@ class WordInfoComponent extends React.Component {
         this.state = {
             "dimensions":{},
             "show":false,
-            "root_lemma":""
+            "root_lemma":"",
+            "word": props.word,
+            "proposed_dimension":"Choose a dimension",
+            "chosen_feature":"Choose a feature",
+            "new_dimension":false,
+            "not_included_dimensions":{"Aktionsart": [["Accomplishment", false], ["Achievement", false], ["Activity", false]], "Comparison": [["Absolute", false], ["comparative", false]]}
             }
     }
     componentDidMount(){
-        axios.get(`${baseUrl}/${wordId}/`).then(response => response.data)
+        axios.get(`${baseUrl}/words/${this.state.word}/`).then(response => response.data)
         .then(word => {
-            console.log(word.dimensions)
-            this.setState({ "dimensions": word.dimensions, "root_lemma": word.name})
+            this.setState({ "dimensions": word.dimensions, "root_lemma": word.lemma.name})
         })
     }
 
@@ -62,6 +66,40 @@ class WordInfoComponent extends React.Component {
         this.setState({"show":false})
       };
 
+      handleCloseSubmit(){
+        this.setState({"show":false})
+        var not_included_dimensions = this.state.not_included_dimensions;
+
+        var current_dimensions = this.state.dimensions;
+
+        current_dimensions[this.state.proposed_dimension]= not_included_dimensions[this.state.proposed_dimension];
+        
+        delete not_included_dimensions[this.state.proposed_dimension]
+
+        this.setState({"dimensions":current_dimensions, "not_included_dimensions":not_included_dimensions, "proposed_dimension":"Choose a dimension", 
+        "chosen_feature":"Choose a feature", "new_dimension":false});
+      };
+    
+      propose_dimension(proposed_value){
+        this.setState({"proposed_dimension":proposed_value, "new_dimension":true})
+    };
+    choose_new_feature(proposed_feature){
+        function check_feature(feat, value) {
+            return feat[0]==this.value;
+          }
+        
+        this.setState({"chosen_feature":proposed_feature[0]});
+
+        var current_not_included_dimensions = this.state.not_included_dimensions;
+
+        var idx_change = current_not_included_dimensions[this.state.proposed_dimension].findIndex(check_feature, {"value":proposed_feature[0]})
+
+        current_not_included_dimensions[this.state.proposed_dimension][idx_change][1] = true;
+        
+        this.setState({"not_included_dimensions":current_not_included_dimensions})
+    }
+
+
     render(){
         var keys = Object.keys(this.state.dimensions);
         var active_items = [];
@@ -78,13 +116,54 @@ class WordInfoComponent extends React.Component {
             active_items.push(this.state.dimensions[element].filter(feature => feature[1] == true)[0][0])
         });
         
+        var not_included_keys = Object.keys(this.state.not_included_dimensions);
+        
+        var not_included_features = [];
+        if(this.state.new_dimension == true){
+            var dimension_features = this.state.not_included_dimensions[this.state.proposed_dimension]
+            
+            dimension_features.forEach(function(entry) {
+                not_included_features.push(entry)
+            });
+        }
+        
+
+        let new_dimension_features;
+
+        if (this.state.new_dimension){
+
+            new_dimension_features = 
+
+            <div className="row">
+                <div className="col-md-4 col-lg-4 col-sm-4">
+                </div>
+
+                <div className="col-md-4 col-lg-4 col-sm-4">
+                    <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title={this.state.chosen_feature}>
+                            {not_included_features.map((value, index) => {return(
+                                <DropdownItem onClick={() => this.choose_new_feature(value)}>
+                                    {value}
+                                </DropdownItem>
+                        )})}
+                    </DropdownButton>
+                </div>
+
+                <div className="col-md-4 col-lg-4 col-sm-4">
+                </div>
+            </div>
+        }
+        else{
+            new_dimension_features = <div></div>
+        }
+
         return(
             <div className="">
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
                     
                     <div className="col-md-4 col-sm-4 col-lg-4">
-                        <p>{this.state.root_lemma}</p>
+                        <h2>word: {this.state.word}</h2>
+                        <p>root lemma: {this.state.root_lemma}</p>
                     </div>
 
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
@@ -113,6 +192,28 @@ class WordInfoComponent extends React.Component {
 
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
                 </div>
+
+                <div className="row margin_top">
+                    <div className="col-md-4 col-sm-4 col-lg-4"></div>
+                    <div className="col-md-4 col-sm-4 col-lg-4"><p className="centered_text">Propose a new annotation</p></div>
+                    <div className="col-md-4 col-sm-4 col-lg-4"></div>
+                </div>   
+                
+                <div className="row">
+                    <div className="col-md-4 col-sm-4 col-lg-4"></div>
+                        <div className="col-md-4 col-sm-4 col-lg-4">
+                            <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title={this.state.proposed_dimension}>
+                            {not_included_keys.map((value, index) => {return(
+                                <DropdownItem onClick={() => this.propose_dimension(value)}>
+                                    {value}
+                                </DropdownItem>
+                        )})}
+                            </DropdownButton>
+                        </div>
+                    <div className="col-md-4 col-sm-4 col-ld-4"></div>
+                </div>
+
+                {new_dimension_features}
                 <div className="row submit_button_1">
                     <div className="col-md-4 col-sm-4 col-lg-4"></div>
 

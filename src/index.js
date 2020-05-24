@@ -13,6 +13,8 @@ import Footer from './components/Footer'
 import EditWordComponent from './components/EditWordComponent'
 import WordTableComponent from './components/WordTableComponent'
 
+import 'regenerator-runtime/runtime.js'
+
 function LandingComponent() {
     return (
         <div>
@@ -33,8 +35,8 @@ const routing = (
         <div>
             <Route exact path="/" component={LandingComponent} />
             <Route path="/language" component={LanguagePageComponent} />
-            <Route path="/word" component={WordComponent} />
-            <Route path="/editword" component={EditWordComponent} />
+            <Route path="/lemmas/:slug" component={WordComponent} />
+            <Route path="/editword/:slug" component={EditWordComponent} />
             <Route path="/wordTable" component={WordTableComponent} />
         </div>
     </Router>
