@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import config from '../constants'
-const baseUrl = config.url.url.API_URL;
+const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 class LemmaSection extends React.Component {

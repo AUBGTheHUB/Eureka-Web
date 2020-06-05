@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import config from '../constants'
 
-const baseUrl = config.url.url.API_URL
+const baseUrl = config.url.API_URL
 //random id to display different word at each refresh
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
