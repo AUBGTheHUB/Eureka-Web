@@ -11,7 +11,8 @@ import SearchSection from './components/SearchComponent';
 import WordComponent from './components/WordPageComponent';
 import Footer from './components/Footer'
 import EditWordComponent from './components/EditWordComponent'
-import WordTableComponent from './components/WordTableComponent'
+import WordTableComponent from './components/WordTableComponent';
+import LemmaTable from './components/LemmaTable';
 
 import 'regenerator-runtime/runtime.js'
 import AllLemmasComponent from './components/AllLemmasComponent';
@@ -40,6 +41,7 @@ const routing = (
             <Route exact path="/lemmas/:slug/" component={WordComponent} />
             <Route path="/editword/:slug" component={EditWordComponent} />
             <Route path="/wordTable" component={WordTableComponent} />
+            <Route exact path="/test" component={LemmaTable}/>
         </div>
     </Router>
 )

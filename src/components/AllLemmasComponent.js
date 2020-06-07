@@ -1,7 +1,7 @@
 import React from 'react';
 import NavbarLemma from './NavbarLemmaComponent'
 import Button from '@material-ui/core/Button';
-import Link from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
 import DeleteIcon from '@material-ui/icons/Delete';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
@@ -15,6 +15,8 @@ const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 const query = qs.parse(location.search);
+// number of pages to allocate
+let pages = 1;
 
 class AllLemmasComponent extends React.Component {
     constructor(props) {
@@ -23,30 +25,34 @@ class AllLemmasComponent extends React.Component {
         this.state = {
             "lemmas":[],
             "language":"English",
-            "currentPage": query.page ? query.page : 1,
-            "lemmaUrl": `${baseUrl}/lemmas/`
-            }
-        this.handlePageChange = this.handlePageChange.bind(this);
+            "currentPage": query.page ? Number(query.page) : 1
+        }
+        this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-      axios.get(this.state.lemmaUrl).then(response => response.data)
+      const lemmaUrl = query.page ? `${baseUrl}/lemmas/?page=${query.page}` : `${baseUrl}/lemmas/`
+      axios.get(lemmaUrl).then(response => response.data)
       .then(response => {
+          // number of pages for the lemmas, each page has 72 lemmas listed
+          pages = parseInt(response.count/72) + 1;
           this.setState({
               "lemmas": response.results.map(lemma => lemma.name), 
-              "language": "English",
-              "lemmaUrl": `${baseUrl}/lemmas/?page=${query.page}`
+              "language": "English"
             })
       })
     }
-    handlePageChange(event, value) {
-        this.setState({
-            "currentPage": value,
-            "lemmaUrl": `${baseUrl}/lemmas/?page=${value}`
+    handleChange(event, value) {
+        const lemmaUrl = `${baseUrl}/lemmas/?page=${value}`;
+        axios.get(lemmaUrl).then(response => response.data)
+        .then(response => {
+            this.setState({
+                "lemmas": response.results.map(lemma => lemma.name),
+                "currentPage": value
+              })
         })
     }
 
     render(){
-        console.log(this.state.lemmas.length/4)
         var quartile = this.state.lemmas.length/4
         var lemmas_0 = this.state.lemmas.slice(0, quartile)
         var lemmas_1 = this.state.lemmas.slice(quartile, 2*quartile)
@@ -112,7 +118,16 @@ class AllLemmasComponent extends React.Component {
                     </div>
                 </div>
                 <div className="d-flex justify-content-center">
-                <Pagination count={10} page={this.currentPage} onChange={this.handlePageChange}/>
+                <Pagination count={pages} page={this.state.currentPage}
+                    renderItem={(item) => (
+                        <PaginationItem 
+                        component={Link}
+                        to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
+                        {...item}
+                        />
+                    )}
+                    onChange={this.handleChange}
+                />
                 </div>
             </div> 
             );

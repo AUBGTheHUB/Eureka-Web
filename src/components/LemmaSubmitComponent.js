@@ -49,14 +49,15 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function SubmitDialog() {
-  const [open, setOpen] = React.useState(false);
+export default function SubmitDialog({ show, onSubmit }) {
+  const [open, setOpen] = React.useState(show);
 
   const handleClickOpen = () => {
     setOpen(true);
   };
   const handleClose = () => {
     setOpen(false);
+    onSubmit();
   };
 
   return (
@@ -65,26 +66,13 @@ export default function SubmitDialog() {
         <div className="col-md-4 col-lg-4 col-sm-4"></div>
         <div className="col-md-4 col-lg-4 col-sm-4"></div>
         <div className="col-md-4 col-lg-4 col-sm-4">
-            <Button className="submit_button" variant="outlined" color="primary" onClick={handleClickOpen}>
-                Submit an edit request
-            </Button>
             <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
                 <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-                Modal title
+                Edit request
                 </DialogTitle>
                 <DialogContent dividers>
                 <Typography gutterBottom>
-                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                </Typography>
-                <Typography gutterBottom>
-                    Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                    lacus vel augue laoreet rutrum faucibus dolor auctor.
-                </Typography>
-                <Typography gutterBottom>
-                    Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                    scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                    auctor fringilla.
+                  Your changes will be sent to the language admin for review and you will hear back soon!
                 </Typography>
                 </DialogContent>
                 <DialogActions>

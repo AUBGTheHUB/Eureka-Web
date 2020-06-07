@@ -27,7 +27,7 @@ class DimensionsComponent extends React.Component {
     }
 
     componentDidMount(){
-        axios.get(`${baseUrl}/words/${'bear'}/`).then(response => response.data)
+        axios.get(`${baseUrl}/words/${this.state.word}/`).then(response => response.data)
         .then(word => {
             this.setState({ "dimensions": word.dimensions, "pos": word.lemma.pos})
         })
