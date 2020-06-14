@@ -7,7 +7,7 @@ import PoSComponent from './PoSComponent'
 import SubmitDialog from './LemmaSubmitComponent'
 
 const WordComponent = () => {
-    const { slug } = useParams()
+    const { slug } = useParams();
     return(
         <div>
             <NavbarLemma/>

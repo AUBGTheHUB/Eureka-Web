@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarLemma from './NavbarLemmaComponent'
+import Navbarword from './NavbarLemmaComponent'
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
@@ -18,93 +18,101 @@ const query = qs.parse(location.search);
 // number of pages to allocate
 let pages = 1;
 
-class AllLemmasComponent extends React.Component {
+class AllWordsComponent extends React.Component {
     constructor(props) {
         super(props)
         
         this.state = {
-            "lemmas":[],
+            "words":[],
             "language":"English",
             "currentPage": query.page ? Number(query.page) : 1
         }
         this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-      const lemmaUrl = query.page ? `${baseUrl}/lemmas/?page=${query.page}` : `${baseUrl}/lemmas/`
-      axios.get(lemmaUrl).then(response => response.data)
+      const wordUrl = query.page ? `${baseUrl}/words/?page=${query.page}` : `${baseUrl}/words/`
+      axios.get(wordUrl).then(response => response.data)
       .then(response => {
-          // number of pages for the lemmas, each page has 72 lemmas listed
+          // number of pages for the words, each page has 72 words listed
           pages = parseInt(response.count/72) + 1;
           this.setState({
-              "lemmas": response.results.map(lemma => lemma.name), 
+              "words": response.results.map(word => word.name), 
               "language": "English"
             })
       })
     }
     handleChange(event, value) {
-        const lemmaUrl = `${baseUrl}/lemmas/?page=${value}`;
-        axios.get(lemmaUrl).then(response => response.data)
+        const wordUrl = `${baseUrl}/words/?page=${value}`;
+        axios.get(wordUrl).then(response => response.data)
         .then(response => {
             this.setState({
-                "lemmas": response.results.map(lemma => lemma.name),
+                "words": response.results.map(word => word.name),
                 "currentPage": value
               })
         })
     }
 
     render(){
-        var quartile = this.state.lemmas.length/4
-        var lemmas_0 = this.state.lemmas.slice(0, quartile)
-        var lemmas_1 = this.state.lemmas.slice(quartile, 2*quartile)
-        var lemmas_2 = this.state.lemmas.slice(2*quartile, 3*quartile)
-        var lemmas_3 = this.state.lemmas.slice(3*quartile, 4*quartile)
+        var quartile = this.state.words.length/4
+        var words_0 = this.state.words.slice(0, quartile)
+        var words_1 = this.state.words.slice(quartile, 2*quartile)
+        var words_2 = this.state.words.slice(2*quartile, 3*quartile)
+        var words_3 = this.state.words.slice(3*quartile, 4*quartile)
 
         return(
             <div className="">
-                <NavbarLemma/>
+                <Navbarword/>
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
-                        <h3 className="centered_text">{this.state.language}</h3>
+                        <p className="centered_text">{this.state.language}</p>
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
                 </div>
-                <div className="row d-flex justify-content-sm-center" style={{marginTop: 15, marginBottom:15}}>
-                    <Button variant="contained" color="default" className="main-body-button" startIcon={<CloudUploadIcon />}>
-                        Propose lemma
-                    </Button>
+                <div className="d-flex justify-content-sm-center" style={{marginTop: 15, marginBottom:15}}>
+                  <Button variant="contained" color="default" className="main-body-button" startIcon={<CloudUploadIcon />}>
+                              Propose word
+                  </Button>
+                </div>
+                <div className="row">
+                    <div className="col-md-4 col-sm-4 col-lg-4">
+                    </div>
+                    <div className="col-md-4 col-sm-4 col-lg-4">
+                    </div>
+                    <div className="col-md-4 col-sm-4 col-lg-4">
+                    </div>
                 </div>
 
                 <div className="row margin_top">
                     <div className="col-md-2 col-sm-2 col-lg-2">
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_0.map((value,index) => {return(
+                        {words_0.map((value,index) => {return(
                             <div key={index}>
-                                <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                <p className="centered_text"><a href={`/words/${value}`}>{value}</a></p>
                             </div>
                         )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_1.map((value,index) => {return(
+                        {words_1.map((value,index) => {return(
                                 <div key={index}>
-                                    <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                    <p className="centered_text"><a href={`/words/${value}`}>{value}</a></p>
                                 </div>
                             )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_2.map((value,index) => {return(
+                        {words_2.map((value,index) => {return(
                                     <div key={index}>
-                                        <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                        <p className="centered_text"><a href={`/words/${value}`}>{value}</a></p>
                                     </div>
                                 )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_3.map((value,index) => {return(
+                        {words_3.map((value,index) => {return(
                                         <div key={index}>
-                                            <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                            <p className="centered_text"><a href={`/words/${value}`}>{value}</a></p>
                                         </div>
                                     )})}
                     </div>
@@ -116,7 +124,7 @@ class AllLemmasComponent extends React.Component {
                     renderItem={(item) => (
                         <PaginationItem 
                         component={Link}
-                        to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
+                        to={`/words${item.page === 1 ? '' : `?page=${item.page}`}`}
                         {...item}
                         />
                     )}
@@ -128,4 +136,4 @@ class AllLemmasComponent extends React.Component {
     }
 }
 
-export default AllLemmasComponent;
+export default AllWordsComponent;
