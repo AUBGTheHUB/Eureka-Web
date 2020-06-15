@@ -30,7 +30,13 @@ class AllWordsComponent extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-      const wordUrl = query.page ? `${baseUrl}/words/?page=${query.page}` : `${baseUrl}/words/`
+        let wordUrl = ``;
+        if (query.search){
+            wordUrl = `${baseUrl}/words/?search=${query.search}`;
+        }
+        else{
+            wordUrl = query.page ? `${baseUrl}/words/?page=${query.page}` : `${baseUrl}/words/`;
+        }
       axios.get(wordUrl).then(response => response.data)
       .then(response => {
           // number of pages for the words, each page has 72 words listed
@@ -42,7 +48,7 @@ class AllWordsComponent extends React.Component {
       })
     }
     handleChange(event, value) {
-        const wordUrl = `${baseUrl}/words/?page=${value}`;
+        const wordUrl = `${baseUrl}/words/?page=${value}&search=${query.search}`;
         axios.get(wordUrl).then(response => response.data)
         .then(response => {
             this.setState({
@@ -67,6 +73,7 @@ class AllWordsComponent extends React.Component {
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
                         <p className="centered_text">{this.state.language}</p>
+                        {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
@@ -124,7 +131,7 @@ class AllWordsComponent extends React.Component {
                     renderItem={(item) => (
                         <PaginationItem 
                         component={Link}
-                        to={`/words${item.page === 1 ? '' : `?page=${item.page}`}`}
+                        to={`/words${item.page === 1 ? '' : `?page=${item.page}`}${query.search ? `&search=${query.search}` : ''}`}
                         {...item}
                         />
                     )}

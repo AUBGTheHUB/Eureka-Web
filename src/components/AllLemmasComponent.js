@@ -30,7 +30,13 @@ class AllLemmasComponent extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-      const lemmaUrl = query.page ? `${baseUrl}/lemmas/?page=${query.page}` : `${baseUrl}/lemmas/`
+      let lemmaUrl = ``;
+      if (query.search){
+          lemmaUrl = `${baseUrl}/lemmas/?search=${query.search}`;
+      }
+      else{
+          lemmaUrl = query.page ? `${baseUrl}/lemmas/?page=${query.page}` : `${baseUrl}/lemmas/`;
+      }
       axios.get(lemmaUrl).then(response => response.data)
       .then(response => {
           // number of pages for the lemmas, each page has 72 lemmas listed
@@ -67,6 +73,7 @@ class AllLemmasComponent extends React.Component {
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
                         <h3 className="centered_text">{this.state.language}</h3>
+                        {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>

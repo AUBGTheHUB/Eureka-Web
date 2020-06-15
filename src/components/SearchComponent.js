@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
 import { Dropdown } from 'react-bootstrap';
 import { InputGroup } from 'react-bootstrap';
+import { Redirect } from 'react-router';
 
 
 class SearchSection extends React.Component {
@@ -12,12 +13,12 @@ class SearchSection extends React.Component {
         
         this.languages = ["Bulgarian", "English", "Albanian", "Azeri", "Turkmen", "Kyrgyz"];
         this.languagesList = []
-
         for (const [index, value] of this.languages.entries()) {
             this.languagesList.push(<Dropdown.Item onClick={this.changeSelect}>{value}</Dropdown.Item>)
           }
         
         this.myRef = React.createRef();
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
     
     changeSelect(e) {
@@ -25,6 +26,11 @@ class SearchSection extends React.Component {
         document.getElementById('dropdown-basic-button').innerText = e.target.innerText
         e.preventDefault();
       }
+    handleSubmit(e) {
+        e.preventDefault();
+        console.log(this.props);
+        this.props.history.push(`/words/?search=${e.target.value}`);
+    }
       
     
     render(){
@@ -48,7 +54,7 @@ class SearchSection extends React.Component {
                                     aria-describedby="basic-addon2"
                                 />
                                 <InputGroup.Append>
-                                    <Button variant="outline-secondary btn_search">Search</Button>
+                                    <Button onClick={this.handleSubmit} variant="outline-secondary btn_search">Search</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </div>

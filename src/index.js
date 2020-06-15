@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-//import AllDownloads from './components/DownloadDataComponent';
+import AllDownloads from './components/DownloadDataComponent';
 import NavbarUnimorph from './components/NavbarComponent';
 import AboutUsSection from './components/AboutUsComponent';
 import ContributeDownload from './components/ContributeDownload';
@@ -40,7 +40,7 @@ const routing = (
             <Route exact path="/lemmas/:slug/" component={WordComponent} />
             <Route exact path="/words" component={AllWordsComponent} />
             <Route exact path="/words/:slug" component={WordComponent} />
-            {/* <Route exact path="/downloads" component={AllDownloads}/> */}
+            <Route exact path="/downloads" component={AllDownloads}/>
             <Route exact path="/test" component={DimensionComponenet}/>
         </div>
     </Router>

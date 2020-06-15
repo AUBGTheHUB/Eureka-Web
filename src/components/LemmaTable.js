@@ -6,6 +6,7 @@ import axios from 'axios';
 import config from '../constants';
 import SubmitDialog from './LemmaSubmitComponent';
 import SubmitDimensionDialog from './DimensionsComponent';
+import * as qs from 'query-string';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
