@@ -16,6 +16,7 @@ import LemmaTable from './components/LemmaTable';
 import DimensionComponenet from './components/DimensionsComponent';
 import 'regenerator-runtime/runtime.js'
 import AllLemmasComponent from './components/AllLemmasComponent';
+import WordNameComponent from './components/WordNameComponent';
 
 function LandingComponent() {
     return (
@@ -39,7 +40,7 @@ const routing = (
             <Route exact path="/lemmas" component={AllLemmasComponent} />
             <Route exact path="/lemmas/:slug/" component={WordComponent} />
             <Route exact path="/words" component={AllWordsComponent} />
-            <Route exact path="/words/:slug" component={WordComponent} />
+            <Route exact path="/words/:slug" component={WordNameComponent} />
             <Route exact path="/downloads" component={AllDownloads}/>
             <Route exact path="/test" component={DimensionComponenet}/>
         </div>

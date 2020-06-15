@@ -25,30 +25,28 @@ class AllWordsComponent extends React.Component {
         this.state = {
             "words":[],
             "language":"English",
-            "currentPage": query.page ? Number(query.page) : 1
+            "currentPage": query.page ? Number(query.page) : 1,
+            "search": props.location.search
         }
         this.handleChange = this.handleChange.bind(this);
     }
     componentDidMount() {
-        let wordUrl = ``;
-        if (query.search){
-            wordUrl = `${baseUrl}/words/?search=${query.search}`;
-        }
-        else{
-            wordUrl = query.page ? `${baseUrl}/words/?page=${query.page}` : `${baseUrl}/words/`;
-        }
-      axios.get(wordUrl).then(response => response.data)
-      .then(response => {
-          // number of pages for the words, each page has 72 words listed
-          pages = parseInt(response.count/72) + 1;
-          this.setState({
-              "words": response.results.map(word => word.name), 
-              "language": "English"
-            })
-      })
+        let search_pattern = this.props.location.search ? this.props.location.search : '';
+        console.log(this.props.location);
+        let wordUrl = `${baseUrl}${this.props.location.pathname}${search_pattern}`;
+        axios.get(wordUrl).then(response => response.data)
+        .then(response => {
+            // number of pages for the words, each page has 72 words listed
+            pages = parseInt(response.count/72) + 1;
+            this.setState({
+                "words": response.results.map(word => word.name), 
+                "language": "English"
+                })
+        })
     }
+
     handleChange(event, value) {
-        const wordUrl = `${baseUrl}/words/?page=${value}&search=${query.search}`;
+        const wordUrl = `${baseUrl}/words/?page=${value}`;
         axios.get(wordUrl).then(response => response.data)
         .then(response => {
             this.setState({
@@ -131,7 +129,7 @@ class AllWordsComponent extends React.Component {
                     renderItem={(item) => (
                         <PaginationItem 
                         component={Link}
-                        to={`/words${item.page === 1 ? '' : `?page=${item.page}`}${query.search ? `&search=${query.search}` : ''}`}
+                        to={`/words/${item.page === 1 ? '' : `?page=${item.page}`}`}
                         {...item}
                         />
                     )}

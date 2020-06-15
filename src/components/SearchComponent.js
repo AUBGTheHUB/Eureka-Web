@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FormControl } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { DropdownButton } from 'react-bootstrap';
@@ -11,6 +12,10 @@ class SearchSection extends React.Component {
     constructor(props) {
         super(props)
         
+        this.state = {
+            "pattern": "",
+            "search": false
+        }
         this.languages = ["Bulgarian", "English", "Albanian", "Azeri", "Turkmen", "Kyrgyz"];
         this.languagesList = []
         for (const [index, value] of this.languages.entries()) {
@@ -19,6 +24,7 @@ class SearchSection extends React.Component {
         
         this.myRef = React.createRef();
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
     
     changeSelect(e) {
@@ -26,14 +32,26 @@ class SearchSection extends React.Component {
         document.getElementById('dropdown-basic-button').innerText = e.target.innerText
         e.preventDefault();
       }
-    handleSubmit(e) {
+
+    handleChange(e){
         e.preventDefault();
-        console.log(this.props);
-        this.props.history.push(`/words/?search=${e.target.value}`);
+        this.setState({
+            "pattern": e.target.value
+        })
+    }
+    handleSubmit() {
+        this.setState({
+            "search": true
+        })
     }
       
     
     render(){
+        if(this.state.search){
+            return(
+                <Redirect push to={`/words/?search=${this.state.pattern}`} />
+            )
+        }
         return(
             <div className="colored_search_bar">
                 <div className="row searchform">
@@ -52,6 +70,7 @@ class SearchSection extends React.Component {
                                     placeholder="Search word"
                                     aria-label="Search word"
                                     aria-describedby="basic-addon2"
+                                    onChange={this.handleChange}
                                 />
                                 <InputGroup.Append>
                                     <Button onClick={this.handleSubmit} variant="outline-secondary btn_search">Search</Button>
@@ -70,5 +89,5 @@ class SearchSection extends React.Component {
 
 }
 
-export default SearchSection;
+export default withRouter(SearchSection);
 

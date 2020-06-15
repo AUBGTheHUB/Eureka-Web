@@ -19,12 +19,14 @@ const LemmaTable = (props) => {
   ]);
   const [data, setData] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
+  const [error, setError] = useState();
 
   // process the data from api and format it for the table
   useEffect(() => {
     const getData = async () =>{
       const response = await axios.get(`${baseUrl}/lemmas/${props.lemma}/`);
       let dimOptions = [];
+      console.log(response.data);
       response.data.related_words.map(word => {
         dims = dims.concat(Object.keys(word.dimensions));
         dimOptions = dimOptions.concat(
