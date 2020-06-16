@@ -7,7 +7,7 @@ export default function NavbarUnimorph() {
     return (
         <div className="NavbarUnimorph">
             <Navbar bg="light" variant="light">
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/">
                     <img
                         src="/assets/favicon_logo.svg"
                         width="30"
