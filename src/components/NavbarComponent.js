@@ -21,8 +21,10 @@ export default function NavbarUnimorph() {
                 </Nav>
 
                 <Nav>
-                    <Nav.Link href="#about">About the project</Nav.Link>
-                    <Nav.Link href="/language">Download Data</Nav.Link>
+                    <Nav.Link href="/about">About the project</Nav.Link>
+                    <Nav.Link href="/words/">Words</Nav.Link>
+                    <Nav.Link href="/lemmas">Lemmas</Nav.Link>
+                    <Nav.Link href="/downloads">Download Data</Nav.Link>
                     <Nav.Link href="#contact">Contact Us</Nav.Link>
                     <Nav.Link href="#account">My Account</Nav.Link>
                 </Nav>

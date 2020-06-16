@@ -14,7 +14,7 @@ class SearchSection extends React.Component {
         this.languagesList = []
 
         for (const [index, value] of this.languages.entries()) {
-            this.languagesList.push(<Dropdown.Item onClick={this.changeSelect}>{value}</Dropdown.Item>)
+            this.languagesList.push(<Dropdown.Item key={index} onClick={this.changeSelect}>{value}</Dropdown.Item>)
           }
         
         this.myRef = React.createRef();
@@ -37,7 +37,7 @@ class SearchSection extends React.Component {
                     <div className="col-md-6 col-xs-6 col-sm-5">
                         <div className="row">
                             <InputGroup className="mb-3">
-                                <InputGroup.Append>
+                                <InputGroup.Append defaultValue={this.languages[1]}>
                                     <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
                                         {this.languagesList}
                                     </DropdownButton>

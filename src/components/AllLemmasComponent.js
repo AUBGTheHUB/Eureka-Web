@@ -10,6 +10,7 @@ import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import axios from 'axios'
 import config from '../constants'
+import SubmitLemmaDialog from './SubmitLemmaDialog';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -65,16 +66,9 @@ class AllLemmasComponent extends React.Component {
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
                 </div>
-                <div className="row">
-                    <div className="col-md-4 col-sm-4 col-lg-4">
-                    </div>
-                    <div className="col-md-4 col-sm-4 col-lg-4">
-                        <Button variant="contained" color="default" className="main-body-button" startIcon={<CloudUploadIcon />}>
-                            Propose lemma
-                        </Button>
-                    </div>
-                    <div className="col-md-4 col-sm-4 col-lg-4">
-                    </div>
+
+                <div className="d-flex justify-content-sm-center">
+                    <SubmitLemmaDialog language={this.state.language} handleSubmit={this.handleWordAdd}/> 
                 </div>
 
                 <div className="row margin_top">
