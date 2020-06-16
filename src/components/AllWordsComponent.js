@@ -8,8 +8,9 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import axios from 'axios'
-import config from '../constants'
+import axios from 'axios';
+import config from '../constants';
+import SubmitWordDialog from './SubmitWordDialog';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -29,10 +30,10 @@ class AllWordsComponent extends React.Component {
             "search": props.location.search
         }
         this.handleChange = this.handleChange.bind(this);
+        this.handleWordAdd = this.handleWordAdd.bind(this);
     }
     componentDidMount() {
         let search_pattern = this.props.location.search ? this.props.location.search : '';
-        console.log(this.props.location);
         let wordUrl = `${baseUrl}${this.props.location.pathname}${search_pattern}`;
         axios.get(wordUrl).then(response => response.data)
         .then(response => {
@@ -56,6 +57,10 @@ class AllWordsComponent extends React.Component {
         })
     }
 
+    handleWordAdd(word){
+        console.log('nice')
+    }
+
     render(){
         var quartile = this.state.words.length/4
         var words_0 = this.state.words.slice(0, quartile)
@@ -76,10 +81,8 @@ class AllWordsComponent extends React.Component {
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
                 </div>
-                <div className="d-flex justify-content-sm-center" style={{marginTop: 15, marginBottom:15}}>
-                  <Button variant="contained" color="default" className="main-body-button" startIcon={<CloudUploadIcon />}>
-                              Propose word
-                  </Button>
+                <div className="d-flex justify-content-sm-center">
+                    <SubmitWordDialog language={this.state.language} handleSubmit={this.handleWordAdd}/> 
                 </div>
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-lg-4">

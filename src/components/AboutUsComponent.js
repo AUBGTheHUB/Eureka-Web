@@ -1,5 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import NavbarUnimorph from './NavbarComponent';
+import Footer from './Footer';
 
 export default function AboutUsSection() {
     return (

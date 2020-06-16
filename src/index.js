@@ -4,6 +4,7 @@ import './styles.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import AllDownloads from './components/DownloadDataComponent';
 import NavbarUnimorph from './components/NavbarComponent';
+import About from './components/About';
 import AboutUsSection from './components/AboutUsComponent';
 import ContributeDownload from './components/ContributeDownload';
 import HeaderLogo from './components/HeaderComponent';
@@ -37,6 +38,7 @@ const routing = (
     <Router>
         <div>
             <Route exact path="/" component={LandingComponent} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/lemmas" component={AllLemmasComponent} />
             <Route exact path="/lemmas/:slug/" component={WordComponent} />
             <Route exact path="/words" component={AllWordsComponent} />

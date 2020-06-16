@@ -26,7 +26,6 @@ const LemmaTable = (props) => {
     const getData = async () =>{
       const response = await axios.get(`${baseUrl}/lemmas/${props.lemma}/`);
       let dimOptions = [];
-      console.log(response.data);
       response.data.related_words.map(word => {
         dims = dims.concat(Object.keys(word.dimensions));
         dimOptions = dimOptions.concat(
