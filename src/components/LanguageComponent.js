@@ -67,7 +67,7 @@ const LanguagesList = () => {
                 <ListGroup variant="flush">
                     <ListGroup.Item>1. Download the whole data for a language by clicking on language name</ListGroup.Item>
                     <ListGroup.Item>2. Download the set of languages in a given genus/family by clicking on its name</ListGroup.Item>
-                    <ListGroup.Item>3. Explore list of lemmas or words in a given language by clicking on the value of lemmas/words</ListGroup.Item>
+                    <ListGroup.Item>3. Explore lemmas and words of a given language by clicking on a value of the lemmas/words</ListGroup.Item>
                 </ListGroup>
             </div>
             <div id="lang-table" className="d-flex justify-content-center">
