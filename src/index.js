@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
-import AllDownloads from './components/DownloadDataComponent';
+import LanguagesList from './components/LanguageComponent';
 import NavbarUnimorph from './components/NavbarComponent';
 import About from './components/About';
 import AboutUsSection from './components/AboutUsComponent';
@@ -43,7 +43,7 @@ const routing = (
             <Route exact path="/lemmas/:slug/" component={WordComponent} />
             <Route exact path="/words" component={AllWordsComponent} />
             <Route exact path="/words/:slug" component={WordNameComponent} />
-            <Route exact path="/downloads" component={AllDownloads}/>
+            <Route exact path="/languages" component={LanguagesList}/>
             <Route exact path="/test" component={DimensionComponenet}/>
         </div>
     </Router>

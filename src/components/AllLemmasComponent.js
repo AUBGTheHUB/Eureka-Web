@@ -1,5 +1,5 @@
 import React from 'react';
-import NavbarLemma from './NavbarLemmaComponent'
+import NavbarLemma from './NavbarComponent'
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
