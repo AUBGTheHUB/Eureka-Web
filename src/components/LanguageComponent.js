@@ -84,7 +84,7 @@ const LanguagesList = () => {
                                 <tr key={lang.name}>
                                     <td>{i+1}</td>
                                     <td>    
-                                        <a href={`${baseUrl}/downloads/languages/${lang.name}/`}>
+                                        <a href={`${baseUrl}/download/languages/${lang.name}/`}>
                                             {lang.name}
                                         </a>
                                     </td>
@@ -92,12 +92,12 @@ const LanguagesList = () => {
                                         {lang.walsCode}
                                     </td>
                                     <td>    
-                                        <a href={`${baseUrl}/downloads/languages/families/${lang.family}`}>
+                                        <a href={`${baseUrl}/download/languages/families/${lang.family}`}>
                                             {lang.family}
                                         </a>
                                     </td>                                                                        
                                     <td>    
-                                        <a href={`${baseUrl}/downloads/languages/genuses/${lang.genus}/`}>
+                                        <a href={`${baseUrl}/download/languages/genuses/${lang.genus}/`}>
                                             {lang.genus}
                                         </a>
                                     </td>
