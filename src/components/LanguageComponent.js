@@ -84,7 +84,7 @@ const LanguagesList = () => {
                                 <tr key={lang.name}>
                                     <td>{i+1}</td>
                                     <td>    
-                                        <a href={`${baseUrl}/downloads/languages/${lang.name}/`}>
+                                        <a href={`${baseUrl}/download/words/${lang.name}/`}>
                                             {lang.name}
                                         </a>
                                     </td>
