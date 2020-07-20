@@ -7,9 +7,8 @@ import config from '../constants';
 import SubmitDialog from './LemmaSubmitComponent';
 import SubmitDimensionDialog from './DimensionsComponent';
 import * as qs from 'query-string';
-
-const baseUrl = config.url.API_URL;
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+import lemmaService from '../services/lemma';
+import dimensionService from '../services/dimension';
 
 let dims = [];
 
@@ -23,46 +22,10 @@ const LemmaTable = (props) => {
 
   // process the data from api and format it for the table
   useEffect(() => {
-    const getData = async () =>{
-      const response = await axios.get(`${baseUrl}/lemmas/${props.lemma}/`);
-      let dimOptions = [];
-      response.data.related_words.map(word => {
-        dims = dims.concat(Object.keys(word.dimensions));
-        dimOptions = dimOptions.concat(
-          Object.keys(word.dimensions).map(key => {
-            let opts = {};
-            word.dimensions[key].map(feat => {
-              opts[feat] = feat;
-            })
-            return {
-              [key]: opts
-            }
-          })
-        )
-      })
-      // make sure dimensions and options are unique
-      dims = [...new Set(dims)];
-      let dimOps = Array.from(new Set(dimOptions.map(JSON.stringify))).map(JSON.parse);
-      setColumns(
-        columns.concat(dims.map((dim, i) => {
-          return {
-            title: dim,
-            field: dim.toLowerCase(),
-            lookup: dimOps[i][dim]
-            }
-          })
-        )
-      )
-      // set data for table in a corresponding format
-      setData(
-        response.data.related_words.map(word => {
-          let result = {name: word.name}
-          word.tagset.map(tag => {
-            result[Object.keys(tag)[0].toLowerCase()] = tag[Object.keys(tag)[0]];
-          })
-          return result
-        })
-      )
+    const getData = async () => {
+      const lemma = await lemmaService.getLemmaTable(props.lemma);
+      setColumns(lemma.columns);
+      setData(lemma.data);
     }
     getData();
   }, [])
@@ -75,7 +38,7 @@ const LemmaTable = (props) => {
     setShowDialog(false);
   };
   const handleDimensionAdd = async (dimension) => {
-    const {data, error} = await axios.get(`${baseUrl}/dimensions/${dimension}/`);
+    const {data, error} = await dimensionService.getOne(dimension);
     const options = {};
     data.options.map(feat => {
       options[feat] = feat;
@@ -88,6 +51,7 @@ const LemmaTable = (props) => {
       })
     )
   };
+  
   return(
     <div>
       <div className="d-flex justify-content-sm-center">

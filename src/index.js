@@ -11,13 +11,13 @@ import HeaderLogo from './components/HeaderComponent';
 import SearchSection from './components/SearchComponent';
 import WordComponent from './components/WordPageComponent';
 import Footer from './components/Footer';
-import EditWordComponent from './components/EditWordComponent'
 import AllWordsComponent from './components/AllWordsComponent';
 import LemmaTable from './components/LemmaTable';
-import DimensionComponenet from './components/DimensionsComponent';
-import 'regenerator-runtime/runtime.js'
+import 'regenerator-runtime/runtime.js';
 import AllLemmasComponent from './components/AllLemmasComponent';
 import WordNameComponent from './components/WordNameComponent';
+import { Provider } from 'react-redux';
+import store from './store'
 
 function LandingComponent() {
     return (
@@ -44,12 +44,13 @@ const routing = (
             <Route exact path="/words" component={AllWordsComponent} />
             <Route exact path="/words/:slug" component={WordNameComponent} />
             <Route exact path="/languages" component={LanguagesList}/>
-            <Route exact path="/test" component={DimensionComponenet}/>
         </div>
     </Router>
 )
 
 ReactDOM.render(
-    routing,
+    <Provider store={store}>
+        {routing}
+    </Provider>,
     document.getElementById('root')
 )

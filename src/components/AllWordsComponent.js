@@ -8,12 +8,8 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import axios from 'axios';
-import config from '../constants';
-import SubmitWordDialog from './SubmitWordDialog';
-
-const baseUrl = config.url.API_URL;
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+import SubmitWordDialog from './SubmitDialogs/SubmitWordDialog';
+import wordService from '../services/word';
 
 const query = qs.parse(location.search);
 // number of pages to allocate
@@ -32,41 +28,35 @@ class AllWordsComponent extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleWordAdd = this.handleWordAdd.bind(this);
     }
-    componentDidMount() {
-        let search_pattern = this.props.location.search ? this.props.location.search : '';
-        let wordUrl = `${baseUrl}${this.props.location.pathname}${search_pattern}`;
-        axios.get(wordUrl).then(response => response.data)
-        .then(response => {
-            // number of pages for the words, each page has 72 words listed
-            pages = parseInt(response.count/72) + 1;
-            this.setState({
-                "words": response.results.map(word => word.name), 
-                "language": "English"
-                })
+    async componentDidMount() {
+        let search_pattern = this.state.search ? this.state.search : '';
+        const data = await wordService.getAll(search_pattern);
+        pages = parseInt(data.count/72) + 1;
+        this.setState({
+            "words": data.results.map(word => word.name), 
+            "language": "English"
         })
     }
 
-    handleChange(event, value) {
-        const wordUrl = `${baseUrl}/words/?page=${value}`;
-        axios.get(wordUrl).then(response => response.data)
-        .then(response => {
-            this.setState({
-                "words": response.results.map(word => word.name),
-                "currentPage": value
-              })
+    async handleChange(event, value) {
+        const pattern = `?page=${value}`
+        const data = await wordService.getAll(pattern);
+        this.setState({
+            "words": data.results.map(word => word.name),
+            "currentPage": value
         })
     }
 
     handleWordAdd(word){
-        console.log('nice')
+        console.log('nice');
     }
 
     render(){
-        var quartile = this.state.words.length/4
-        var words_0 = this.state.words.slice(0, quartile)
-        var words_1 = this.state.words.slice(quartile, 2*quartile)
-        var words_2 = this.state.words.slice(2*quartile, 3*quartile)
-        var words_3 = this.state.words.slice(3*quartile, 4*quartile)
+        var quartile = this.state.words.length/4;
+        var words_0 = this.state.words.slice(0, quartile);
+        var words_1 = this.state.words.slice(quartile, 2*quartile);
+        var words_2 = this.state.words.slice(2*quartile, 3*quartile);
+        var words_3 = this.state.words.slice(3*quartile, 4*quartile);
 
         return(
             <div className="">

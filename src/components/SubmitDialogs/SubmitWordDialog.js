@@ -13,7 +13,7 @@ import Select from '@material-ui/core/Select';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import TextField from '@material-ui/core/TextField';
 import axios from 'axios';
-import config from '../constants';
+import config from '../../constants';
 import { Divider } from '@material-ui/core';
 
 const baseUrl = config.url.API_URL;

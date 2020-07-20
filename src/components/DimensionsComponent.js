@@ -14,9 +14,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import axios from 'axios';
 import config from '../constants';
 import { Divider } from '@material-ui/core';
-
-const baseUrl = config.url.API_URL;
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+import dimensionService from '../services/dimension';
 
 
 
@@ -39,8 +37,8 @@ const SubmitDimensionDialog = (props) => {
 
   useEffect(() => {
       const fetchDimensions = async () => {
-          const { data, error } = await axios.get(`${baseUrl}/dimensions/`);
-          setDimensions(dimensions.concat(data.results.map(dim => dim.name)));
+          const data = await dimensionService.getAll();
+          setDimensions(data);
       }
       fetchDimensions();
   }, [])

@@ -8,12 +8,8 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import axios from 'axios'
-import config from '../constants'
-import SubmitLemmaDialog from './SubmitLemmaDialog';
-
-const baseUrl = config.url.API_URL;
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
+import SubmitLemmaDialog from './SubmitDialogs/SubmitLemmaDialog';
+import lemmaService from '../services/lemma';
 
 const query = qs.parse(location.search);
 // number of pages to allocate
@@ -26,36 +22,26 @@ class AllLemmasComponent extends React.Component {
         this.state = {
             "lemmas":[],
             "language":"English",
-            "currentPage": query.page ? Number(query.page) : 1
+            "currentPage": query.page ? Number(query.page) : 1,
+            "search": props.location.search
         }
         this.handleChange = this.handleChange.bind(this);
     }
-    componentDidMount() {
-      let lemmaUrl = ``;
-      if (query.search){
-          lemmaUrl = `${baseUrl}/lemmas/?search=${query.search}`;
-      }
-      else{
-          lemmaUrl = query.page ? `${baseUrl}/lemmas/?page=${query.page}` : `${baseUrl}/lemmas/`;
-      }
-      axios.get(lemmaUrl).then(response => response.data)
-      .then(response => {
-          // number of pages for the lemmas, each page has 72 lemmas listed
-          pages = parseInt(response.count/72) + 1;
-          this.setState({
-              "lemmas": response.results.map(lemma => lemma.name), 
-              "language": "English"
-            })
-      })
+    async componentDidMount() {
+        let search_pattern = this.state.search ? this.state.search : '';
+        const data = await lemmaService.getAll(search_pattern);
+        pages = parseInt(data.count/72) + 1;
+        this.setState({
+            "lemmas": data.results.map(lemma => lemma.name), 
+            "language": "English"
+        })
     }
-    handleChange(event, value) {
-        const lemmaUrl = `${baseUrl}/lemmas/?page=${value}`;
-        axios.get(lemmaUrl).then(response => response.data)
-        .then(response => {
-            this.setState({
-                "lemmas": response.results.map(lemma => lemma.name),
-                "currentPage": value
-              })
+    async handleChange(event, value) {
+        const pattern = `?page=${value}`;
+        const data = await lemmaService.getAll(pattern);
+        this.setState({
+            "lemmas": data.results.map(lemma => lemma.name),
+            "currentPage": value
         })
     }
 
