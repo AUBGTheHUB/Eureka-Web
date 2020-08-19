@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles.css';
-import { Navbar, Container } from 'react-bootstrap';
+import '../../styles.css';
+import { Navbar } from 'react-bootstrap';
 import { Nav } from 'react-bootstrap';
 
 export default function NavbarUnimorph() {

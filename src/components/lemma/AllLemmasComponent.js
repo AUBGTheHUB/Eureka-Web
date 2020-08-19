@@ -1,15 +1,11 @@
 import React from 'react';
-import NavbarLemma from './NavbarComponent'
-import Button from '@material-ui/core/Button';
+import NavbarLemma from '../core/NavbarComponent'
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import SubmitLemmaDialog from './SubmitDialogs/SubmitLemmaDialog';
-import lemmaService from '../services/lemma';
+import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
+import lemmaService from '../../services/lemma';
 
 const query = qs.parse(location.search);
 // number of pages to allocate

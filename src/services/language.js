@@ -10,6 +10,10 @@ axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 /**
  * Get all languages with a specific format
  */
+// random number generator for lemmas and words. Demo purposes only, will be removed in next stage
+function getRandomInt(min, max) {
+    return Math.floor(Math.random(min) * Math.floor(max));
+}
 
 const getAll = async () => {
     const {data, error} = await axios.get(`${baseUrl}/languages/`);

@@ -4,9 +4,9 @@ import { GET_ALL_LANGUAGES } from './actionTypes';
 export const initializeLanguages = () => {
     return async dispatch => {
         const langs = await languageService.getAll();
-        return {
+        dispatch ({
             type: GET_ALL_LANGUAGES,
-            data: langs
-        }
+            data: langs.result
+        })
     }
 };

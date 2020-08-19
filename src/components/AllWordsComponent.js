@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbarword from './NavbarComponent'
+import Navbarword from './core/NavbarComponent'
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
@@ -8,7 +8,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import SubmitWordDialog from './SubmitDialogs/SubmitWordDialog';
+import SubmitWordDialog from './submit-dialogs/SubmitWordDialog';
 import wordService from '../services/word';
 
 const query = qs.parse(location.search);
@@ -48,7 +48,7 @@ class AllWordsComponent extends React.Component {
     }
 
     handleWordAdd(word){
-        console.log('nice');
+        console.log('add');
     }
 
     render(){

@@ -1,14 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import SubmitDialog from '../submit-dialogs/SubmitLemmaDialog';
+import SubmitDimensionDialog from '../submit-dialogs/SubmitDimension';
 import MaterialTable from 'material-table';
-import axios from 'axios';
-import config from '../constants';
-import SubmitDialog from './LemmaSubmitComponent';
-import SubmitDimensionDialog from './DimensionsComponent';
-import * as qs from 'query-string';
-import lemmaService from '../services/lemma';
-import dimensionService from '../services/dimension';
+import lemmaService from '../../services/lemma';
+import dimensionService from '../../services/dimension';
 
 let dims = [];
 

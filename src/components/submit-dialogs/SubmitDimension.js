@@ -11,12 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import axios from 'axios';
-import config from '../constants';
-import { Divider } from '@material-ui/core';
-import dimensionService from '../services/dimension';
-
-
+import dimensionService from '../../services/dimension';
 
 const useStyles = makeStyles((theme) => ({
   container: {

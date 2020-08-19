@@ -3,19 +3,17 @@ import ReactDOM from 'react-dom';
 import './styles.css';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import LanguagesList from './components/LanguageComponent';
-import NavbarUnimorph from './components/NavbarComponent';
-import About from './components/About';
-import AboutUsSection from './components/AboutUsComponent';
-import ContributeDownload from './components/ContributeDownload';
-import HeaderLogo from './components/HeaderComponent';
+import NavbarUnimorph from './components/core/NavbarComponent';
+import About from './components/about-us/About';
+import AboutUsSection from './components/about-us/AboutUsComponent';
+import ContributeDownload from './components/core/ContributeDownload';
+import HeaderLogo from './components/core/HeaderComponent';
 import SearchSection from './components/SearchComponent';
-import WordComponent from './components/WordPageComponent';
-import Footer from './components/Footer';
+import LemmaDetailPage from './components/lemma/LemmaDetail';
+import Footer from './components/core/Footer';
 import AllWordsComponent from './components/AllWordsComponent';
-import LemmaTable from './components/LemmaTable';
 import 'regenerator-runtime/runtime.js';
-import AllLemmasComponent from './components/AllLemmasComponent';
-import WordNameComponent from './components/WordNameComponent';
+import AllLemmasComponent from './components/lemma/AllLemmasComponent';
 import { Provider } from 'react-redux';
 import store from './store'
 
@@ -40,9 +38,8 @@ const routing = (
             <Route exact path="/" component={LandingComponent} />
             <Route exact path="/about" component={About} />
             <Route exact path="/lemmas" component={AllLemmasComponent} />
-            <Route exact path="/lemmas/:slug/" component={WordComponent} />
+            <Route exact path="/lemmas/:slug/" component={LemmaDetailPage} />
             <Route exact path="/words" component={AllWordsComponent} />
-            <Route exact path="/words/:slug" component={WordNameComponent} />
             <Route exact path="/languages" component={LanguagesList}/>
         </div>
     </Router>

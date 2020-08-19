@@ -4,7 +4,7 @@ var hwp = require('html-webpack-plugin');
 module.exports = {
     entry: [
         path.join(__dirname, '/src/index.js'),
-        './node_modules/regenerator-runtime/runtime.js'
+        'regenerator-runtime/runtime.js'
     ],
     output: {
         filename: 'build.js',

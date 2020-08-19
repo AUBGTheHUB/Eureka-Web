@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import NavbarUnimorph from './NavbarComponent';
+import NavbarUnimorph from './core/NavbarComponent';
 import axios from 'axios';
 import config from '../constants';
 import { Typography, makeStyles } from '@material-ui/core';
-import Autocomplete from '@material-ui/lab/Autocomplete';
 import ListGroup from 'react-bootstrap/ListGroup'
+import { useSelector, useDispatch } from 'react-redux';
+import {initializeLanguages} from '../store/actions/language';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -24,39 +25,19 @@ function getRandomInt(min, max) {
 }
 
 const LanguagesList = () => {
+
+    const dispatch = useDispatch();
     const classes = useStyles();
-    const [languages, setLanguages] = useState([{
-        name: '',
-        walsCode: '',
-        family: '',
-        genus: '',
-        lemmas: '',
-        words: ''
-    }]);
-    const [error, setError] = useState();
 
     useEffect(() => {
-        const getLanguages = async () => {
-            const {data, error} = await axios.get(`${baseUrl}/languages/`);
-            if(error){
-                setError(error);
-            }
-            setLanguages(data.results.map(lang => {
-                return {
-                    name: lang.name,
-                    walsCode: lang.walsCode,
-                    family: lang.family.name,
-                    genus: lang.genus.name,
-                    lemmas: getRandomInt(10000, 50000),
-                    words: getRandomInt(50000, 500000)
-                }
-            }));
-        };
-        getLanguages();
+        dispatch(initializeLanguages());
     }, []);
+    
+    const languages = useSelector(state => state.languages);
 
-    console.log(languages);
-
+    if(languages.length === 0){
+        return null;
+    }
     return(
         <div>
             <NavbarUnimorph />

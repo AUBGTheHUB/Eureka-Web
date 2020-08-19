@@ -1,7 +1,7 @@
 import React from 'react';
-import NavbarUnimorph from './NavbarComponent';
+import NavbarUnimorph from '../core/NavbarComponent';
 import AboutUsSection from './AboutUsComponent';
-import Footer from './Footer';
+import Footer from '../core/Footer';
 
 
 const About = (props) => (
