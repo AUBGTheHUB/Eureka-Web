@@ -17,6 +17,18 @@ const getAll = async (pattern) => {
 }
 
 /**
+ * Returns plain lemma
+ * @param {*} name 
+ */
+const getLemma = async (name) => {
+    const { data, error } = await axios.get(`${baseUrl}/lemmas/${name}/`);
+    if (error){
+        throw new Error("Error fetching lemma");
+    }
+    return data;
+}
+
+/**
  * Returns the lemma table with columns and data
  * @param name name of the lemma
  */
@@ -67,5 +79,6 @@ const getLemmaTable = async (name) => {
 
 export default {
     getAll,
+    getLemma,
     getLemmaTable
 }

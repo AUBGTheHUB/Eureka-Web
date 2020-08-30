@@ -28,7 +28,6 @@ const LemmaTable = (props) => {
   const handleAdd = () => {
     setShowDialog(false);
   };
-
   const handleUpdate = () => {
     setShowDialog(false);
   };

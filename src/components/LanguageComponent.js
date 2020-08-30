@@ -3,7 +3,7 @@ import NavbarUnimorph from './core/NavbarComponent';
 import axios from 'axios';
 import config from '../constants';
 import { Typography, makeStyles } from '@material-ui/core';
-import ListGroup from 'react-bootstrap/ListGroup'
+import ListGroup from 'react-bootstrap/ListGroup';
 import { useSelector, useDispatch } from 'react-redux';
 import {initializeLanguages} from '../store/actions/language';
 
