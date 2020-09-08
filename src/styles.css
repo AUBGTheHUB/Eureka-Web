@@ -176,8 +176,14 @@
 {
   text-align: center;
   bottom: 0;
-
 }
+
+.table-width{
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+
 /* Responsive design */
 @media only screen and (min-width: 1280px) {
   .contain {
