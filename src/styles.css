@@ -183,6 +183,13 @@
   word-wrap: break-word;
 }
 
+tr.column-class{
+  padding-right: 10em;
+}
+
+tr.row-class>td{
+  padding-bottom: 0.1em;
+}
 
 /* Responsive design */
 @media only screen and (min-width: 1280px) {

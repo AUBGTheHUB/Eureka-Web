@@ -14,39 +14,11 @@ const DimensionTable = ({ name, dimension }) => {
                 columns={ columns }
                 cellEdit={ cellEditFactory({mode: 'click'}) }
                 bordered={false}
-                classes="table-borderless table-width"
+                classes="table-width"
+                rowClasses="row-class"
             />
         </div>
     )
 }
 
 export default DimensionTable;
-
-        // <div className="mx-auto" key={maxLen}>
-        //     <h1>{name}</h1>
-        //     <table className="table table-borderless">
-        //         <thead>
-        //             <tr>
-        //                 {data.map((feat, i) => {
-        //                     return(
-        //                         <th key={i} scope="col">{feat[0]}</th>
-        //                     )
-        //                 })}
-        //             </tr>
-        //         </thead>
-        //         <tbody>
-        //             {[...Array(maxLen)].map((x, i) =>{
-        //                 return(
-        //                     <tr key={i}>
-        //                         {[...Array(numCols)].map((y, k) =>
-        //                                 <td contentEditable="true" key={k}>{data[k][1]["words"][i]}</td>
-        //                         )
-        //                         }         
-        //                     </tr>
-        //                     )
-        //                     }
-        //                 )
-        //             }
-        //         </tbody>
-        //     </table>
-        // </div>
