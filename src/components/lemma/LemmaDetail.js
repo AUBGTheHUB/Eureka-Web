@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import LemmaTable from './LemmaTable';
-import PoSComponent from '../PoSComponent';
+import LemmaTableV1 from './LemmaTableV1';
 import SubmitDialog from '../submit-dialogs/SubmitDialog';
 import NavbarUnimorph from '../core/NavbarComponent';
 
@@ -11,8 +10,7 @@ const LemmaDetailPage = () => {
         <div>
             <NavbarUnimorph/>
             <SubmitDialog />
-            <PoSComponent/>
-            <LemmaTable lemma={slug}/>
+            <LemmaTableV1 lemma={slug}/>
         </div>
     )
 }
