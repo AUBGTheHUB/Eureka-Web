@@ -1,6 +1,6 @@
 #   This is a dockerfile for a production build
 #   You won't be able to use this as a dev/testing environment
-FROM thehubaubg/unimorph-backend:latest as static_files
+FROM thehubaubg/api:latest as static_files
 
 RUN python manage.py collectstatic --no-input
 
@@ -13,6 +13,8 @@ LABEL maintainer="Ismayil Mirzali <ismayilmirzeli@gmail.com>"
 WORKDIR /usr/src/app
 
 COPY package.json .
+
+ENV NODE_ENV production
 
 RUN npm install --silent --save-prod
 
