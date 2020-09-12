@@ -6,7 +6,7 @@ RUN python manage.py collectstatic --no-input
 
 # ======================================================================= #
 
-FROM node:14.2.0-alpine as build
+FROM node:12-alpine as build
 
 LABEL maintainer="Ismayil Mirzali <ismayilmirzeli@gmail.com>"
 
@@ -14,14 +14,13 @@ WORKDIR /usr/src/app
 
 COPY package.json .
 
-ENV NODE_ENV production
-
-RUN npm install --silent --save-prod
+RUN npm install
 
 COPY . .
 
-RUN npm run build --silent
+ENV NODE_ENV production
 
+RUN npm run build
 # ======================================================================= #
 # Set up NGINX
 
