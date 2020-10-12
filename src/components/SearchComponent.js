@@ -50,7 +50,7 @@ const SearchSection = (props) => {
     }
     if (search){
         return (
-            <Redirect push to={`/words/?search=${pattern}`} />
+            <Redirect push to={`/lemmas/?search=${pattern}`} />
         );
     }
     else{

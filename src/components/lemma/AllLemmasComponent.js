@@ -26,6 +26,7 @@ class AllLemmasComponent extends React.Component {
     async componentDidMount() {
         let search_pattern = this.state.search ? this.state.search : '';
         const data = await lemmaService.getAll(search_pattern);
+        console.log(data);
         pages = parseInt(data.count/72) + 1;
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name), 

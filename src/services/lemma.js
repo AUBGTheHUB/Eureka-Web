@@ -77,8 +77,14 @@ const getLemmaTable = async (name) => {
     }
 }
 
+const searchLemma = async (pattern) => {
+    const { data, error } = await axios.get(`${baseUrl}/lemmas/?search=${pattern}`);
+    return data;
+}
+
 export default {
     getAll,
     getLemma,
-    getLemmaTable
+    getLemmaTable,
+    searchLemma
 }
