@@ -191,6 +191,13 @@ tr.row-class>td{
   padding-bottom: 0.1em;
 }
 
+.dropdown-menu {
+  max-height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transform: translate3d(5px, 35px, 0px)!important;
+}
+
 /* Responsive design */
 @media only screen and (min-width: 1280px) {
   .contain {

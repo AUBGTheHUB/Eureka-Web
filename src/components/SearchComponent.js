@@ -1,58 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
-import { FormControl } from 'react-bootstrap';
-import { Button } from 'react-bootstrap';
-import { DropdownButton } from 'react-bootstrap';
-import { Dropdown } from 'react-bootstrap';
-import { InputGroup } from 'react-bootstrap';
+import { FormControl, Button, DropdownButton, Dropdown, InputGroup } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import { useSelector, useDispatch } from 'react-redux';
+import {initializeLanguages} from '../store/actions/language';
 
 
-class SearchSection extends React.Component {
-    constructor(props) {
-        super(props)
-        
-        this.state = {
-            "pattern": "",
-            "search": false
-        }
-        this.languages = ["Bulgarian", "English", "Albanian", "Azeri", "Turkmen", "Kyrgyz"];
-        this.languagesList = []
-        for (const [index, value] of this.languages.entries()) {
-            this.languagesList.push(<Dropdown.Item key={index} onClick={this.changeSelect}>{value}</Dropdown.Item>)
-          }
-        
-        this.myRef = React.createRef();
-        this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+
+function getLanguagesList(langs){
+    const languagesList = [];
+    for (const [index, value] of langs){
+        languagesList.push(
+            <Dropdown.Item 
+                key={index} 
+            >
+                {value}
+            </Dropdown.Item>)
     }
+    return languagesList;
+}
+
+const SearchSection = (props) => {
+    const dispatch = useDispatch();
+    const [selectedLang, setLanguage] = useState("");
+    const [pattern, setPattern] = useState("");
+    const [search, setSearch] = useState(false);
+
+    useEffect(() => {
+        dispatch(initializeLanguages());
+    }, []);
+    const languages = useSelector(state => state.languages.map(lang => lang.name));
     
-    changeSelect(e) {
-        localStorage.setItem('chosenLanguage', e.target.innerText)
-        document.getElementById('dropdown-basic-button').innerText = e.target.innerText
-        e.preventDefault();
-      }
+    const languagesList = getLanguagesList(languages.entries());
 
-    handleChange(e){
-        e.preventDefault();
-        this.setState({
-            "pattern": e.target.value
-        })
+    const handlePatternChange = (event) => {
+        event.preventDefault();
+        setPattern(event.target.value);
     }
-    handleSubmit() {
-        this.setState({
-            "search": true
-        })
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+        setSearch(true);
     }
-      
-    
-    render(){
-        if(this.state.search){
-            return(
-                <Redirect push to={`/words/?search=${this.state.pattern}`} />
-            )
-        }
-        return(
+
+    console.log(selectedLang);
+
+    if(!languages){
+        return null;
+    }
+    if (search){
+        return (
+            <Redirect push to={`/lemmas/?search=${pattern}`} />
+        );
+    }
+    else{
+        return (
             <div className="colored_search_bar">
                 <div className="row searchform">
                     <div className="col-md-3 col-xs-3 col-sm-3">
@@ -61,19 +63,28 @@ class SearchSection extends React.Component {
                     <div className="col-md-6 col-xs-6 col-sm-5">
                         <div className="row">
                             <InputGroup className="mb-3">
-                                <InputGroup.Append defaultValue={this.languages[1]}>
-                                    <DropdownButton variant="outline-secondary" id="dropdown-basic-button" title="Select Language">
-                                        {this.languagesList}
+                                <InputGroup.Append 
+                                    defaultValue={selectedLang ? selectedLang : languages[1]}
+                                >
+                                    <DropdownButton 
+                                        variant="outline-secondary" 
+                                        id="dropdown-basic-button" 
+                                        title={selectedLang ? selectedLang : "Select language"}
+                                        onSelect={function(eventKey, event){
+                                            console.log(eventKey, event);
+                                        }}
+                                    >
+                                        {languagesList}
                                     </DropdownButton>
                                 </InputGroup.Append>
                                 <FormControl
-                                    placeholder="Search word"
-                                    aria-label="Search word"
+                                    placeholder="Search lemma"
+                                    aria-label="Search lemma"
                                     aria-describedby="basic-addon2"
-                                    onChange={this.handleChange}
+                                    onChange={handlePatternChange}
                                 />
                                 <InputGroup.Append>
-                                    <Button onClick={this.handleSubmit} variant="outline-secondary btn_search">Search</Button>
+                                    <Button onClick={handleSearchSubmit} variant="outline-secondary btn_search">Search</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </div>
@@ -84,9 +95,9 @@ class SearchSection extends React.Component {
                     </div>
                 </div>
             </div>
-        )
+        );
     }
-
+    
 }
 
 export default withRouter(SearchSection);
