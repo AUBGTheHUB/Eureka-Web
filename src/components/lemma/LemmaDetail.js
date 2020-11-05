@@ -5,12 +5,13 @@ import SubmitDialog from '../submit-dialogs/SubmitDialog';
 import NavbarUnimorph from '../core/NavbarComponent';
 
 const LemmaDetailPage = () => {
-    const { slug } = useParams();
+    const { slug, lang } = useParams();
+    console.log(lang)
     return(
         <div>
             <NavbarUnimorph/>
             <SubmitDialog />
-            <LemmaTableV1 lemma={slug}/>
+            <LemmaTableV1 lemma={slug} lang={lang}/>
         </div>
     )
 }

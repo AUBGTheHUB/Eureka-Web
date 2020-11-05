@@ -49,7 +49,7 @@ const LemmaTableV1 = (props) => {
     // process the data from api and format it for the table
     useEffect(() => {
         const getData = async () => {
-            const lemma = await lemmaService.getLemma(props.lemma);
+            const lemma = await lemmaService.getLemma(props.lemma, props.lang);
             console.log(lemma);
             let data = {};
             setPos(lemma.pos);

@@ -7,31 +7,20 @@ import {initializeLanguages} from '../store/actions/language';
 
 
 
-function getLanguagesList(langs){
-    const languagesList = [];
-    for (const [index, value] of langs){
-        languagesList.push(
-            <Dropdown.Item 
-                key={index} 
-            >
-                {value}
-            </Dropdown.Item>)
-    }
-    return languagesList;
-}
+
 
 const SearchSection = (props) => {
     const dispatch = useDispatch();
-    const [selectedLang, setLanguage] = useState("");
+    const [selectedLanguage, setSelectedLanguage] = useState({
+        walsCode: "",
+        name: ""
+    });
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
 
-    useEffect(() => {
-        dispatch(initializeLanguages());
-    }, []);
-    const languages = useSelector(state => state.languages.map(lang => lang.name));
+    const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
     
-    const languagesList = getLanguagesList(languages.entries());
+    const languagesList = getLanguagesList(languages);
 
     const handlePatternChange = (event) => {
         event.preventDefault();
@@ -43,14 +32,26 @@ const SearchSection = (props) => {
         setSearch(true);
     }
 
-    console.log(selectedLang);
+    function getLanguagesList(langs){
+        const languagesList = [];
+        for (const [value, walsCode] of langs){
+            languagesList.push(
+                <Dropdown.Item 
+                    key={walsCode}
+                    onClick={() => setSelectedLanguage({name: value, walsCode})}
+                >
+                    {value}
+                </Dropdown.Item>)
+        }
+        return languagesList;
+    }
 
     if(!languages){
         return null;
     }
     if (search){
         return (
-            <Redirect push to={`/lemmas/?search=${pattern}`} />
+            <Redirect push to={`${selectedLanguage.walsCode ? selectedLanguage.walsCode : "bul"}/lemmas/?search=${pattern}`} />
         );
     }
     else{
@@ -62,17 +63,13 @@ const SearchSection = (props) => {
                     
                     <div className="col-md-6 col-xs-6 col-sm-5">
                         <div className="row">
-                            <InputGroup className="mb-3">
+                            <InputGroup className="mb-3" as="form" onSubmit={handleSearchSubmit}>
                                 <InputGroup.Append 
-                                    defaultValue={selectedLang ? selectedLang : languages[1]}
                                 >
                                     <DropdownButton 
                                         variant="outline-secondary" 
                                         id="dropdown-basic-button" 
-                                        title={selectedLang ? selectedLang : "Select language"}
-                                        onSelect={function(eventKey, event){
-                                            console.log(eventKey, event);
-                                        }}
+                                        title={selectedLanguage.name ? selectedLanguage.name : "Select language"}
                                     >
                                         {languagesList}
                                     </DropdownButton>
@@ -84,7 +81,7 @@ const SearchSection = (props) => {
                                     onChange={handlePatternChange}
                                 />
                                 <InputGroup.Append>
-                                    <Button onClick={handleSearchSubmit} variant="outline-secondary btn_search">Search</Button>
+                                    <Button type="submit" variant="outline-secondary btn_search">Search</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </div>

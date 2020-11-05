@@ -14,8 +14,10 @@ import Footer from './components/core/Footer';
 import AllWordsComponent from './components/AllWordsComponent';
 import 'regenerator-runtime/runtime.js';
 import AllLemmasComponent from './components/lemma/AllLemmasComponent';
+import MyAccount from './components/account/MyAccount';
 import { Provider } from 'react-redux';
 import store from './store'
+import ContactUs from './components/core/ContactUs';
 
 function LandingComponent() {
     return (
@@ -37,10 +39,12 @@ const routing = (
         <div>
             <Route exact path="/" component={LandingComponent} />
             <Route exact path="/about" component={About} />
-            <Route exact path="/lemmas" component={AllLemmasComponent} />
-            <Route exact path="/lemmas/:slug/" component={LemmaDetailPage} />
-            <Route exact path="/words" component={AllWordsComponent} />
+            <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
+            <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
+            <Route exact path="/:lang/words" component={AllWordsComponent} />
             <Route exact path="/languages" component={LanguagesList}/>
+            <Route exact path="/account" component={MyAccount} />
+            <Route exact path="/contact" component={ContactUs} />
         </div>
     </Router>
 )

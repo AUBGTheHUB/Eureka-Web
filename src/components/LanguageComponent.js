@@ -43,7 +43,7 @@ const LanguagesList = () => {
             <NavbarUnimorph />
             <div className={classes.root} style={{marginTop: 25, marginBottom: 25}}>
                 <Typography variant="h6" component="h6" gutterBottom className="centered_text" style={{fontFamily: 'Monospace'}}>
-                    Download data for languages
+                    Download data
                 </Typography>
                 <ListGroup variant="flush">
                     <ListGroup.Item>1. Download the whole data for a language by clicking on language name</ListGroup.Item>
@@ -78,17 +78,17 @@ const LanguagesList = () => {
                                         </a>
                                     </td>                                                                        
                                     <td>    
-                                        <a href={`${baseUrl}/download/languages/genera/${lang.genus}/`}>
+                                        <a href={`${baseUrl}/download/genera/${lang.genus}/`}>
                                             {lang.genus}
                                         </a>
                                     </td>
                                     <td>    
-                                        <a href="/lemmas" >
+                                        <a href={`${lang.walsCode}/lemmas`}>
                                             {lang.lemmas}
                                         </a>
                                     </td>
                                     <td>    
-                                        <a href="/words/" >
+                                        <a href={`${lang.walsCode}/lemmas`} >
                                             {lang.words}
                                         </a>
                                     </td>                                    

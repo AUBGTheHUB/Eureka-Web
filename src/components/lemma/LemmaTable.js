@@ -4,6 +4,7 @@ import SubmitDimensionDialog from '../submit-dialogs/SubmitDimension';
 import MaterialTable from 'material-table';
 import lemmaService from '../../services/lemma';
 import dimensionService from '../../services/dimension';
+import { useParams } from 'react-router';
 
 let dims = [];
 
@@ -14,11 +15,10 @@ const LemmaTable = (props) => {
   const [data, setData] = useState([]);
   const [showDialog, setShowDialog] = useState(false);
   const [error, setError] = useState();
-
   // process the data from api and format it for the table
   useEffect(() => {
     const getData = async () => {
-      const lemma = await lemmaService.getLemmaTable(props.lemma);
+      const lemma = await lemmaService.getLemmaTable(props.lemma, lang);
       setColumns(lemma.columns);
       setData(lemma.data);
     }
@@ -56,19 +56,19 @@ const LemmaTable = (props) => {
         title={`${props.lemma}`}
         columns={columns}
         data={data}
-        editable={{
-          onRowAdd: newData => 
-            new Promise((resolve, reject) => {
-              setShowDialog(true);
-              resolve();
-            }),
-          onRowUpdate: (newData, oldData) => 
-            new Promise((resolve, reject) => {
-              setShowDialog(true);
-              resolve();
-            }),
-        }
-        }
+        // editable={{
+        //   onRowAdd: newData => 
+        //     new Promise((resolve, reject) => {
+        //       setShowDialog(true);
+        //       resolve();
+        //     }),
+        //   onRowUpdate: (newData, oldData) => 
+        //     new Promise((resolve, reject) => {
+        //       setShowDialog(true);
+        //       resolve();
+        //     }),
+        // }
+        // }
       />
       {showDialog ? <SubmitDialog show={true} onSubmit={handleUpdate}/> : null}
     </div>

@@ -16,19 +16,20 @@ function getRandomInt(min, max) {
 }
 
 const getAll = async () => {
-    const {data, error} = await axios.get(`${baseUrl}/languages/`);
+    const {data, error} = await axios.get(`${baseUrl}eng/languages/`);
+    console.log(data.results);
     const result = data.results.map(lang => {
         return {
             name: lang.name,
             walsCode: lang.walsCode,
-            family: lang.family.name,
-            genus: lang.genus.name,
+            family: lang.family ? lang.family.name : null,
+            genus: lang.genus? lang.genus.name : null,
             lemmas: getRandomInt(10000, 50000),
             words: getRandomInt(50000, 500000) // number of words and lemmas are mocked for this iteration
         }
     });
 
-    return { 
+    return {
         result,
         error
     };

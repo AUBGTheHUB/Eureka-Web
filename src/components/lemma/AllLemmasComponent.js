@@ -17,25 +17,25 @@ class AllLemmasComponent extends React.Component {
         
         this.state = {
             "lemmas":[],
-            "language":"English",
+            "language":this.props.match.params.lang,
             "currentPage": query.page ? Number(query.page) : 1,
-            "search": props.location.search
+            "search": props.location.search,
         }
         this.handleChange = this.handleChange.bind(this);
     }
     async componentDidMount() {
         let search_pattern = this.state.search ? this.state.search : '';
-        const data = await lemmaService.getAll(search_pattern);
+        const data = await lemmaService.getAll(search_pattern, this.props.match.params.lang);
         console.log(data);
         pages = parseInt(data.count/72) + 1;
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name), 
-            "language": "English"
+            "language": this.props.match.params.lang
         })
     }
     async handleChange(event, value) {
         const pattern = `?page=${value}`;
-        const data = await lemmaService.getAll(pattern);
+        const data = await lemmaService.getAll(pattern, this.props.match.params.lang);
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name),
             "currentPage": value
@@ -43,12 +43,19 @@ class AllLemmasComponent extends React.Component {
     }
 
     render(){
+        if(this.state.lemmas.length === 0){
+            return(
+                <div>
+                    <NavbarLemma/>
+                    <h3 className="centered_text">No lemmas were found based on your search: {query.search}/</h3>
+                </div>
+            );
+        }
         var quartile = this.state.lemmas.length/4
         var lemmas_0 = this.state.lemmas.slice(0, quartile)
         var lemmas_1 = this.state.lemmas.slice(quartile, 2*quartile)
         var lemmas_2 = this.state.lemmas.slice(2*quartile, 3*quartile)
         var lemmas_3 = this.state.lemmas.slice(3*quartile, 4*quartile)
-
         return(
             <div className="">
                 <NavbarLemma/>
@@ -73,28 +80,28 @@ class AllLemmasComponent extends React.Component {
                     <div className="col-md-2 col-sm-2 col-lg-2">
                         {lemmas_0.map((value,index) => {return(
                             <div key={index}>
-                                <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                             </div>
                         )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
                         {lemmas_1.map((value,index) => {return(
                                 <div key={index}>
-                                    <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                    <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                 </div>
                             )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
                         {lemmas_2.map((value,index) => {return(
                                     <div key={index}>
-                                        <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                        <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                     </div>
                                 )})}
                     </div>
                     <div className="col-md-2 col-sm-2 col-lg-2">
                         {lemmas_3.map((value,index) => {return(
                                         <div key={index}>
-                                            <p className="centered_text"><a href={`/lemmas/${value}`}>{value}</a></p>
+                                            <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                         </div>
                                     )})}
                     </div>

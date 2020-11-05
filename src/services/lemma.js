@@ -10,8 +10,8 @@ axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
  * @param {*} search search pattern 
  */
 
-const getAll = async (pattern) => {
-    let url = `${baseUrl}/lemmas/${pattern}`;
+const getAll = async (pattern, lang) => {
+    let url = `${baseUrl}${lang}/lemmas/${pattern}`;
     const response = await axios.get(url);
     return response.data;
 }
@@ -20,8 +20,8 @@ const getAll = async (pattern) => {
  * Returns plain lemma
  * @param {*} name 
  */
-const getLemma = async (name) => {
-    const { data, error } = await axios.get(`${baseUrl}/lemmas/${name}/`);
+const getLemma = async (name, lang) => {
+    const { data, error } = await axios.get(`${baseUrl}${lang}/lemmas/${name}/`);
     if (error){
         throw new Error("Error fetching lemma");
     }
@@ -32,9 +32,9 @@ const getLemma = async (name) => {
  * Returns the lemma table with columns and data
  * @param name name of the lemma
  */
-const getLemmaTable = async (name) => {
+const getLemmaTable = async (name, lang) => {
     let dims = [];
-    const {data, error} = await axios.get(`${baseUrl}/lemmas/${name}/`);
+    const {data, error} = await axios.get(`${baseUrl}${lang}/lemmas/${name}/`);
     let dimOptions = [];
     data.related_words.map(word => {
         dims = dims.concat(Object.keys(word.dimensions));

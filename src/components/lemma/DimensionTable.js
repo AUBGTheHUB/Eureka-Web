@@ -12,7 +12,6 @@ const DimensionTable = ({ name, dimension }) => {
                 keyField='id' 
                 data={ data } 
                 columns={ columns }
-                cellEdit={ cellEditFactory({mode: 'click'}) }
                 bordered={false}
                 classes="table-width"
                 rowClasses="row-class"
