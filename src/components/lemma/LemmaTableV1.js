@@ -50,7 +50,6 @@ const LemmaTableV1 = (props) => {
     useEffect(() => {
         const getData = async () => {
             const lemma = await lemmaService.getLemma(props.lemma, props.lang);
-            console.log(lemma);
             let data = {};
             setPos(lemma.pos);
             setName(lemma.name);

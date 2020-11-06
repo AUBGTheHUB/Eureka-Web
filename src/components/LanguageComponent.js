@@ -29,9 +29,9 @@ const LanguagesList = () => {
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    useEffect(() => {
-        dispatch(initializeLanguages());
-    }, []);
+    // useEffect(() => {
+    //     dispatch(initializeLanguages());
+    // }, []);
     
     const languages = useSelector(state => state.languages);
 
@@ -65,7 +65,7 @@ const LanguagesList = () => {
                                 <tr key={lang.name}>
                                     <td>{i+1}</td>
                                     <td>    
-                                        <a href={`${baseUrl}/download/words/${lang.name}/`}>
+                                        <a href={`${baseUrl}data/download/words/${lang.name}/`}>
                                             {lang.name}
                                         </a>
                                     </td>
@@ -73,12 +73,12 @@ const LanguagesList = () => {
                                         {lang.walsCode}
                                     </td>
                                     <td>    
-                                        <a href={`${baseUrl}/download/languages/families/${lang.family}`}>
+                                        <a href={`${baseUrl}data/download/languages/families/${lang.family}`}>
                                             {lang.family}
                                         </a>
                                     </td>                                                                        
                                     <td>    
-                                        <a href={`${baseUrl}/download/genera/${lang.genus}/`}>
+                                        <a href={`${baseUrl}data/download/genera/${lang.genus}/`}>
                                             {lang.genus}
                                         </a>
                                     </td>

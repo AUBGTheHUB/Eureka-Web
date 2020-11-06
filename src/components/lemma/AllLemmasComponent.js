@@ -26,7 +26,6 @@ class AllLemmasComponent extends React.Component {
     async componentDidMount() {
         let search_pattern = this.state.search ? this.state.search : '';
         const data = await lemmaService.getAll(search_pattern, this.props.match.params.lang);
-        console.log(data);
         pages = parseInt(data.count/72) + 1;
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name), 
@@ -63,7 +62,7 @@ class AllLemmasComponent extends React.Component {
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">
-                        <h3 className="centered_text">{this.state.language}</h3>
+                        <h3 className="centered_text">Search: {this.state.language}</h3>
                         {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
                     </div>
                     <div className="col-md-4 col-sm-4 col-lg-4">

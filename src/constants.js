@@ -1,6 +1,6 @@
 const prod = {
   url: {
-    API_URL: 'http://unimorph.ethz.ch/api'
+    API_URL: 'http://unimorph.ethz.ch/api/'
   }
 }
 

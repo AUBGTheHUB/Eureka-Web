@@ -6,8 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import {initializeLanguages} from '../store/actions/language';
 
 
-
-
+// this is hard-coded for now, before implementing new endpoint
+const populatedLanguages = [
+    ["Bulgarian", "bul"],
+    ["Albanian", "sqi"],
+    ["Turkmen", "tuk"]
+];
 
 const SearchSection = (props) => {
     const dispatch = useDispatch();
@@ -18,9 +22,9 @@ const SearchSection = (props) => {
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
 
-    const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
+    // const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
     
-    const languagesList = getLanguagesList(languages);
+    const languagesList = getLanguagesList(populatedLanguages);
 
     const handlePatternChange = (event) => {
         event.preventDefault();
@@ -46,7 +50,7 @@ const SearchSection = (props) => {
         return languagesList;
     }
 
-    if(!languages){
+    if(!populatedLanguages){
         return null;
     }
     if (search){

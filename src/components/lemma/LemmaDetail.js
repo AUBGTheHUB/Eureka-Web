@@ -6,7 +6,6 @@ import NavbarUnimorph from '../core/NavbarComponent';
 
 const LemmaDetailPage = () => {
     const { slug, lang } = useParams();
-    console.log(lang)
     return(
         <div>
             <NavbarUnimorph/>

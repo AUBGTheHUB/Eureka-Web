@@ -13,42 +13,32 @@ function Footer() {
                     <div className="col-md-2 col-sm-2 col-lg-2 col">
                         <h1>About the project</h1>
                         <ul>
-                            <li>About</li>
-                            <li>Mission</li>
-                            <li>Services</li>
+                            <li><a href="/about">About</a></li>
                         </ul>
                     </div>
+                    <div className="col-md-1 col-sm-1 col-lg-1"></div>
 
                     <div className="col-md-2 col-sm-2 col-lg-2 col">
                         <h1>Resources</h1>
                         <ul>
-                            <li>Download data</li>
-                            <li>Contribute</li>
+                            <li><a href="/languages">Download data</a></li>
 
                         </ul>
                     </div>
+                    <div className="col-md-1 col-sm-1 col-lg-1"></div>
 
                     <div className="col-md-2 col-sm-2 col-lg-2 col">
                         <h1>Support</h1>
                         <ul>
-                            <li>Contact us</li>
-                            <li>Web chat</li>
-                            <li>Open ticket</li>
+                            <li><a href="/contact">Contact us</a></li>
                         </ul>
                     </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2 col">
-                        <h1>About us</h1>
-                        <ul>
-                            <li>Team</li>
-                            <li>Mission</li>
-                            <li>Services</li>
-                            <li>Get in touch</li>
-                        </ul>
-                    </div>
+                    <div className="col-md-1 col-sm-1 col-lg-1"></div>
+
                     <div className="social col-md-2 col-sm-2 col-lg-2 col">
                         <h1>Social channels</h1>
                         <ul>
-                            <li>some icons here</li>
+                            <li><a href="https://unimorph.github.io" target="blank">Unimorph</a></li>
 
                         </ul>
                     </div>

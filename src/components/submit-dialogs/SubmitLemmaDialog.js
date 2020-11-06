@@ -71,13 +71,6 @@ const SubmitLemmaDialog = (props) => {
               <TextField
                 autoFocus
                 id="name"
-                label="Author"
-                margin="dense"
-                fullWidth
-              />
-              <TextField
-                autoFocus
-                id="name"
                 label="POS"
                 margin="dense"
                 fullWidth

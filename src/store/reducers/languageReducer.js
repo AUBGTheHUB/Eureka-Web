@@ -1,8 +1,7 @@
 const initialState = [
-    {name: "English", walsCode: "eng"},
-    {name: "Bulgarian", walsCode: "bul"},
-    {name: "Albanian", walsCode: "sqi"},
-    {name: "Turkmen", walsCode: "tuk"}
+    {name: "Bulgarian", walsCode: "bul", family: "Indo-European", genus: "Slavic", lemmas: 2568, words: 55370},
+    {name: "Albanian", walsCode: "sqi", family: "Indo-European", genus: "Albanian", lemmas: 589, words: 33483},
+    {name: "Turkmen", walsCode: "tuk", family: "Altaic", genus: "Turkic", lemmas: 810, words: 68}
 ];
 
 const languageReducer = (state = initialState, action) => {

@@ -17,7 +17,6 @@ function getRandomInt(min, max) {
 
 const getAll = async () => {
     const {data, error} = await axios.get(`${baseUrl}eng/languages/`);
-    console.log(data.results);
     const result = data.results.map(lang => {
         return {
             name: lang.name,
