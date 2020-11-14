@@ -1,0 +1,37 @@
+.table-title{
+            background:#7b8289;
+            text-align:center;
+            margin:auto;
+        }
+        .l1,.l2,.l3,.l4 {
+        border: 1px solid black;
+        text-align:center;
+        margin:auto;
+        padding:10px;
+        }
+        td {
+            text-align:center;
+            margin:auto;
+        }
+        .container span {
+            text-align:center;
+            margin:auto;
+
+        }
+        .l1 {
+        font-size:90%; 
+        background:#eff7ff
+        }
+        .l2 {
+        font-size:90%;
+        background: #cbd5de;
+        }
+        .l3 {
+        background:#a1a9b1;
+        }
+        .l4 {
+        background:#7b8289;
+        }
+        .container table {
+            background: #F9F9F9; width:100%;
+        }

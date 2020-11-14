@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 import lemmaService from '../../services/lemma';
 import DimensionTable from './DimensionTable';
 import PoSComponent from '../PoSComponent';
+import TableTemplate from './TableTemplate';
+import './LemmaTableV1.css';
+
 
 /**
  * Creates an array of rows for each dimension, features as columns
@@ -39,6 +42,25 @@ function getDimTables(dimensions){
     return rows;
 }
 
+export function getWordFromFeatures(features,optional_features=[],wordforms){
+    console.log(features);
+    console.log('peep');
+    for(var word in wordforms){
+       if ((wordforms[word].length === features.length) && (wordforms[word].every(feature=>features.includes(feature)))){
+            return word;
+       }
+       else{
+            if((wordforms[word].length === optional_features.length) && (wordforms[word].every(feature=>optional_features.includes(feature)))){
+                return word
+            }
+       }
+
+    }
+    return '';
+}
+
+
+
 const LemmaTableV1 = (props) => {
     const [data, setData] = useState(null);
     const [pos, setPos] = useState([]);
@@ -50,28 +72,32 @@ const LemmaTableV1 = (props) => {
     useEffect(() => {
         const getData = async () => {
             const lemma = await lemmaService.getLemma(props.lemma, props.lang);
-            let data = {};
+            console.log(lemma);
+            let data_dict = {};
             setPos(lemma.pos);
             setName(lemma.name);
             setLanguage(lemma.language.name);
             lemma.related_words.forEach(word => {
+                let arr_list = data_dict[word.name] ? data_dict[word.name] : [];
+                let arr = [];
                 word.tagset.features.forEach(feat => {
-                    let arr = data[feat.dimension.name] ? data[feat.dimension.name] : {}
-                    let words = data[feat.dimension.name] && data[feat.dimension.name][feat.name] && data[feat.dimension.name][feat.name]["words"] ? data[feat.dimension.name][feat.name]["words"] : [];
-                    if(!words.includes(word.name)){
-                        words.push(word.name)
+                    console.log(arr);
+                    console.log('arrrr');
+                    console.log(data_dict);
+                    if(!arr.includes(feat.label)){
+                        arr.push(feat.label);
                     }
-                    data = {
-                        ...data, 
-                        [feat.dimension.name]: {
-                            ...arr,
-                            [feat.name]: {
-                                words: [...words]
-                            }
-                        }}
-                })
-            })
-            setData(data);
+                    
+                });
+                data_dict = {
+                    ...data_dict,
+                    [word.name]: [...arr_list,arr]
+                };
+            });
+            console.log('data')
+            console.log(data_dict);
+            setData(data_dict);
+            console.log('data set');
         }
         getData();
     }, [])
@@ -83,14 +109,16 @@ const LemmaTableV1 = (props) => {
 
     }
     else{
-        const dimTables = getDimTables(Object.entries(data));
+        console.log(language);
+        console.log(pos.name);
+        
         return (
             <div className="container-md">
                 <PoSComponent name = {pos.name}/>
                 <hr/>
                 <h3 style={{textAlign: "center"}}>{language}: {name}</h3>
                 <div className="container">
-                    {dimTables.map(row => row)}
+                    <TableTemplate language={language} pos={pos.name} wordforms={data}/>
                 </div>
             </div>
         )
