@@ -2,16 +2,12 @@ import { useState, useEffect } from 'react';
 import React from 'react';
 
 const Wordform = (props) => {
-	console.log('getting wordform');
-	console.log()
 	const [wordform, setWordform] = useState('');
 
 	useEffect(() =>{
 		for(var word in props.wordforms) {
 			for(var i in props.wordforms[word]){
 				var feat_list = props.wordforms[word][i];
-				console.log('feat_list');
-				console.log(feat_list);
 				if ((feat_list.length === props.features.length) && (feat_list.every(feature=>props.features.includes(feature)))){
 					setWordform(word);
 					return;
