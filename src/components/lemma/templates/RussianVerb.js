@@ -44,32 +44,32 @@ const RussianVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","1","SG"]'>
-		    <Wordform features={['V', 'PRS', '1', 'SG', 'IND']} optional_features={['V', 'PRS', '1', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '1', 'SG', 'IND']} optional_features={['V', 'PRS', '1', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","2","SG"]'>
-		    <Wordform features={['V', 'PRS', '2', 'SG', 'IND']} optional_features={['V', 'PRS', '2', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '2', 'SG', 'IND']} optional_features={['V', 'PRS', '2', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","3","SG"]'>
-		    <Wordform features={['V', 'PRS', '3', 'SG', 'IND']} optional_features={['V', 'PRS', '3', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '3', 'SG', 'IND']} optional_features={['V', 'PRS', '3', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","1","PL"]'>
-		    <Wordform features={['V', 'PRS', '1', 'PL', 'IND']} optional_features={['V', 'PRS', '1', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '1', 'PL', 'IND']} optional_features={['V', 'PRS', '1', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","2","PL"]'>
-		    <Wordform features={['V', 'PRS', '2', 'PL', 'IND']} optional_features={['V', 'PRS', '2', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '2', 'PL', 'IND']} optional_features={['V', 'PRS', '2', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","PRS","3","PL"]'>
-		    <Wordform features={['V', 'PRS', '3', 'PL', 'IND']} optional_features={['V', 'PRS', '3', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PRS', '3', 'PL', 'IND']} optional_features={['V', 'PRS', '3', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -79,32 +79,32 @@ const RussianVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","1","SG"]'>
-		    <Wordform features={['V', 'FUT', '1', 'SG', 'IND']} optional_features={['V', 'FUT', '1', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '1', 'SG', 'IND']} optional_features={['V', 'FUT', '1', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","2","SG"]'>
-		    <Wordform features={['V', 'FUT', '2', 'SG', 'IND']} optional_features={['V', 'FUT', '2', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '2', 'SG', 'IND']} optional_features={['V', 'FUT', '2', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","3","SG"]'>
-		    <Wordform features={['V', 'FUT', '3', 'SG', 'IND']} optional_features={['V', 'FUT', '3', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '3', 'SG', 'IND']} optional_features={['V', 'FUT', '3', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","1","PL"]'>
-		    <Wordform features={['V', 'FUT', '1', 'PL', 'IND']} optional_features={['V', 'FUT', '1', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '1', 'PL', 'IND']} optional_features={['V', 'FUT', '1', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","2","PL"]'>
-		    <Wordform features={['V', 'FUT', '2', 'PL', 'IND']} optional_features={['V', 'FUT', '2', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '2', 'PL', 'IND']} optional_features={['V', 'FUT', '2', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features='["IND"]' req_features='["V","FUT","3","PL"]'>
-		    <Wordform features={['V', 'FUT', '3', 'PL', 'IND']} optional_features={['V', 'FUT', '3', 'PL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'FUT', '3', 'PL', 'IND']} optional_features={['V', 'FUT', '3', 'PL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -117,12 +117,12 @@ const RussianVerb = (props) => {
 		  </th>
 		  <td className="table-cell" colspan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","FEM","SG"]'>
-		    <Wordform features={['V', 'PST', 'FEM', 'SG', 'IND']} optional_features={['V', 'PST', 'FEM', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PST', 'FEM', 'SG', 'IND']} optional_features={['V', 'PST', 'FEM', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell" colspan="3" rowspan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST""PL"]'>
-		    <Wordform features={['V', 'PSTPL', 'IND']} optional_features={['V', 'PSTPL']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PSTPL', 'IND']} optional_features={['V', 'PSTPL']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -132,7 +132,7 @@ const RussianVerb = (props) => {
 		  </th>
 		  <td className="table-cell" colspan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","MASC","SG"]'>
-		    <Wordform features={['V', 'PST', 'MASC', 'SG', 'IND']} optional_features={['V', 'PST', 'MASC', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PST', 'MASC', 'SG', 'IND']} optional_features={['V', 'PST', 'MASC', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -142,7 +142,7 @@ const RussianVerb = (props) => {
 		  </th>
 		  <td className="table-cell" colspan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","NEUT","SG"]'>
-		    <Wordform features={['V', 'PST', 'NEUT', 'SG', 'IND']} optional_features={['V', 'PST', 'NEUT', 'SG']} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'PST', 'NEUT', 'SG', 'IND']} optional_features={['V', 'PST', 'NEUT', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -154,7 +154,7 @@ const RussianVerb = (props) => {
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IMP","2","SG"]'>
-		    <Wordform features={['V', 'IMP', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IMP', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
@@ -163,7 +163,7 @@ const RussianVerb = (props) => {
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IMP","2","PL"]'>
-		    <Wordform features={['V', 'IMP', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IMP', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">

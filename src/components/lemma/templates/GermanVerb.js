@@ -44,32 +44,32 @@ const GermanVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","1","SG"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","2","SG"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","3","SG"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","1","PL"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","2","PL"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PRS","3","PL"]'>
-		    <Wordform features={['V', 'IND', 'PRS', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PRS', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -79,32 +79,32 @@ const GermanVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","1","SG"]'>
-		    <Wordform features={['V', 'IND', 'PST', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","2","SG"]'>
-		    <Wordform features={['V', 'IND', 'PST', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","3","SG"]'>
-		    <Wordform features={['V', 'IND', 'PST', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","1","PL"]'>
-		    <Wordform features={['V', 'IND', 'PST', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","2","PL"]'>
-		    <Wordform features={['V', 'IND', 'PST', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IND","PST","3","PL"]'>
-		    <Wordform features={['V', 'IND', 'PST', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IND', 'PST', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -117,32 +117,32 @@ const GermanVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","1","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","2","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","3","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","1","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","2","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PRS","3","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PRS', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PRS', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -152,32 +152,32 @@ const GermanVerb = (props) => {
 		  </th>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","1","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '1', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","2","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","3","SG"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '3', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","1","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '1', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","2","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","SBJV","PST","3","PL"]'>
-		    <Wordform features={['V', 'SBJV', 'PST', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'SBJV', 'PST', '3', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
@@ -189,7 +189,7 @@ const GermanVerb = (props) => {
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IMP","2","SG"]'>
-		    <Wordform features={['V', 'IMP', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IMP', '2', 'SG']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">
@@ -198,7 +198,7 @@ const GermanVerb = (props) => {
 		  </td>
 		  <td className="table-cell">
 		   <span opt_features="[]" req_features='["V","IMP","2","PL"]'>
-		    <Wordform features={['V', 'IMP', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
+		    <Wordform editable={props.editable} features={['V', 'IMP', '2', 'PL']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		  <td className="table-cell">

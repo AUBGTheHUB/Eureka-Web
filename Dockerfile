@@ -18,7 +18,7 @@ RUN npm install
 
 COPY . .
 
-ENV NODE_ENV production
+ENV NODE_ENV development
 
 RUN npm run build
 # ======================================================================= #
