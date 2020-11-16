@@ -1,11 +1,6 @@
 import React from 'react';
-import Navbarword from './core/NavbarComponent'
-import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
-import DeleteIcon from '@material-ui/icons/Delete';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
-import Icon from '@material-ui/core/Icon';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import SubmitWordDialog from './submit-dialogs/SubmitWordDialog';
@@ -60,7 +55,6 @@ class AllWordsComponent extends React.Component {
 
         return(
             <div className="">
-                <Navbarword/>
                 <div className="row">
                     <div className="col-md-4 col-sm-4 col-lg-4">
                     </div>
