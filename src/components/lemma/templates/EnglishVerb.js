@@ -56,10 +56,10 @@ const EnglishVerb = (props) => {
 		 <tr>
 		  <th className="l2" colspan="2">
 		  </th>
-		  <th>
+		  <th className="l2">
 		   present
 		  </th>
-		  <th>
+		  <th className="l2">
 		   past
 		  </th>
 		 </tr>
