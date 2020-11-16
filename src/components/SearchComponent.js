@@ -10,7 +10,8 @@ import {initializeLanguages} from '../store/actions/language';
 const populatedLanguages = [
     ["Bulgarian", "bul"],
     ["Albanian", "sqi"],
-    ["Turkmen", "tuk"]
+    ["Turkmen", "tuk"],
+    ["English", "eng"]
 ];
 
 const SearchSection = (props) => {
@@ -54,14 +55,15 @@ const SearchSection = (props) => {
         return null;
     }
     if (search){
+        window.localStorage.setItem("language", selectedLanguage);
         return (
             <Redirect push to={`${selectedLanguage.walsCode ? selectedLanguage.walsCode : "bul"}/lemmas/?search=${pattern}`} />
         );
     }
     else{
         return (
-            <div className="colored_search_bar">
-                <div className="row searchform">
+            <div className="colored_search_bar container-fluid">
+                <div className="row">
                     <div className="col-md-3 col-xs-3 col-sm-3">
                     </div>
                     

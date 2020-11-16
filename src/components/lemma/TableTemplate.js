@@ -1,6 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { getWordFromFeatures } from './LemmaTableV1';
 import BulgarianVerb from './templates/BulgarianVerb';
 import BulgarianAdjective from './templates/BulgarianAdjective';
 import BulgarianNoun from './templates/BulgarianNoun';

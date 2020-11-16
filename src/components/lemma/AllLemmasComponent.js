@@ -1,11 +1,12 @@
 import React from 'react';
-import NavbarLemma from '../core/NavbarComponent'
 import {Link} from 'react-router-dom';
 import * as qs from 'query-string';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
 import lemmaService from '../../services/lemma';
+import NavbarUnimorph from '../core/NavbarComponent';
+
 
 const query = qs.parse(location.search);
 // number of pages to allocate
@@ -45,7 +46,7 @@ class AllLemmasComponent extends React.Component {
         if(this.state.lemmas.length === 0){
             return(
                 <div>
-                    <NavbarLemma/>
+                    <NavbarUnimorph/>
                     <h3 className="centered_text">No lemmas were found based on your search: {query.search}/</h3>
                 </div>
             );
@@ -56,70 +57,72 @@ class AllLemmasComponent extends React.Component {
         var lemmas_2 = this.state.lemmas.slice(2*quartile, 3*quartile)
         var lemmas_3 = this.state.lemmas.slice(3*quartile, 4*quartile)
         return(
-            <div className="">
-                <NavbarLemma/>
-                <div className="row">
-                    <div className="col-md-4 col-sm-4 col-lg-4">
+            <>
+                <NavbarUnimorph/>
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-md-4 col-sm-4 col-lg-4">
+                        </div>
+                        <div className="col-md-4 col-sm-4 col-lg-4">
+                            <h3 className="centered_text">Search: {this.state.language}</h3>
+                            {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
+                        </div>
+                        <div className="col-md-4 col-sm-4 col-lg-4">
+                        </div>
                     </div>
-                    <div className="col-md-4 col-sm-4 col-lg-4">
-                        <h3 className="centered_text">Search: {this.state.language}</h3>
-                        {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
-                    </div>
-                    <div className="col-md-4 col-sm-4 col-lg-4">
-                    </div>
-                </div>
 
-                <div className="d-flex justify-content-sm-center">
-                    <SubmitLemmaDialog language={this.state.language} handleSubmit={this.handleWordAdd}/> 
-                </div>
+                    <div className="d-flex justify-content-sm-center">
+                        <SubmitLemmaDialog language={this.state.language} handleSubmit={this.handleWordAdd}/> 
+                    </div>
 
-                <div className="row margin_top">
-                    <div className="col-md-2 col-sm-2 col-lg-2">
-                    </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_0.map((value,index) => {return(
-                            <div key={index}>
-                                <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
-                            </div>
-                        )})}
-                    </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_1.map((value,index) => {return(
+                    <div className="row margin_top">
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                        </div>
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                            {lemmas_0.map((value,index) => {return(
                                 <div key={index}>
                                     <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                 </div>
                             )})}
-                    </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_2.map((value,index) => {return(
+                        </div>
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                            {lemmas_1.map((value,index) => {return(
                                     <div key={index}>
                                         <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                     </div>
                                 )})}
-                    </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2">
-                        {lemmas_3.map((value,index) => {return(
+                        </div>
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                            {lemmas_2.map((value,index) => {return(
                                         <div key={index}>
                                             <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
                                         </div>
                                     )})}
+                        </div>
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                            {lemmas_3.map((value,index) => {return(
+                                            <div key={index}>
+                                                <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
+                                            </div>
+                                        )})}
+                        </div>
+                        <div className="col-md-2 col-sm-2 col-lg-2">
+                        </div>
                     </div>
-                    <div className="col-md-2 col-sm-2 col-lg-2">
+                    <div className="d-flex justify-content-center">
+                    <Pagination count={pages} page={this.state.currentPage}
+                        renderItem={(item) => (
+                            <PaginationItem 
+                            component={Link}
+                            to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
+                            {...item}
+                            />
+                        )}
+                        onChange={this.handleChange}
+                    />
                     </div>
                 </div>
-                <div className="d-flex justify-content-center">
-                <Pagination count={pages} page={this.state.currentPage}
-                    renderItem={(item) => (
-                        <PaginationItem 
-                        component={Link}
-                        to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
-                        {...item}
-                        />
-                    )}
-                    onChange={this.handleChange}
-                />
-                </div>
-            </div> 
+            </> 
             );
     }
 }

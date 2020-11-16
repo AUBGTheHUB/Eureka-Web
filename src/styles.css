@@ -1,10 +1,14 @@
+body{
+  padding-bottom: 100px;
+}
+
 .center-block {
     display: block;
     margin-left: auto;
     margin-right: auto;
     padding-top: 3%;
     max-width: 100%;
-    height: auto;
+    height: 100%;
  }
 
  .jumbotronstyle {
@@ -111,14 +115,14 @@
   text-align: center;
   box-sizing: border-box;
   padding: 60px 0px;
-  position: relative;
+  position: absolute;
 }
 /* Footer styles  */
 .footer {
   width: 100%;
   position: absolute;
   height: auto;
-  background-color: #070617;
+  background-color: #f8f9fa;
 }
 .footer .col {
   width: 190px;
@@ -199,15 +203,15 @@ tr.row-class>td{
 }
 
 /* Responsive design */
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1000px) {
   .contain {
-    width: 1200px;
+    width: 100%;
     margin: 0 auto;
   }
 }
 @media only screen and (max-width: 1139px) {
   .contain .social {
-    width: 1000px;
+    width: 100%;
     display: block;
   }
   .social h1 {
