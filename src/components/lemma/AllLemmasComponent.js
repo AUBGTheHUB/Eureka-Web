@@ -112,7 +112,7 @@ class AllLemmasComponent extends React.Component {
                     renderItem={(item) => (
                         <PaginationItem 
                         component={Link}
-                        to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
+                        to={`${item.page === 1 ? '?page=1' : `?page=${item.page}`}`}
                         {...item}
                         />
                     )}
