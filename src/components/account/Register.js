@@ -43,7 +43,7 @@ const RegisterComponent = (props) => {
         <div>
             <NavbarUnimorph />
             <div className="Login">
-                {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
+                {error ? <p className="text-center" style={{ color: "red" }}>Invalid password or email</p> : null}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                     <Form.Label>Email</Form.Label>
