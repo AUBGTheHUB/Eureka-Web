@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 
 export default function ContributeDownload(props) {
-    const getLanguage = () => {
-        return window.localStorage.getItem("language");
-    }
+    const [lang, setLang] = useState(null);
+    useEffect(() => {
+        const lang = window.localStorage.getItem("language");
+        setLang(JSON.parse(lang));
+    }, []);
     return (
         <div className="container-fluid">
             <div className="row">
@@ -19,7 +21,7 @@ export default function ContributeDownload(props) {
                                 <Card.Text>
                                     Fill up specific lemma paradigm or propose new changes.
                                 </Card.Text>
-                            <Button variant="outlined" href={`/${getLanguage()}/lemmas`}>Learn More</Button>
+                            <Button variant="outlined" href={`/${lang ? lang.walsCode : "bul"}/lemmas`}>Learn More</Button>
                         </Card.Body>
                     </Card>
                 </div>

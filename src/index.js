@@ -41,7 +41,7 @@ const Routing = () => {
     const [user, setUser] = useState(null);
     useEffect(() => {
         const user = window.localStorage.getItem("user");
-        window.localStorage.setItem("language", "bul");
+        window.localStorage.setItem("language", JSON.stringify({walsCode: "bul", name: "Bulgarian"}));
         setUser(JSON.parse(user));
     }, []);
 

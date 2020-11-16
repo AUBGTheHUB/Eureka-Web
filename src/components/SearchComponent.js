@@ -15,7 +15,6 @@ const populatedLanguages = [
 ];
 
 const SearchSection = (props) => {
-    const dispatch = useDispatch();
     const [selectedLanguage, setSelectedLanguage] = useState({
         walsCode: "",
         name: ""
@@ -55,7 +54,6 @@ const SearchSection = (props) => {
         return null;
     }
     if (search){
-        window.localStorage.setItem("language", selectedLanguage);
         return (
             <Redirect push to={`${selectedLanguage.walsCode ? selectedLanguage.walsCode : "bul"}/lemmas/?search=${pattern}`} />
         );

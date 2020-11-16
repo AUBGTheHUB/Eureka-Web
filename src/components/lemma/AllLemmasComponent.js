@@ -18,9 +18,10 @@ class AllLemmasComponent extends React.Component {
         
         this.state = {
             "lemmas":[],
-            "language":this.props.match.params.lang,
+            "language": this.props.match.params.lang,
             "currentPage": query.page ? Number(query.page) : 1,
             "search": props.location.search,
+            "languageName": ""
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -28,9 +29,11 @@ class AllLemmasComponent extends React.Component {
         let search_pattern = this.state.search ? this.state.search : '';
         const data = await lemmaService.getAll(search_pattern, this.props.match.params.lang);
         pages = parseInt(data.count/72) + 1;
+        const lang = JSON.parse(window.localStorage.getItem("language"));
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name), 
-            "language": this.props.match.params.lang
+            "language": this.props.match.params.lang,
+            "languageName": lang.name
         })
     }
     async handleChange(event, value) {
@@ -64,7 +67,7 @@ class AllLemmasComponent extends React.Component {
                         <div className="col-md-4 col-sm-4 col-lg-4">
                         </div>
                         <div className="col-md-4 col-sm-4 col-lg-4">
-                            <h3 className="centered_text">Search: {this.state.language}</h3>
+                            <h3 className="centered_text">Language: {this.state.languageName}</h3>
                             {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
                         </div>
                         <div className="col-md-4 col-sm-4 col-lg-4">
@@ -109,32 +112,19 @@ class AllLemmasComponent extends React.Component {
                         <div className="col-md-2 col-sm-2 col-lg-2">
                         </div>
                     </div>
+                    </div>
                     <div className="d-flex justify-content-center">
                     <Pagination count={pages} page={this.state.currentPage}
                         renderItem={(item) => (
                             <PaginationItem 
                             component={Link}
-                            to={`/lemmas${item.page === 1 ? '' : `?page=${item.page}`}`}
+                            to={`${item.page === 1 ? '?page=1' : `?page=${item.page}`}`}
                             {...item}
                             />
                         )}
                         onChange={this.handleChange}
                     />
                     </div>
-                </div>
-                <div className="d-flex justify-content-center">
-                <Pagination count={pages} page={this.state.currentPage}
-                    renderItem={(item) => (
-                        <PaginationItem 
-                        component={Link}
-                        to={`${item.page === 1 ? '?page=1' : `?page=${item.page}`}`}
-                        {...item}
-                        />
-                    )}
-                    onChange={this.handleChange}
-                />
-                </div>
-            </div> 
             </> 
             );
     }
