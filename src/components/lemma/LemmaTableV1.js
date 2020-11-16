@@ -5,6 +5,9 @@ import DimensionTable from './DimensionTable';
 import PoSComponent from '../PoSComponent';
 import TableTemplate from './TableTemplate';
 import './LemmaTableV1.css';
+import EditButtons from './EditButtons';
+import SubmitDialog from '../submit-dialogs/SubmitDialog';
+
 
 
 const LemmaTableV1 = (props) => {
@@ -12,6 +15,9 @@ const LemmaTableV1 = (props) => {
     const [pos, setPos] = useState([]);
     const [name, setName] = useState('');
     const [language, setLanguage] = useState('');
+    const [editable, setEditable] = useState(false);
+    const [showDialog, setShowDialog] = useState(false);
+
 
 
     // process the data from api and format it for the table
@@ -39,7 +45,12 @@ const LemmaTableV1 = (props) => {
             setData(data_dict);
         }
         getData();
-    }, [])
+    }, []);
+
+    const handleUpdate = () => {
+        setShowDialog(false);
+        setEditable(false);
+      };
 
     if (!data){
         return null;
@@ -54,8 +65,10 @@ const LemmaTableV1 = (props) => {
                 <PoSComponent name = {pos.name}/>
                 <hr/>
                 <h3 style={{textAlign: "center"}}>{language}: {name}</h3>
+                <SubmitDialog showDialog={showDialog} setShowDialog={setShowDialog} onSubmit={handleUpdate}/>
+                <EditButtons editable={editable} showDialog={showDialog} setEditable={setEditable} setShowDialog={setShowDialog} />
                 <div className="container">
-                    <TableTemplate language={language} pos={pos.name} wordforms={data}/>
+                    <TableTemplate language={language} pos={pos.name} wordforms={data} editable={editable} />
                 </div>
             </div>
         )

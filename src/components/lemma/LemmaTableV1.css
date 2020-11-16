@@ -35,3 +35,13 @@
         .container table {
             background: #F9F9F9; width:100%;
         }
+
+        .lemma-button {
+            margin-right:10px !important;
+        }
+        .edit-div {
+            padding-top:15px;
+            padding-bottom:15px;
+            text-align:center;
+            margin:auto;
+        }

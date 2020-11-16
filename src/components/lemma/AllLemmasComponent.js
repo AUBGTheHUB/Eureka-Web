@@ -122,6 +122,19 @@ class AllLemmasComponent extends React.Component {
                     />
                     </div>
                 </div>
+                <div className="d-flex justify-content-center">
+                <Pagination count={pages} page={this.state.currentPage}
+                    renderItem={(item) => (
+                        <PaginationItem 
+                        component={Link}
+                        to={`${item.page === 1 ? '?page=1' : `?page=${item.page}`}`}
+                        {...item}
+                        />
+                    )}
+                    onChange={this.handleChange}
+                />
+                </div>
+            </div> 
             </> 
             );
     }

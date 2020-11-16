@@ -6,10 +6,15 @@ import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
 import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
-const styles = (theme) => ({
+const styles = makeStyles((theme) => ({
   root: {
     margin: 0,
     padding: theme.spacing(2),
@@ -20,68 +25,50 @@ const styles = (theme) => ({
     top: theme.spacing(1),
     color: theme.palette.grey[500],
   },
-});
+}));
 
-const DialogTitle = withStyles(styles)((props) => {
-  const { children, classes, onClose } = props;
-  return (
-    <MuiDialogTitle disableTypography className={classes.root}>
-      <Typography variant="h6">{children}</Typography>
-      {onClose ? (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </MuiDialogTitle>
-  );
-});
-
-const DialogContent = withStyles((theme) => ({
-  root: {
-    padding: theme.spacing(2),
-  },
-}))(MuiDialogContent);
-
-const DialogActions = withStyles((theme) => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(1),
-  },
-}))(MuiDialogActions);
-
-export default function SubmitDialog({ show, onSubmit }) {
-  const [open, setOpen] = React.useState(show);
+export default function SubmitDialog(props) {
+  const classes = styles();
 
   const handleClickOpen = () => {
-    setOpen(true);
+    props.setShowDialog(true);
   };
   const handleClose = () => {
-    setOpen(false);
-    onSubmit();
+    props.setShowDialog(false);
+    //onSubmit();
+  };
+  const handleSubmit = () => {
+    props.setShowDialog(false);
+    props.onSubmit();
   };
 
   return (
     
     <div className="row">
-        <div className="col-md-4 col-lg-4 col-sm-4"></div>
-        <div className="col-md-4 col-lg-4 col-sm-4"></div>
-        <div className="col-md-4 col-lg-4 col-sm-4">
-            <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+            <Dialog aria-labelledby="customized-dialog-title" onClose={handleClose} open={props.showDialog}>
+                <DialogTitle id="customized-dialog-title" >
                 Edit request
                 </DialogTitle>
-                <DialogContent dividers>
-                <Typography gutterBottom>
-                  Your changes will be sent to the language admin for review and you will hear back soon!
-                </Typography>
+                <DialogContent>
+                  <form className={classes.container}>
+                    <TextField             
+                      autoFocus
+                      margin="dense"
+                      id="note"
+                      label="Add note"
+                      type="text"
+                      fullWidth/>
+                  </form>
                 </DialogContent>
                 <DialogActions>
-                <Button autoFocus onClick={handleClose} color="primary">
+                  <Button onClick={handleClose} color="primary">
+                    Back
+                  </Button>
+                  <Button onClick={handleSubmit} color="primary">
                     Submit changes
-                </Button>
+                  </Button>
                 </DialogActions>
             </Dialog>
-        </div>
     </div>
   );
 }

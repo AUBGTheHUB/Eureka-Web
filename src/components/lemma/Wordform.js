@@ -3,6 +3,9 @@ import React from 'react';
 
 const Wordform = (props) => {
 	const [wordform, setWordform] = useState('');
+	let comp_to_render = '';
+
+
 
 	useEffect(() =>{
 		for(var word in props.wordforms) {
@@ -21,10 +24,14 @@ const Wordform = (props) => {
 			}
 			
 		}
-		setWordform('nothing');
-	})
+	},[props.editable]);
 
-	return (wordform);
+	if(props.editable)
+		comp_to_render = <input onChange={e => setWordform(e.target.value)} type='text' placeholder={wordform} value={wordform} />;
+	else
+		comp_to_render = wordform;
+
+	return (comp_to_render);
 }
 
 export default Wordform;
