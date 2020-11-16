@@ -11,6 +11,7 @@ import GermanNoun from './templates/GermanNoun';
 import RussianNoun from './templates/RussianNoun';
 import RussianVerb from './templates/RussianVerb';
 import TurkmenNoun from './templates/TurkmenNoun';
+import EnglishVerb from './templates/EnglishVerb';
 
 
 const TableTemplate = (props) => {
@@ -80,6 +81,15 @@ const TableTemplate = (props) => {
                         comp_to_render = <p></p>;
                 }
                 break; 
+            case 'English':
+                switch(props.pos){
+                    case 'Verb':
+                        comp_to_render = <EnglishVerb editable={props.editable} wordforms={props.wordforms}/>;
+                        break;
+                    default:
+                        comp_to_render = <p></p>
+                }
+                break;
             default:
                 comp_to_render = <p></p>;
         }
