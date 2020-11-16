@@ -12,6 +12,7 @@ const RegisterComponent = (props) => {
     const [name, setName] = useState("");
 
     const [loggedIn, setLoggedIn] = useState(false);
+    const [error, setError] = useState(null);
 
     function validateForm() {
         return email.length > 0 && password.length > 5 && name.length > 0;
@@ -42,6 +43,7 @@ const RegisterComponent = (props) => {
         <div>
             <NavbarUnimorph />
             <div className="Login">
+                {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
                 <Form onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                     <Form.Label>Email</Form.Label>
