@@ -1,14 +1,11 @@
 import React from 'react';
-import NavbarUnimorph from '../core/NavbarComponent';
 import AboutUsSection from './AboutUsComponent';
-import Footer from '../core/Footer';
-
+import NavbarUnimorph from '../core/NavbarComponent';
 
 const About = (props) => (
   <div>
-    <NavbarUnimorph />
+    <NavbarUnimorph/>
     <AboutUsSection />
-    <Footer />
   </div>
 );
 

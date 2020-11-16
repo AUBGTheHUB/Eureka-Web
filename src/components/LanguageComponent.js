@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import NavbarUnimorph from './core/NavbarComponent';
 import axios from 'axios';
 import config from '../constants';
 import { Typography, makeStyles } from '@material-ui/core';
 import ListGroup from 'react-bootstrap/ListGroup';
 import { useSelector, useDispatch } from 'react-redux';
 import {initializeLanguages} from '../store/actions/language';
+import NavbarUnimorph from './core/NavbarComponent';
+import Footer from './core/Footer';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -40,7 +41,7 @@ const LanguagesList = () => {
     }
     return(
         <div>
-            <NavbarUnimorph />
+            <NavbarUnimorph/>   
             <div className={classes.root} style={{marginTop: 25, marginBottom: 25}}>
                 <Typography variant="h6" component="h6" gutterBottom className="centered_text" style={{fontFamily: 'Monospace'}}>
                     Download data
