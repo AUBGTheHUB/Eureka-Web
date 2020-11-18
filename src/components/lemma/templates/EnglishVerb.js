@@ -36,9 +36,7 @@ const EnglishVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th>
-		  </th>
-		  <th>
+		  <th className="l2" colspan='2'>
 		  </th>
 		  <td className="table-cell">
 		  </td>
