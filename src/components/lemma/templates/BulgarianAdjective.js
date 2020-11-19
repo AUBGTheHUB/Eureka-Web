@@ -4,6 +4,7 @@ import Wordform from '../Wordform.js';
 
 const BulgarianAdjective = (props) => {
     return(<table className="lemma-table"  border="1px solid #000000">
+    		<tbody>
 			 <tr>
 			  <th className="l3" colspan="6">
 			   Positive
@@ -313,6 +314,7 @@ const BulgarianAdjective = (props) => {
 			  <td className="table-cell" colspan="3">
 			  </td>
 			 </tr>
+			</tbody>
 			</table>
 
 

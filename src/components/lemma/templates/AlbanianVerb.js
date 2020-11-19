@@ -5,6 +5,7 @@ import Wordform from '../Wordform.js';
 const AlbanianVerb = (props) => {
     return(
 		<table className="lemma-table"  border="1px solid #000000" className="lemma-table">
+		<tbody>
 		 <tr>
 		  <th className="l2" colspan="2" rowspan="2">
 		  </th>
@@ -738,6 +739,7 @@ const AlbanianVerb = (props) => {
 		  <td className="table-cell">
 		  </td>
 		 </tr>
+		</tbody>
 		</table>
 
 

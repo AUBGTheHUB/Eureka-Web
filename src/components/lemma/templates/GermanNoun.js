@@ -5,6 +5,7 @@ import Wordform from '../Wordform.js';
 const GermanNoun = (props) => {
     return(
 		<table className="lemma-table"  border="1px solid #000000">
+		<tbody>
 		 <tr>
 		  <th className="l1">
 		  </th>
@@ -75,6 +76,7 @@ const GermanNoun = (props) => {
 		   </span>
 		  </td>
 		 </tr>
+		 </tbody>
 		</table>
 
 
