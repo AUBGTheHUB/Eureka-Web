@@ -5,6 +5,7 @@ import Wordform from '../Wordform.js';
 const RussianAdjective = (props) => {
     return(
 		<table className="lemma-table"  border="1px solid #000000">
+		<tbody>
 		 <tr>
 		  <th className="l2" colspan="2" rowspan="2">
 		  </th>
@@ -219,6 +220,7 @@ const RussianAdjective = (props) => {
 		   </span>
 		  </td>
 		 </tr>
+		 <tbody>
 		</table>
 
 

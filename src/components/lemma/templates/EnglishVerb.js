@@ -5,6 +5,7 @@ import Wordform from '../Wordform.js';
 const EnglishVerb = (props) => {
     return(
 		<table className="lemma-table"  border="1px solid #000000">
+		<tbody>
 		 <tr>
 		  <th className="table-title" colspan="4">
 		   Finite Verbforms
@@ -86,6 +87,7 @@ const EnglishVerb = (props) => {
 		   </span>
 		  </td>
 		 </tr>
+		 </tbody>
 		</table>
 
 
