@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { FormControl, Button, DropdownButton, Dropdown, InputGroup } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Button, Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import { withRouter } from 'react-router-dom';
 import lemmaService from '../services/lemma';
-
-import { useSelector, useDispatch } from 'react-redux';
-import {initializeLanguages} from '../store/actions/language';
-
 
 // this is hard-coded for now, before implementing new endpoint
 const populatedLanguages = [
+    ["All", "all"],
     ["Bulgarian", "bul"],
     ["Albanian", "sqi"],
     ["Turkmen", "tuk"],
@@ -18,23 +15,24 @@ const populatedLanguages = [
 
 const SearchSection = (props) => {
     const [selectedLanguage, setSelectedLanguage] = useState({
-        walsCode: "eng",
-        name: "English"
+        walsCode: "all",
+        name: "All"
     });
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
-    const [lemmas, setLemmas] = useState([])
+    const [lemmas, setLemmas] = useState([]);
+
+    // const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
     
     const languagesList = getLanguagesList(populatedLanguages);
 
-
-    const handlePatternChange =  async (event) => {
+    const handlePatternChange = async (event) => {
         event.preventDefault();
         setPattern(event.target.value);
-        // Get the suggested lemmas
         const allLemmas = await lemmaService.autoComplete(pattern, selectedLanguage.walsCode);   
-        setLemmas(allLemmas.results.map(lemma => lemma.name))
-        // console.log(lemmas);
+        setLemmas(allLemmas.results.map(lemma => lemma.name));
+        console.log("pattern" + pattern);
+        console.log(lemmas);
     }
 
     const handleSearchSubmit = (event) => {
@@ -89,7 +87,7 @@ const SearchSection = (props) => {
                                     aria-label="Search lemma"
                                     aria-describedby="basic-addon2"
                                     onChange={handlePatternChange}
-                                    list = "autocomplete"
+                                    list="autocomplete"
                                 />
                                 <InputGroup.Append>
                                     <Button type="submit" variant="outline-secondary btn_search">Search</Button>
@@ -98,7 +96,7 @@ const SearchSection = (props) => {
                         </div>
                         {/* Dropdown for lemma search */}
                         <datalist id="autocomplete">
-                            {lemmas.map(lemma => <option key={lemma} value={lemma}></option>)}
+                            {lemmas.map((lemma, i) => <option key={i} value={lemma}></option>)}
                         </datalist>
 
                     </div>
