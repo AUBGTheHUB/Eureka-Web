@@ -49,7 +49,7 @@ const LanguagesList = () => {
                 <ListGroup variant="flush">
                     <ListGroup.Item>1. Download the whole data for a language by clicking on language name</ListGroup.Item>
                     <ListGroup.Item>2. Download the set of languages in a given genus/family by clicking on its name</ListGroup.Item>
-                    <ListGroup.Item>3. Explore lemmas or words in a given language by clicking on the value of lemmas/words</ListGroup.Item>
+                    <ListGroup.Item>3. Explore lemma paradigms in a given language by clicking on the value of lemmas</ListGroup.Item>
                 </ListGroup>
             </div>
             <div id="lang-table" className="d-flex justify-content-center">
@@ -74,7 +74,7 @@ const LanguagesList = () => {
                                         {lang.walsCode}
                                     </td>
                                     <td>    
-                                        <a href={`${baseUrl}data/download/languages/families/${lang.family}`}>
+                                        <a href={`${baseUrl}data/download/families/${lang.family}`}>
                                             {lang.family}
                                         </a>
                                     </td>                                                                        
@@ -89,8 +89,8 @@ const LanguagesList = () => {
                                         </a>
                                     </td>
                                     <td>    
-                                        <a href={`${lang.walsCode}/lemmas`} >
-                                            {lang.words}
+                                        <a>
+                                            {lang.forms}
                                         </a>
                                     </td>                                    
                                 </tr>

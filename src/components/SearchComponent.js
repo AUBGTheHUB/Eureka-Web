@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import { FormControl, Button, DropdownButton, Dropdown, InputGroup } from 'react-bootstrap';
 import { Redirect } from 'react-router';
+import lemmaService from '../services/lemma';
+
 import { useSelector, useDispatch } from 'react-redux';
 import {initializeLanguages} from '../store/actions/language';
 
@@ -16,19 +18,23 @@ const populatedLanguages = [
 
 const SearchSection = (props) => {
     const [selectedLanguage, setSelectedLanguage] = useState({
-        walsCode: "",
-        name: ""
+        walsCode: "eng",
+        name: "English"
     });
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
-
-    // const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
+    const [lemmas, setLemmas] = useState([])
     
     const languagesList = getLanguagesList(populatedLanguages);
 
-    const handlePatternChange = (event) => {
+
+    const handlePatternChange =  async (event) => {
         event.preventDefault();
         setPattern(event.target.value);
+        // Get the suggested lemmas
+        const allLemmas = await lemmaService.autoComplete(pattern, selectedLanguage.walsCode);   
+        setLemmas(allLemmas.results.map(lemma => lemma.name))
+        // console.log(lemmas);
     }
 
     const handleSearchSubmit = (event) => {
@@ -83,12 +89,17 @@ const SearchSection = (props) => {
                                     aria-label="Search lemma"
                                     aria-describedby="basic-addon2"
                                     onChange={handlePatternChange}
+                                    list = "autocomplete"
                                 />
                                 <InputGroup.Append>
                                     <Button type="submit" variant="outline-secondary btn_search">Search</Button>
                                 </InputGroup.Append>
                             </InputGroup>
                         </div>
+                        {/* Dropdown for lemma search */}
+                        <datalist id="autocomplete">
+                            {lemmas.map(lemma => <option key={lemma} value={lemma}></option>)}
+                        </datalist>
 
                     </div>
 
