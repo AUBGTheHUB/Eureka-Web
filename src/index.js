@@ -1,27 +1,27 @@
-import React, {useEffect, useState} from 'react';
+import { ConnectedRouter } from 'connected-react-router';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
-import LanguagesList from './components/LanguageComponent';
-import NavbarUnimorph from './components/core/NavbarComponent';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import 'regenerator-runtime/runtime.js';
 import About from './components/about-us/About';
 import AboutUsSection from './components/about-us/AboutUsComponent';
-import ContributeDownload from './components/core/ContributeDownload';
-import HeaderLogo from './components/core/HeaderComponent';
-import SearchSection from './components/SearchComponent';
-import LemmaDetailPage from './components/lemma/LemmaDetail';
-import Footer from './components/core/Footer';
-import AllWordsComponent from './components/AllWordsComponent';
-import 'regenerator-runtime/runtime.js';
-import AllLemmasComponent from './components/lemma/AllLemmasComponent';
-import MyAccount from './components/account/MyAccount';
-import ContactUs from './components/core/ContactUs';
 import LoginComponent from './components/account/Login';
+import MyAccount from './components/account/MyAccount';
 import RegisterComponent from './components/account/Register';
-import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'connected-react-router';
-import store, { history } from './store'
+import AllWordsComponent from './components/AllWordsComponent';
+import ContactUs from './components/core/ContactUs';
+import ContributeDownload from './components/core/ContributeDownload';
+import Footer from './components/core/Footer';
+import HeaderLogo from './components/core/HeaderComponent';
+import NavbarUnimorph from './components/core/NavbarComponent';
 import PageNotFound from './components/core/PageNotFound';
+import LanguagesList from './components/LanguageComponent';
+import AllLemmasComponent from './components/lemma/AllLemmasComponent';
+import LemmaDetailPage from './components/lemma/LemmaDetail';
+import SearchSection from './components/SearchComponent';
+import store, { history } from './store';
+import './styles.css';
 
 function LandingComponent() {
     return (
@@ -41,7 +41,7 @@ const Routing = () => {
     const [user, setUser] = useState(null);
     useEffect(() => {
         const user = window.localStorage.getItem("user");
-        window.localStorage.setItem("language", JSON.stringify({walsCode: "bul", name: "Bulgarian"}));
+        window.localStorage.setItem("language", JSON.stringify({walsCode: "all", name: "All"}));
         setUser(JSON.parse(user));
     }, []);
 

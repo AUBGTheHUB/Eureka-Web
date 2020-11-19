@@ -31,12 +31,11 @@ const SearchSection = (props) => {
         setPattern(event.target.value);
         const allLemmas = await lemmaService.autoComplete(pattern, selectedLanguage.walsCode);   
         setLemmas(allLemmas.results.map(lemma => lemma.name));
-        console.log("pattern" + pattern);
-        console.log(lemmas);
     }
 
     const handleSearchSubmit = (event) => {
         event.preventDefault();
+        window.localStorage.setItem("language", JSON.stringify(selectedLanguage))
         setSearch(true);
     }
 
@@ -46,7 +45,10 @@ const SearchSection = (props) => {
             languagesList.push(
                 <Dropdown.Item 
                     key={walsCode}
-                    onClick={() => setSelectedLanguage({name: value, walsCode})}
+                    onClick={() => {
+                        setSelectedLanguage({name: value, walsCode}); 
+                        window.localStorage.setItem("language", JSON.stringify({name: value, walsCode}))
+                    }}
                 >
                     {value}
                 </Dropdown.Item>)
@@ -59,7 +61,7 @@ const SearchSection = (props) => {
     }
     if (search){
         return (
-            <Redirect push to={`${selectedLanguage.walsCode ? selectedLanguage.walsCode : "bul"}/lemmas/?search=${pattern}`} />
+            <Redirect push to={`${selectedLanguage.walsCode}/lemmas/?search=${pattern}`} />
         );
     }
     else{
@@ -77,7 +79,7 @@ const SearchSection = (props) => {
                                     <DropdownButton 
                                         variant="outline-secondary" 
                                         id="dropdown-basic-button" 
-                                        title={selectedLanguage.name ? selectedLanguage.name : "Select language"}
+                                        title={selectedLanguage.name}
                                     >
                                         {languagesList}
                                     </DropdownButton>
