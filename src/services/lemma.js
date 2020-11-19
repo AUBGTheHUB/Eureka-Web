@@ -78,7 +78,12 @@ const getLemmaTable = async (name, lang) => {
 }
 
 const searchLemma = async (pattern) => {
-    const { data, error } = await axios.get(`${baseUrl}/lemmas/?search=${pattern}`);
+    const { data, error } = await axios.get(`${baseUrl}lemmas/?search=${pattern}`);
+    return data;
+}
+
+const autoComplete = async (pattern, code) => {
+    const { data, error } = await axios.get(`${baseUrl}${code}/lemmas/?search=${pattern}`);
     return data;
 }
 
@@ -86,5 +91,6 @@ export default {
     getAll,
     getLemma,
     getLemmaTable,
-    searchLemma
+    searchLemma,
+    autoComplete
 }
