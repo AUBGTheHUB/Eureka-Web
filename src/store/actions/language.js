@@ -6,7 +6,7 @@ export const initializeLanguages = (lang) => {
         const langs = await languageService.getAll();
         dispatch ({
             type: GET_ALL_LANGUAGES,
-            data: langs.result
+            data: langs.data
         })
     }
 };

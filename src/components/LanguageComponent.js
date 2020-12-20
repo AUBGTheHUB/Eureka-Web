@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { makeStyles, Typography } from '@material-ui/core';
 import axios from 'axios';
-import config from '../constants';
-import { Typography, makeStyles } from '@material-ui/core';
+import React, { useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { useSelector, useDispatch } from 'react-redux';
-import {initializeLanguages} from '../store/actions/language';
+import { useDispatch, useSelector } from 'react-redux';
+import config from '../constants';
+import { initializeLanguages } from '../store/actions/language';
 import NavbarUnimorph from './core/NavbarComponent';
-import Footer from './core/Footer';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
@@ -20,22 +19,18 @@ const useStyles = makeStyles({
     }
 });
 
-// random number generator for lemmas and words. Demo purposes only, will be removed in next stage
-function getRandomInt(min, max) {
-    return Math.floor(Math.random(min) * Math.floor(max));
-}
-
 const LanguagesList = () => {
 
     const dispatch = useDispatch();
     const classes = useStyles();
 
-    // useEffect(() => {
-    //     dispatch(initializeLanguages());
-    // }, []);
+    useEffect(() => {
+        dispatch(initializeLanguages());
+    }, []);
     
     const languages = useSelector(state => state.languages);
 
+    console.log(languages);
     if(languages.length === 0){
         return null;
     }
@@ -75,22 +70,22 @@ const LanguagesList = () => {
                                     </td>
                                     <td>    
                                         <a href={`${baseUrl}data/download/families/${lang.family}`}>
-                                            {lang.family}
+                                            {lang.family.name ? lang.family.name : ""}
                                         </a>
                                     </td>                                                                        
                                     <td>    
                                         <a href={`${baseUrl}data/download/genera/${lang.genus}/`}>
-                                            {lang.genus}
+                                            {lang.genus.name ? lang.genus.name : ""}
                                         </a>
                                     </td>
                                     <td>    
                                         <a href={`${lang.walsCode}/lemmas`}>
-                                            {lang.lemmas}
+                                            open
                                         </a>
                                     </td>
                                     <td>    
                                         <a>
-                                            {lang.forms}
+                                            
                                         </a>
                                     </td>                                    
                                 </tr>
