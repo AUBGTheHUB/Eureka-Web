@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import lemmaService from '../services/lemma';
-
-// this is hard-coded for now, before implementing new endpoint
-const populatedLanguages = [
-    ["All", "all"],
-    ["Bulgarian", "bul"],
-    ["Albanian", "sqi"],
-    ["Turkmen", "tuk"],
-    ["English", "eng"]
-];
+import { initializeLanguages } from '../store/actions';
 
 const SearchSection = (props) => {
     const [selectedLanguage, setSelectedLanguage] = useState({
@@ -21,10 +14,15 @@ const SearchSection = (props) => {
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
     const [lemmas, setLemmas] = useState([]);
+    const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
 
-    // const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
-    
-    const languagesList = getLanguagesList(populatedLanguages);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(initializeLanguages());
+    }, [dispatch]);
+
+    const languagesList = getLanguagesList(languages);
 
     const handlePatternChange = async (event) => {
         event.preventDefault();
@@ -56,7 +54,7 @@ const SearchSection = (props) => {
         return languagesList;
     }
 
-    if(!populatedLanguages){
+    if(!languages){
         return null;
     }
     if (search){

@@ -9,7 +9,6 @@ import AboutUsSection from './components/about-us/AboutUsComponent';
 import LoginComponent from './components/account/Login';
 import MyAccount from './components/account/MyAccount';
 import RegisterComponent from './components/account/Register';
-import AllWordsComponent from './components/AllWordsComponent';
 import ContactUs from './components/core/ContactUs';
 import ContributeDownload from './components/core/ContributeDownload';
 import Footer from './components/core/Footer';
@@ -54,7 +53,6 @@ const Routing = () => {
                     <Route exact path="/about" component={About} />
                     <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
                     <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
-                    <Route exact path="/:lang/words" component={AllWordsComponent} />
                     <Route exact path="/languages" component={LanguagesList}/>
                     <Route exact path="/me"  render={(props) => <MyAccount user={user} {...props}/>} />
                     <Route exact path="/contact" component={ContactUs} />
