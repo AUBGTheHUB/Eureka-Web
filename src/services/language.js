@@ -8,8 +8,7 @@ axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 // TO-DO
 
 const getAll = async () => {
-    const {data, error} = await axios.get(`${baseUrl}bul/languages/`);
-
+    const {data, error} = await axios.get(`${baseUrl}bul/languages/?populated`);
     return {
         data,
         error

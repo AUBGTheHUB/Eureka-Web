@@ -70,12 +70,12 @@ const LanguagesList = () => {
                                     </td>
                                     <td>    
                                         <a href={`${baseUrl}data/download/families/${lang.family}`}>
-                                            {lang.family.name ? lang.family.name : ""}
+                                            {lang.family ? lang.family.name : ""}
                                         </a>
                                     </td>                                                                        
                                     <td>    
                                         <a href={`${baseUrl}data/download/genera/${lang.genus}/`}>
-                                            {lang.genus.name ? lang.genus.name : ""}
+                                            {lang.genus ? lang.genus.name : ""}
                                         </a>
                                     </td>
                                     <td>    
