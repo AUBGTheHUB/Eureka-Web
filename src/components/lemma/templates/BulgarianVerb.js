@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const BulgarianVerb = (props) => {
@@ -7,12 +6,12 @@ const BulgarianVerb = (props) => {
       <table border="1px solid #000000">
        <tbody>
         <tr>
-         <th className="l2" colspan="2" rowspan="2">
+         <th className="l2" colSpan="2" rowSpan="2">
          </th>
-         <th className="l2" colspan="3">
+         <th className="l2" colSpan="3">
           singular
          </th>
-         <th className="l2" colspan="3">
+         <th className="l2" colSpan="3">
           plural
          </th>
         </tr>
@@ -37,7 +36,7 @@ const BulgarianVerb = (props) => {
          </th>
         </tr>
         <tr>
-         <th className="l2" rowspan="3">
+         <th className="l2" rowSpan="3">
           indicative
          </th>
          <th className="l1">
@@ -145,7 +144,7 @@ const BulgarianVerb = (props) => {
          </td>
         </tr>
         <tr>
-         <th className="l2" colspan="2">
+         <th className="l2" colSpan="2">
           imperative
          </th>
          <td>

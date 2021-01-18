@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Wordform = (props) => {
 	const [wordform, setWordform] = useState('');
 	let comp_to_render = '';
-
-
 
 	useEffect(() =>{
 		for(var word in props.wordforms) {

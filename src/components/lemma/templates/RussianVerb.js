@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const RussianVerb = (props) => {
@@ -7,12 +6,12 @@ const RussianVerb = (props) => {
 		<table className="lemma-table"  border="1px solid #000000">
 		<tbody>
 		 <tr>
-		  <th className="l3" colspan="3" rowspan="2">
+		  <th className="l3" colSpan="3" rowSpan="2">
 		  </th>
-		  <th className="l3" colspan="3">
+		  <th className="l3" colSpan="3">
 		   singular
 		  </th>
-		  <th className="l3" colspan="3">
+		  <th className="l3" colSpan="3">
 		   plural
 		  </th>
 		 </tr>
@@ -37,10 +36,10 @@ const RussianVerb = (props) => {
 		  </th>
 		 </tr>
 		 <tr>
-		  <th className="l3" rowspan="5">
+		  <th className="l3" rowSpan="5">
 		   indicative
 		  </th>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   present
 		  </th>
 		  <td className="table-cell">
@@ -75,7 +74,7 @@ const RussianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   future
 		  </th>
 		  <td className="table-cell">
@@ -110,18 +109,18 @@ const RussianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="3">
+		  <th className="l2" rowSpan="3">
 		   past
 		  </th>
 		  <th className="l1">
 		   feminine
 		  </th>
-		  <td className="table-cell" colspan="3">
+		  <td className="table-cell" colSpan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","FEM","SG"]'>
 		    <Wordform editable={props.editable} features={['V', 'PST', 'FEM', 'SG', 'IND']} optional_features={['V', 'PST', 'FEM', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" colspan="3" rowspan="3">
+		  <td className="table-cell" colSpan="3" rowSpan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST""PL"]'>
 		    <Wordform editable={props.editable} features={['V', 'PSTPL', 'IND']} optional_features={['V', 'PSTPL']} wordforms={props.wordforms}/>
 		   </span>
@@ -131,7 +130,7 @@ const RussianVerb = (props) => {
 		  <th className="l1">
 		   masculine
 		  </th>
-		  <td className="table-cell" colspan="3">
+		  <td className="table-cell" colSpan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","MASC","SG"]'>
 		    <Wordform editable={props.editable} features={['V', 'PST', 'MASC', 'SG', 'IND']} optional_features={['V', 'PST', 'MASC', 'SG']} wordforms={props.wordforms}/>
 		   </span>
@@ -141,14 +140,14 @@ const RussianVerb = (props) => {
 		  <th className="l1">
 		   neuter
 		  </th>
-		  <td className="table-cell" colspan="3">
+		  <td className="table-cell" colSpan="3">
 		   <span opt_features='["IND"]' req_features='["V","PST","NEUT","SG"]'>
 		    <Wordform editable={props.editable} features={['V', 'PST', 'NEUT', 'SG', 'IND']} optional_features={['V', 'PST', 'NEUT', 'SG']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l3" colspan="3">
+		  <th className="l3" colSpan="3">
 		   imperative
 		  </th>
 		  <td className="table-cell">

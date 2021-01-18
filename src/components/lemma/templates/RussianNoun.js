@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const RussianNoun = (props) => {
@@ -7,7 +6,7 @@ const RussianNoun = (props) => {
 		<table className="lemma-table"  border="1px solid #000000">
 		<tbody>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		  </th>
 		  <th className="l2">
 		   singular
@@ -17,7 +16,7 @@ const RussianNoun = (props) => {
 		  </th>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   nominative
 		  </th>
 		  <td className="table-cell">
@@ -32,10 +31,10 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="1" rowspan="2">
+		  <th className="l2" colSpan="1" rowSpan="2">
 		   accusative
 		  </th>
-		  <th className="l1" colspan="1">
+		  <th className="l1" colSpan="1">
 		   animate
 		  </th>
 		  <td className="table-cell">
@@ -50,7 +49,7 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l1" colspan="1">
+		  <th className="l1" colSpan="1">
 		   inanimate
 		  </th>
 		  <td className="table-cell">
@@ -65,7 +64,7 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   genitive
 		  </th>
 		  <td className="table-cell">
@@ -80,7 +79,7 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   dative
 		  </th>
 		  <td className="table-cell">
@@ -95,7 +94,7 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   instrumental
 		  </th>
 		  <td className="table-cell">
@@ -110,7 +109,7 @@ const RussianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   essive
 		  </th>
 		  <td className="table-cell">

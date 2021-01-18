@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const AlbanianNoun = (props) => {
@@ -7,12 +6,12 @@ const AlbanianNoun = (props) => {
 		<table className="lemma-table"  border="1px solid #000000">
 		 <tbody>
 			 <tr>
-			  <th className="l2" colspan="1" rowspan="2">
+			  <th className="l2" colSpan="1" rowSpan="2">
 			  </th>
-			  <th className="l2" colspan="2">
+			  <th className="l2" colSpan="2">
 			   indefinite
 			  </th>
-			  <th className="l2" colspan="2">
+			  <th className="l2" colSpan="2">
 			   definite
 			  </th>
 			 </tr>
@@ -31,7 +30,7 @@ const AlbanianNoun = (props) => {
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="1">
+			  <th className="l2" colSpan="1">
 			   nominative
 			  </th>
 			  <td className="table-cell">
@@ -56,7 +55,7 @@ const AlbanianNoun = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="1">
+			  <th className="l2" colSpan="1">
 			   accusative
 			  </th>
 			  <td className="table-cell">
@@ -81,7 +80,7 @@ const AlbanianNoun = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="1">
+			  <th className="l2" colSpan="1">
 			   genitive
 			  </th>
 			  <td className="table-cell">
@@ -106,7 +105,7 @@ const AlbanianNoun = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="1">
+			  <th className="l2" colSpan="1">
 			   dative
 			  </th>
 			  <td className="table-cell">
@@ -131,7 +130,7 @@ const AlbanianNoun = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="1">
+			  <th className="l2" colSpan="1">
 			   ablative
 			  </th>
 			  <td className="table-cell">

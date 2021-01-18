@@ -1,20 +1,20 @@
 import React from 'react';
-import BulgarianVerb from './templates/BulgarianVerb';
+import DefaultTemplate from './DefaultTemplate';
+import AlbanianNoun from './templates/AlbanianNoun';
+import AlbanianVerb from './templates/AlbanianVerb';
 import BulgarianAdjective from './templates/BulgarianAdjective';
 import BulgarianNoun from './templates/BulgarianNoun';
-import AlbanianVerb from './templates/AlbanianVerb';
-import AlbanianNoun from './templates/AlbanianNoun';
-import GermanVerb from './templates/GermanVerb';
+import BulgarianVerb from './templates/BulgarianVerb';
+import EnglishVerb from './templates/EnglishVerb';
 import GermanNoun from './templates/GermanNoun';
+import GermanVerb from './templates/GermanVerb';
 import RussianNoun from './templates/RussianNoun';
 import RussianVerb from './templates/RussianVerb';
 import TurkmenNoun from './templates/TurkmenNoun';
-import EnglishVerb from './templates/EnglishVerb';
 
 
 const TableTemplate = (props) => {
 	let comp_to_render = <p></p>;
-
 	switch(props.language){
             case 'Bulgarian':
                 switch(props.pos){
@@ -61,6 +61,7 @@ const TableTemplate = (props) => {
             case 'German':
                 switch(props.pos){
                     case 'Verb':
+                    case 'Participle':
                         comp_to_render = <GermanVerb editable={props.editable} wordforms={props.wordforms}/>;
                         break;
                     case 'Noun':
@@ -89,7 +90,7 @@ const TableTemplate = (props) => {
                 }
                 break;
             default:
-                comp_to_render = <p></p>;
+                return comp_to_render = <DefaultTemplate data={props.data} editable={props.editable}/>
         }
 
     return(comp_to_render);

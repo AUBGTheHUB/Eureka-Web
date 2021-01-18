@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const RussianAdjective = (props) => {
@@ -7,12 +6,12 @@ const RussianAdjective = (props) => {
 		<table className="lemma-table"  border="1px solid #000000">
 		<tbody>
 		 <tr>
-		  <th className="l2" colspan="2" rowspan="2">
+		  <th className="l2" colSpan="2" rowSpan="2">
 		  </th>
-		  <th className="l2" colspan="3">
+		  <th className="l2" colSpan="3">
 		   singular
 		  </th>
-		  <th className="l2" rowspan="2">
+		  <th className="l2" rowSpan="2">
 		   plural
 		  </th>
 		 </tr>
@@ -28,7 +27,7 @@ const RussianAdjective = (props) => {
 		  </th>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   nominative
 		  </th>
 		  <td className="table-cell">
@@ -53,7 +52,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   genitive
 		  </th>
 		  <td className="table-cell">
@@ -78,7 +77,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   dative
 		  </th>
 		  <td className="table-cell">
@@ -103,7 +102,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="2">
+		  <th className="l2" rowSpan="2">
 		   accusative
 		  </th>
 		  <th className="l1">
@@ -114,12 +113,12 @@ const RussianAdjective = (props) => {
 		    <Wordform editable={props.editable} features={['ACC', 'SG', 'MASC', 'ADJ', 'ANIM']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["ACC","SG","FEM","ADJ"]'>
 		    <Wordform editable={props.editable} features={['ACC', 'SG', 'FEM', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["ACC","SG","NEUT","ADJ"]'>
 		    <Wordform editable={props.editable} features={['ACC', 'SG', 'NEUT', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
@@ -146,7 +145,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   instrumental
 		  </th>
 		  <td className="table-cell">
@@ -171,7 +170,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   essive
 		  </th>
 		  <td className="table-cell">
@@ -196,7 +195,7 @@ const RussianAdjective = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   (short form)
 		  </th>
 		  <td className="table-cell">
@@ -204,17 +203,17 @@ const RussianAdjective = (props) => {
 		    <Wordform editable={props.editable} features={['LGSPEC1', 'SG', 'MASC', 'ADJ', 'NOM']} optional_features={['LGSPEC1', 'SG', 'MASC', 'ADJ']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["LGSPEC1","SG","FEM","ADJ"]'>
 		    <Wordform editable={props.editable} features={['LGSPEC1', 'SG', 'FEM', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["LGSPEC1","SG","NEUT","ADJ"]'>
 		    <Wordform editable={props.editable} features={['LGSPEC1', 'SG', 'NEUT', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["LGSPEC1","PL","ADJ"]'>
 		    <Wordform editable={props.editable} features={['LGSPEC1', 'PL', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>

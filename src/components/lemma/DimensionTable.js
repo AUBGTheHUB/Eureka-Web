@@ -1,6 +1,5 @@
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import cellEditFactory from 'react-bootstrap-table2-editor';
 import { formatDimensionDataTable } from '../../utils';
 
 const DimensionTable = ({ name, dimension }) => {

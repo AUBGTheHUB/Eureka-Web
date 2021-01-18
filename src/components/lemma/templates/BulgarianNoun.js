@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const BulgarianNoun = (props) => {
@@ -7,7 +6,7 @@ const BulgarianNoun = (props) => {
 		<table className="lemma-table"  border="1px solid #000000">
 		<tbody>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		  </th>
 		  <th className="l2">
 		   singular
@@ -17,7 +16,7 @@ const BulgarianNoun = (props) => {
 		  </th>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   indefinite
 		  </th>
 		  <td className="table-cell">
@@ -32,7 +31,7 @@ const BulgarianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="2">
+		  <th className="l2" rowSpan="2">
 		   definite
 		  </th>
 		  <th className="l1">
@@ -43,7 +42,7 @@ const BulgarianNoun = (props) => {
 		    <Wordform editable={props.editable} features={['DEF', 'SG', 'N', 'NOM']} optional_features={['DEF', 'SG', 'N']} wordforms={props.wordforms}/>
 		   </span>
 		  </td>
-		  <td className="table-cell" rowspan="2">
+		  <td className="table-cell" rowSpan="2">
 		   <span opt_features="[]" req_features='["DEF","PL","N"]'>
 		    <Wordform editable={props.editable} features={['DEF', 'PL', 'N']} optional_features={[]} wordforms={props.wordforms}/>
 		   </span>
@@ -77,7 +76,7 @@ const BulgarianNoun = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   (count form)
 		  </th>
 		  <td className="table-cell">

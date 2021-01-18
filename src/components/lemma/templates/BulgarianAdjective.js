@@ -1,22 +1,21 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const BulgarianAdjective = (props) => {
     return(<table className="lemma-table"  border="1px solid #000000">
     		<tbody>
 			 <tr>
-			  <th className="l3" colspan="6">
+			  <th className="l3" colSpan="6">
 			   Positive
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2" rowspan="2">
+			  <th className="l2" colSpan="2" rowSpan="2">
 			  </th>
-			  <th className="l2" colspan="3">
+			  <th className="l2" colSpan="3">
 			   singular
 			  </th>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   plural
 			  </th>
 			 </tr>
@@ -32,7 +31,7 @@ const BulgarianAdjective = (props) => {
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2">
+			  <th className="l2" colSpan="2">
 			   indefinite
 			  </th>
 			  <td className="table-cell">
@@ -57,7 +56,7 @@ const BulgarianAdjective = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   definite
 			  </th>
 			  <th className="l1">
@@ -68,17 +67,17 @@ const BulgarianAdjective = (props) => {
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'MASC', 'ADJ', 'NOM']} optional_features={['DEF', 'SG', 'MASC', 'ADJ']} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","FEM","ADJ"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'FEM', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","NEUT","ADJ"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'NEUT', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","PL","ADJ"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'PL', 'ADJ']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
@@ -100,26 +99,26 @@ const BulgarianAdjective = (props) => {
 			  <th className="l1">
 			   vocative
 			  </th>
-			  <td className="table-cell" colspan="1">
+			  <td className="table-cell" colSpan="1">
 			   <span opt_features="[]" req_features='["VOC","SG","ADJ","MASC"]'>
 			    <Wordform editable={props.editable} features={['VOC', 'SG', 'ADJ', 'MASC']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" colspan="3">
+			  <td className="table-cell" colSpan="3">
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l3" colspan="6">
+			  <th className="l3" colSpan="6">
 			   Comparative
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2" rowspan="2">
+			  <th className="l2" colSpan="2" rowSpan="2">
 			  </th>
-			  <th className="l2" colspan="3">
+			  <th className="l2" colSpan="3">
 			   singular
 			  </th>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   plural
 			  </th>
 			 </tr>
@@ -135,7 +134,7 @@ const BulgarianAdjective = (props) => {
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2">
+			  <th className="l2" colSpan="2">
 			   indefinite
 			  </th>
 			  <td className="table-cell">
@@ -160,7 +159,7 @@ const BulgarianAdjective = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   definite
 			  </th>
 			  <th className="l1">
@@ -171,17 +170,17 @@ const BulgarianAdjective = (props) => {
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'MASC', 'ADJ', 'CMPR', 'NOM']} optional_features={['DEF', 'SG', 'MASC', 'ADJ', 'CMPR']} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","FEM","ADJ","CMPR"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'FEM', 'ADJ', 'CMPR']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","NEUT","ADJ","CMPR"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'NEUT', 'ADJ', 'CMPR']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","PL","ADJ","CMPR"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'PL', 'ADJ', 'CMPR']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
@@ -208,21 +207,21 @@ const BulgarianAdjective = (props) => {
 			    <Wordform editable={props.editable} features={['VOC', 'SG', 'ADJ', 'CMPR', 'MASC']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" colspan="3">
+			  <td className="table-cell" colSpan="3">
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l3" colspan="6">
+			  <th className="l3" colSpan="6">
 			   Superlative
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2" rowspan="2">
+			  <th className="l2" colSpan="2" rowSpan="2">
 			  </th>
-			  <th className="l2" colspan="3">
+			  <th className="l2" colSpan="3">
 			   singular
 			  </th>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   plural
 			  </th>
 			 </tr>
@@ -238,7 +237,7 @@ const BulgarianAdjective = (props) => {
 			  </th>
 			 </tr>
 			 <tr>
-			  <th className="l2" colspan="2">
+			  <th className="l2" colSpan="2">
 			   indefinite
 			  </th>
 			  <td className="table-cell">
@@ -263,7 +262,7 @@ const BulgarianAdjective = (props) => {
 			  </td>
 			 </tr>
 			 <tr>
-			  <th className="l2" rowspan="2">
+			  <th className="l2" rowSpan="2">
 			   definite
 			  </th>
 			  <th className="l1">
@@ -274,17 +273,17 @@ const BulgarianAdjective = (props) => {
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'MASC', 'ADJ', 'SPRL', 'NOM']} optional_features={['DEF', 'SG', 'MASC', 'ADJ', 'SPRL']} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","FEM","ADJ","SPRL"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'FEM', 'ADJ', 'SPRL']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","SG","NEUT","ADJ","SPRL"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'SG', 'NEUT', 'ADJ', 'SPRL']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" rowspan="2">
+			  <td className="table-cell" rowSpan="2">
 			   <span opt_features="[]" req_features='["DEF","PL","ADJ","SPRL"]'>
 			    <Wordform editable={props.editable} features={['DEF', 'PL', 'ADJ', 'SPRL']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
@@ -306,12 +305,12 @@ const BulgarianAdjective = (props) => {
 			  <th className="l1">
 			   vocative
 			  </th>
-			  <td className="table-cell" colspan="1">
+			  <td className="table-cell" colSpan="1">
 			   <span opt_features="[]" req_features='["VOC","SG","ADJ","SPRL","MASC"]'>
 			    <Wordform editable={props.editable} features={['VOC', 'SG', 'ADJ', 'SPRL', 'MASC']} optional_features={[]} wordforms={props.wordforms}/>
 			   </span>
 			  </td>
-			  <td className="table-cell" colspan="3">
+			  <td className="table-cell" colSpan="3">
 			  </td>
 			 </tr>
 			</tbody>

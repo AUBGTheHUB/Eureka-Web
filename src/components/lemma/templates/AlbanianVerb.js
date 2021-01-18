@@ -1,5 +1,4 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
 import Wordform from '../Wordform.js';
 
 const AlbanianVerb = (props) => {
@@ -7,12 +6,12 @@ const AlbanianVerb = (props) => {
 		<table className="lemma-table"  border="1px solid #000000" className="lemma-table">
 		<tbody>
 		 <tr>
-		  <th className="l2" colspan="2" rowspan="2">
+		  <th className="l2" colSpan="2" rowSpan="2">
 		  </th>
-		  <th className="l2" colspan="3">
+		  <th className="l2" colSpan="3">
 		   singular
 		  </th>
-		  <th className="l2" colspan="3">
+		  <th className="l2" colSpan="3">
 		   plural
 		  </th>
 		 </tr>
@@ -37,7 +36,7 @@ const AlbanianVerb = (props) => {
 		  </th>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="7">
+		  <th className="l2" rowSpan="7">
 		   indicative
 		  </th>
 		  <th className="l1">
@@ -285,7 +284,7 @@ const AlbanianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="4">
+		  <th className="l2" rowSpan="4">
 		   subjunctive
 		  </th>
 		  <th className="l1">
@@ -428,7 +427,7 @@ const AlbanianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="2">
+		  <th className="l2" rowSpan="2">
 		   conditional
 		  </th>
 		  <th className="l1">
@@ -501,7 +500,7 @@ const AlbanianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="2">
+		  <th className="l2" rowSpan="2">
 		   optative
 		  </th>
 		  <th className="l1">
@@ -574,7 +573,7 @@ const AlbanianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" rowspan="4">
+		  <th className="l2" rowSpan="4">
 		   admirative
 		  </th>
 		  <th className="l1">
@@ -717,7 +716,7 @@ const AlbanianVerb = (props) => {
 		  </td>
 		 </tr>
 		 <tr>
-		  <th className="l2" colspan="2">
+		  <th className="l2" colSpan="2">
 		   imperative
 		  </th>
 		  <td className="table-cell">

@@ -1,16 +1,15 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import lemmaService from '../../services/lemma';
-import DimensionTable from './DimensionTable';
 import PoSComponent from '../PoSComponent';
-import TableTemplate from './TableTemplate';
-import './LemmaTableV1.css';
-import EditButtons from './EditButtons';
 import SubmitDialog from '../submit-dialogs/SubmitDialog';
+import EditButtons from './EditButtons';
+import './LemmaTableV1.css';
+import TableTemplate from './TableTemplate';
 
 
 
 const LemmaTableV1 = (props) => {
+    const [rawData, setRawData] = useState(null);
     const [data, setData] = useState(null);
     const [pos, setPos] = useState([]);
     const [name, setName] = useState('');
@@ -18,12 +17,11 @@ const LemmaTableV1 = (props) => {
     const [editable, setEditable] = useState(false);
     const [showDialog, setShowDialog] = useState(false);
 
-
-
     // process the data from api and format it for the table
     useEffect(() => {
         const getData = async () => {
             const lemma = await lemmaService.getLemma(props.lemma, props.lang);
+            setRawData(lemma);
             let data_dict = {};
             setPos(lemma.pos);
             setName(lemma.name);
@@ -51,15 +49,15 @@ const LemmaTableV1 = (props) => {
         setShowDialog(false);
         setEditable(false);
       };
-
+      
+    console.log(data);
     if (!data){
         return null;
     }
     if (data.length === 0){
-
+        return null;
     }
     else{
-        
         return (
             <div className="container-md">
                 <PoSComponent name = {pos.name}/>
@@ -68,7 +66,7 @@ const LemmaTableV1 = (props) => {
                 <SubmitDialog showDialog={showDialog} setShowDialog={setShowDialog} onSubmit={handleUpdate}/>
                 <EditButtons editable={editable} showDialog={showDialog} setEditable={setEditable} setShowDialog={setShowDialog} />
                 <div className="container">
-                    <TableTemplate language={language} pos={pos.name} wordforms={data} editable={editable} />
+                    <TableTemplate data={rawData} language={language} pos={pos.name} wordforms={data} editable={editable} />
                 </div>
             </div>
         )
