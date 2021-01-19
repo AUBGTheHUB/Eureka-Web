@@ -69,13 +69,13 @@ const LanguagesList = () => {
                                         {lang.walsCode}
                                     </td>
                                     <td>    
-                                        <a href={`${baseUrl}data/download/families/${lang.family}`}>
-                                            {lang.family ? lang.family.name : ""}
+                                        <a href={`${baseUrl}data/download/families/${lang.family?.name}`}>
+                                            {lang.family?.name}
                                         </a>
                                     </td>                                                                        
                                     <td>    
-                                        <a href={`${baseUrl}data/download/genera/${lang.genus}/`}>
-                                            {lang.genus ? lang.genus.name : ""}
+                                        <a href={`${baseUrl}data/download/genera/${lang.genus?.name}/`}>
+                                            {lang.genus?.name}
                                         </a>
                                     </td>
                                     <td>    
