@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Dropdown, DropdownButton, FormControl, InputGroup } from 'react-bootstrap';
-import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
+import languageService from '../services/language';
 import lemmaService from '../services/lemma';
+import { Context } from '../store';
 import { initializeLanguages } from '../store/actions';
 
 const SearchSection = (props) => {
@@ -14,13 +15,18 @@ const SearchSection = (props) => {
     const [pattern, setPattern] = useState("");
     const [search, setSearch] = useState(false);
     const [lemmas, setLemmas] = useState([]);
-    const languages = useSelector(state => state.languages.map(lang => [lang.name, lang.walsCode]));
 
-    const dispatch = useDispatch();
+    const [state, dispatch] = useContext(Context);
 
     useEffect(() => {
-        dispatch(initializeLanguages());
+        const getLangs = async () => {
+            const {data} = await languageService.getAll();
+            dispatch(initializeLanguages(data));
+        }
+        getLangs();
     }, [dispatch]);
+
+    const languages = state.languages.map(lang => [lang.name, lang.walsCode]);
 
     const languagesList = getLanguagesList(languages);
 

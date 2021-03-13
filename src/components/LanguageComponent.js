@@ -1,15 +1,14 @@
 import { makeStyles, Typography } from '@material-ui/core';
 import axios from 'axios';
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { useDispatch, useSelector } from 'react-redux';
 import config from '../constants';
+import languageService from '../services/language';
+import { Context } from '../store/';
 import { initializeLanguages } from '../store/actions/language';
-import NavbarUnimorph from './core/NavbarComponent';
 
 const baseUrl = config.url.API_URL;
 axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-
 
 const useStyles = makeStyles({
     root: {
@@ -21,22 +20,24 @@ const useStyles = makeStyles({
 
 const LanguagesList = () => {
 
-    const dispatch = useDispatch();
+    const [state, dispatch] = useContext(Context);
     const classes = useStyles();
 
     useEffect(() => {
-        dispatch(initializeLanguages());
+        const getLangs = async () => {
+            const {data} = await languageService.getAll();
+            dispatch(initializeLanguages(data));
+        }
+        getLangs();
     }, []);
     
-    const languages = useSelector(state => state.languages);
+    const languages = state.languages;
 
-    console.log(languages);
     if(languages.length === 0){
         return null;
     }
     return(
         <div>
-            <NavbarUnimorph/>   
             <div className={classes.root} style={{marginTop: 25, marginBottom: 25}}>
                 <Typography variant="h6" component="h6" gutterBottom className="centered_text" style={{fontFamily: 'Monospace'}}>
                     Download data

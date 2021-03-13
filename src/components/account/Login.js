@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import Form from "react-bootstrap/Form";
+import React, { useEffect, useState } from 'react';
 import Button from "react-bootstrap/Button";
-import UserService from '../../services/user';
-import NavbarUnimorph from '../core/NavbarComponent';
-
-import "./styles/Login.css";
+import Form from "react-bootstrap/Form";
 import { Redirect } from 'react-router';
+import UserService from '../../services/user';
+import "./styles/Login.css";
 
 const LoginComponent = (props) => {
     useEffect(() => {
@@ -43,7 +41,6 @@ const LoginComponent = (props) => {
     }
     return (
         <div>
-            <NavbarUnimorph/>
             <div className="Login">
                 {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
                 <Form onSubmit={handleSubmit}>

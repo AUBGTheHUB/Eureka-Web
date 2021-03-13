@@ -1,15 +1,9 @@
-import { Typography } from '@material-ui/core';
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { Redirect } from 'react-router';
-import NavbarUnimorph from '../core/NavbarComponent';
 
 
 const MyAccount = (props) => {
     const [posts, setPosts] = useState([]);
     return (
-        <>
-        <NavbarUnimorph/>
         <div class="container">
             <div class="header clearfix">
                 <h3 class="text-center">Requested changes in lemma paradigms {props.user ? props.user.email : ""}</h3>
@@ -45,7 +39,6 @@ const MyAccount = (props) => {
                 </div>
             </div>
         </div> 
-        </>
     )
 }
 export default MyAccount;

@@ -1,19 +1,15 @@
-import languageService from '../../services/language';
 import { GET_ALL_LANGUAGES } from './actionTypes';
 
-export const initializeLanguages = (lang) => {
-    return async dispatch => {
-        const langs = await languageService.getAll();
-        dispatch ({
-            type: GET_ALL_LANGUAGES,
-            data: langs.data
-        })
+export const initializeLanguages = (data) => {
+    return {
+        type: GET_ALL_LANGUAGES,
+        data: data
     }
 };
 
-export const setUrl = (url) => {
+export const setLanguage = (language) => {
     return {
         action: SET_URL,
-        data: url
+        data: language
     }
 }

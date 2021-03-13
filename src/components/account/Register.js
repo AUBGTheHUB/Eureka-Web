@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import Form from "react-bootstrap/Form";
+import React, { useState } from 'react';
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import { Redirect } from 'react-router';
 import UserService from "../../services/user";
 import "./styles/Login.css";
-import { Redirect } from 'react-router';
-import NavbarUnimorph from '../core/NavbarComponent';
 
 const RegisterComponent = (props) => {
     const [email, setEmail] = useState("");
@@ -41,7 +40,6 @@ const RegisterComponent = (props) => {
 
     return (
         <div>
-            <NavbarUnimorph />
             <div className="Login">
                 {error ? <p className="text-center" style={{ color: "red" }}>Invalid password or email</p> : null}
                 <Form onSubmit={handleSubmit}>

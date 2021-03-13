@@ -1,31 +1,25 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import thunk from 'redux-thunk';
-import languageReducer from './reducers/languageReducer';
-import dimensionReducer from './reducers/dimensionReducer';
-import userReducer from './reducers/user';
-import { connectRouter, routerMiddleware } from 'connected-react-router'
-import { createBrowserHistory } from 'history';
+import React, { createContext, useReducer } from 'react';
+import GlobalReducer from './reducer';
 
-export const history = createBrowserHistory();
+const initialState = {
+    user: {
+        email: "",
+        token: null
+    },
+    languages: [],
+    selectedLanguage: "all",
+    error: null
+}
 
-const reducer = (history) => {
-    return combineReducers({
-        router: connectRouter(history),
-        languages: languageReducer,
-        dimensions: dimensionReducer,
-        user: userReducer
-    });
-};
-
-const store = createStore(
-    reducer(history),
-    composeWithDevTools(
-        applyMiddleware(
-            thunk,
-            routerMiddleware(history)
-            )
+const Store = ({children}) => {
+    const [state, dispatch] = useReducer(GlobalReducer, initialState);
+    return (
+        <Context.Provider value={[state, dispatch]}>
+            {children}
+        </Context.Provider>
     )
-);
+}
 
-export default store;
+export const Context = createContext(initialState);
+
+export default Store;

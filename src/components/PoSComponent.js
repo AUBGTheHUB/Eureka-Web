@@ -1,11 +1,9 @@
-import React from 'react';
-import TextField from '@material-ui/core/TextField'
 import IconButton from '@material-ui/core/IconButton';
+import TextField from '@material-ui/core/TextField';
 import CreateIcon from '@material-ui/icons/Create';
-import Paper from '@material-ui/core/Paper';
+import React from 'react';
 
-
-  class PoSComponent extends React.Component {
+class PoSComponent extends React.Component {
     constructor(props) {
       super(props)
     }
@@ -21,7 +19,6 @@ import Paper from '@material-ui/core/Paper';
     
     render(){
       return (
-        
         <div className="row pos_component">
             <div className="col-md-3 col-sm-3 col-lg-3">
             </div>

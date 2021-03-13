@@ -50,7 +50,6 @@ const LemmaTableV1 = (props) => {
         setEditable(false);
       };
       
-    console.log(data);
     if (!data){
         return null;
     }

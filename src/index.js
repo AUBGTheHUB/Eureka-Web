@@ -1,10 +1,7 @@
-import { ConnectedRouter } from 'connected-react-router';
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'regenerator-runtime/runtime.js';
-import About from './components/about-us/About';
 import AboutUsSection from './components/about-us/AboutUsComponent';
 import LoginComponent from './components/account/Login';
 import MyAccount from './components/account/MyAccount';
@@ -18,14 +15,14 @@ import PageNotFound from './components/core/PageNotFound';
 import LanguagesList from './components/LanguageComponent';
 import AllLemmasComponent from './components/lemma/AllLemmasComponent';
 import LemmaDetailPage from './components/lemma/LemmaDetail';
+import Proposals from './components/proposals/Proposals';
 import SearchSection from './components/SearchComponent';
-import store, { history } from './store';
+import Store from './store';
 import './styles.css';
 
 function LandingComponent() {
     return (
         <div>
-            <NavbarUnimorph/>
             <HeaderLogo />
             <AboutUsSection />
             <SearchSection />
@@ -33,8 +30,6 @@ function LandingComponent() {
         </div>
     );
 }
-
-
 
 const Routing = () => {
     const [user, setUser] = useState(null);
@@ -45,30 +40,32 @@ const Routing = () => {
     }, []);
 
     return(
-    <ConnectedRouter history={history}>        
-        <Router>
-            <div style={{ height: "100%", paddingBottom: 50 }}>
-                <Switch>
-                    <Route exact path="/" component={LandingComponent} />
-                    <Route exact path="/about" component={About} />
-                    <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
-                    <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
-                    <Route exact path="/languages" component={LanguagesList}/>
-                    <Route exact path="/me"  render={(props) => <MyAccount user={user} {...props}/>} />
-                    <Route exact path="/contact" component={ContactUs} />
-                    <Route exact path="/login" component={LoginComponent}/>
-                    <Route exact path="/register" component={RegisterComponent}/>
-                    <Route render={() => <PageNotFound />} />
-                </Switch>
-                <Footer />
-            </div>
-        </Router>
-    </ConnectedRouter>
+        <>
+            <NavbarUnimorph/>
+            <Router>
+                <div style={{ height: "100%", paddingBottom: 50 }}>
+                    <Switch>
+                        <Route exact path="/" component={LandingComponent} />
+                        <Route exact path="/about" component={AboutUsSection} />
+                        <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
+                        <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
+                        <Route exact path="/languages" component={LanguagesList}/>
+                        <Route exact path="/me"  render={(props) => <MyAccount user={user} {...props}/>} />
+                        <Route exact path="/contact" component={ContactUs} />
+                        <Route exact path="/login" component={LoginComponent}/>
+                        <Route exact path="/register" component={RegisterComponent}/>
+                        <Route exact path="/proposals" component={Proposals} />
+                        <Route render={() => <PageNotFound />} />
+                    </Switch>
+                    <Footer />
+                </div>
+            </Router>
+            </>
 )};
 
 ReactDOM.render(
-    <Provider store={store}>
+    <Store>
         <Routing />
-    </Provider>,
+    </Store>,
     document.getElementById('root')
 )

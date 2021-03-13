@@ -1,10 +1,8 @@
 import Button from '@material-ui/core/Button'
-import Home from '@material-ui/icons/Home'
-import Paper from '@material-ui/core/Paper'
-import React from 'react'
-import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
-import NavbarUnimorph from '../core/NavbarComponent';
+import Typography from '@material-ui/core/Typography'
+import Home from '@material-ui/icons/Home'
+import React from 'react'
 
 const useStyles = makeStyles((theme) => ({
   icon: {
@@ -34,7 +32,6 @@ const PageNotFound = () => {
 
   return (
     <div title='page_not_found'>
-        <NavbarUnimorph />
       <div className={classes.paper}>
         <div className={classes.container}>
           <Typography variant="h4">404</Typography>

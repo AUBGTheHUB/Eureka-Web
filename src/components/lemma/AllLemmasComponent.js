@@ -1,11 +1,10 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
-import * as qs from 'query-string';
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
-import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
+import * as qs from 'query-string';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import lemmaService from '../../services/lemma';
-import NavbarUnimorph from '../core/NavbarComponent';
+import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
 
 
 const query = qs.parse(location.search);
@@ -49,7 +48,6 @@ class AllLemmasComponent extends React.Component {
         if(this.state.lemmas.length === 0){
             return(
                 <div>
-                    <NavbarUnimorph/>
                     <h3 className="centered_text">No lemmas were found based on your search: {query.search}/</h3>
                 </div>
             );
@@ -61,7 +59,6 @@ class AllLemmasComponent extends React.Component {
         var lemmas_3 = this.state.lemmas.slice(3*quartile, 4*quartile)
         return(
             <>
-                <NavbarUnimorph/>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-4 col-sm-4 col-lg-4">
