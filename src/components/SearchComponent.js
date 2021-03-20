@@ -3,7 +3,7 @@ import { Button, Dropdown, DropdownButton, FormControl, InputGroup } from 'react
 import { Redirect } from 'react-router';
 import { withRouter } from 'react-router-dom';
 import languageService from '../services/language';
-import lemmaService from '../services/lemma';
+import LemmaService from '../services/lemma';
 import { Context } from '../store';
 import { initializeLanguages } from '../store/actions';
 
@@ -33,7 +33,7 @@ const SearchSection = (props) => {
     const handlePatternChange = async (event) => {
         event.preventDefault();
         setPattern(event.target.value);
-        const allLemmas = await lemmaService.autoComplete(pattern, selectedLanguage.walsCode);   
+        const allLemmas = await LemmaService.autoComplete(selectedLanguage.walsCode, pattern);   
         setLemmas(allLemmas.results.map(lemma => lemma.name));
     }
 

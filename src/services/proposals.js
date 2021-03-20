@@ -1,9 +1,8 @@
-import axios from "axios";
-import config from '../constants';
-const baseUrl = config.url.API_URL;
+import { get } from './api';
 
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
-
-const getProposals = (user) => {
-    const { data, error } = await axios.get(`${baseUrl}$proposals?user=id`)
-} 
+export default {
+    getAll: async (user) => {
+        const { data, error } = await get(`/proposals?user=id`);
+        return data;
+    }
+}

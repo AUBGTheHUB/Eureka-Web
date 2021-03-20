@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import lemmaService from '../../services/lemma';
+import LemmaService from '../../services/lemma';
 import PoSComponent from '../PoSComponent';
 import SubmitDialog from '../submit-dialogs/SubmitDialog';
 import EditButtons from './EditButtons';
 import './LemmaTableV1.css';
 import TableTemplate from './TableTemplate';
-
-
 
 const LemmaTableV1 = (props) => {
     const [rawData, setRawData] = useState(null);
@@ -20,7 +18,7 @@ const LemmaTableV1 = (props) => {
     // process the data from api and format it for the table
     useEffect(() => {
         const getData = async () => {
-            const lemma = await lemmaService.getLemma(props.lemma, props.lang);
+            const lemma = await LemmaService.getOne(props.lemma, props.lang);
             setRawData(lemma);
             let data_dict = {};
             setPos(lemma.pos);

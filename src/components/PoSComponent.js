@@ -15,8 +15,7 @@ class PoSComponent extends React.Component {
 
       e.preventDefault();
     }
-    
-    
+
     render(){
       return (
         <div className="row pos_component">

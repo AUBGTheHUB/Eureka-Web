@@ -3,7 +3,7 @@ import PaginationItem from '@material-ui/lab/PaginationItem';
 import * as qs from 'query-string';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import lemmaService from '../../services/lemma';
+import LemmaService from '../../services/lemma';
 import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
 
 
@@ -26,7 +26,7 @@ class AllLemmasComponent extends React.Component {
     }
     async componentDidMount() {
         let search_pattern = this.state.search ? this.state.search : '';
-        const data = await lemmaService.getAll(search_pattern, this.props.match.params.lang);
+        const data = await LemmaService.getAll(search_pattern, this.props.match.params.lang);
         pages = parseInt(data.count/72) + 1;
         const lang = JSON.parse(window.localStorage.getItem("language"));
         this.setState({
@@ -37,7 +37,7 @@ class AllLemmasComponent extends React.Component {
     }
     async handleChange(event, value) {
         const pattern = `?page=${value}`;
-        const data = await lemmaService.getAll(pattern, this.props.match.params.lang);
+        const data = await LemmaService.getAll(pattern, this.props.match.params.lang);
         this.setState({
             "lemmas": data.results.map(lemma => lemma.name),
             "currentPage": value
