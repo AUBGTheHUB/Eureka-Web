@@ -7,7 +7,10 @@ const initialState = {
         token: null
     },
     languages: [],
-    selectedLanguage: "all",
+    selectedLanguage: {
+        walsCode: "all",
+        name: "All" 
+    },
     error: null
 }
 

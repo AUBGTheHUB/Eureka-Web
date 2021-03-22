@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-
+import React, { useContext, useState } from 'react';
+import { Context } from '../../store';
 
 const MyAccount = (props) => {
+    const [state, dispatch] = useContext(Context);
+
     const [posts, setPosts] = useState([]);
+    
     return (
         <div class="container">
             <div class="header clearfix">
-                <h3 class="text-center">Requested changes in lemma paradigms {props.user ? props.user.email : ""}</h3>
+                <h3 class="text-center">Requested changes in lemma paradigms {state.user ? state.user.email : ""}</h3>
                 <div id="app" >
                     <table className="table table-striped">
                         <thead>

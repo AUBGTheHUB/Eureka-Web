@@ -26,13 +26,15 @@ const SearchSection = (props) => {
         getLangs();
     }, [dispatch]);
 
+    useEffect(() => {
+        handlePatternChange();
+    }, [pattern])
+
     const languages = state.languages.map(lang => [lang.name, lang.walsCode]);
 
     const languagesList = getLanguagesList(languages);
 
-    const handlePatternChange = async (event) => {
-        event.preventDefault();
-        setPattern(event.target.value);
+    const handlePatternChange = async () => {
         const allLemmas = await LemmaService.autoComplete(selectedLanguage.walsCode, pattern);   
         setLemmas(allLemmas.results.map(lemma => lemma.name));
     }
@@ -92,7 +94,7 @@ const SearchSection = (props) => {
                                     placeholder="Search lemma"
                                     aria-label="Search lemma"
                                     aria-describedby="basic-addon2"
-                                    onChange={handlePatternChange}
+                                    onChange={(e) => setPattern(e.target.value)}
                                     list="autocomplete"
                                 />
                                 <InputGroup.Append>

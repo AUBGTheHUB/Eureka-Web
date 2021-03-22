@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'regenerator-runtime/runtime.js';
@@ -17,7 +17,8 @@ import AllLemmasComponent from './components/lemma/AllLemmasComponent';
 import LemmaDetailPage from './components/lemma/LemmaDetail';
 import Proposals from './components/proposals/Proposals';
 import SearchSection from './components/SearchComponent';
-import Store from './store';
+import Store, { Context } from './store';
+import { login } from './store/actions/user';
 import './styles.css';
 
 function LandingComponent() {
@@ -32,16 +33,18 @@ function LandingComponent() {
 }
 
 const Routing = () => {
-    const [user, setUser] = useState(null);
+    const [state, dispatch] = useContext(Context);
+    console.log(state);
     useEffect(() => {
         const user = window.localStorage.getItem("user");
-        window.localStorage.setItem("language", JSON.stringify({walsCode: "all", name: "All"}));
-        setUser(JSON.parse(user));
+        if(user) {
+            dispatch(login(JSON.parse(user)));
+        }
     }, []);
 
-    return(
+    return (
         <>
-            <NavbarUnimorph/>
+            <NavbarUnimorph user={state.user} dispatch={dispatch}/>
             <Router>
                 <div style={{ height: "100%", paddingBottom: 50 }}>
                     <Switch>
@@ -50,7 +53,7 @@ const Routing = () => {
                         <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
                         <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
                         <Route exact path="/languages" component={LanguagesList}/>
-                        <Route exact path="/me"  render={(props) => <MyAccount user={user} {...props}/>} />
+                        <Route exact path="/me"  component={MyAccount} />
                         <Route exact path="/contact" component={ContactUs} />
                         <Route exact path="/login" component={LoginComponent}/>
                         <Route exact path="/register" component={RegisterComponent}/>

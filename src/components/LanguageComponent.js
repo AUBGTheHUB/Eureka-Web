@@ -1,14 +1,13 @@
 import { makeStyles, Typography } from '@material-ui/core';
-import axios from 'axios';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
+import { Redirect } from 'react-router';
 import config from '../constants';
 import languageService from '../services/language';
 import { Context } from '../store/';
 import { initializeLanguages } from '../store/actions/language';
 
 const baseUrl = config.url.API_URL;
-axios.defaults.headers.get['Access-Control-Allow-Origin'] = '*';
 
 const useStyles = makeStyles({
     root: {
@@ -18,10 +17,10 @@ const useStyles = makeStyles({
     }
 });
 
-const LanguagesList = () => {
-
+const LanguagesList = (props) => {
     const [state, dispatch] = useContext(Context);
     const classes = useStyles();
+    const [chosen, setChosen] = useState(false);
 
     useEffect(() => {
         const getLangs = async () => {
@@ -33,9 +32,18 @@ const LanguagesList = () => {
     
     const languages = state.languages;
 
-    if(languages.length === 0){
-        return null;
+    const onClick = (event, lang) => {
+        event.preventDefault();
+        window.localStorage.setItem("language", JSON.stringify({name: lang.name, walsCode: lang.walsCode}));
+        setChosen(true);
     }
+
+    if(chosen){
+        return (
+            <Redirect push to={`${state.selectedLanguage.walsCode}/lemmas`}/>
+        )
+    }
+
     return(
         <div>
             <div className={classes.root} style={{marginTop: 25, marginBottom: 25}}>
@@ -45,15 +53,19 @@ const LanguagesList = () => {
                 <ListGroup variant="flush">
                     <ListGroup.Item>1. Download the whole data for a language by clicking on language name</ListGroup.Item>
                     <ListGroup.Item>2. Download the set of languages in a given genus/family by clicking on its name</ListGroup.Item>
-                    <ListGroup.Item>3. Explore lemma paradigms in a given language by clicking on the value of lemmas</ListGroup.Item>
+                    <ListGroup.Item>3. Explore lemma paradigms in a given language by clicking on the link</ListGroup.Item>
                 </ListGroup>
             </div>
             <div id="lang-table" className="d-flex justify-content-center">
                 <table className={"table table-hover"} style={{fontFamily: 'Monospace', margin: 'auto', width: '50%'}}>
-                    <thead style={{fontSize: 15}}>
-                        <tr>
+                    <thead style={{fontSize: 15}} >
+                        <tr className="text-center">
                             <th>#</th>
-                            {Object.keys(languages[0]).map((key, i) => <th key={i} scope="col">{key}</th>)}
+                            <th>genus</th>
+                            <th>walsCode</th>
+                            <th>family</th>
+                            <th>name</th>
+                            <th>link</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -80,7 +92,7 @@ const LanguagesList = () => {
                                         </a>
                                     </td>
                                     <td>    
-                                        <a href={`${lang.walsCode}/lemmas`}>
+                                        <a href={`${lang.walsCode}/lemmas`} onClick={(event) => onClick(event, lang)}>
                                             open
                                         </a>
                                     </td>

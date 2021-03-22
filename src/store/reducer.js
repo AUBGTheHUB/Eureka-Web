@@ -10,15 +10,15 @@ const GlobalReducer = (state = initialState, action) => {
         case GET_ALL_LANGUAGES: {
             return {
                 ...state,
-                languages: state.languages.concat(action.data)
+                languages: action.data
             }
         }
         case LOGIN_SUCCESS:{
             return {
                 ...state,
                 user: {
-                    email: state.user.email,
-                    token: action.data
+                    email: action.data.email,
+                    token: action.data.token
                 }
             }
         }
@@ -41,6 +41,7 @@ const GlobalReducer = (state = initialState, action) => {
             }
         }
         case SET_LANGUAGE: {
+            console.log(action.data);
             return {
                 ...state,
                 selectedLanguage: action.data

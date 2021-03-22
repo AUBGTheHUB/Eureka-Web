@@ -1,70 +1,61 @@
 import Pagination from '@material-ui/lab/Pagination';
 import PaginationItem from '@material-ui/lab/PaginationItem';
 import * as qs from 'query-string';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import LemmaService from '../../services/lemma';
 import SubmitLemmaDialog from '../submit-dialogs/SubmitLemmaDialog';
-
 
 const query = qs.parse(location.search);
 // number of pages to allocate
 let pages = 1;
 
-class AllLemmasComponent extends React.Component {
-    constructor(props) {
-        super(props)
-        
-        this.state = {
-            "lemmas":[],
-            "language": this.props.match.params.lang,
-            "currentPage": query.page ? Number(query.page) : 1,
-            "search": props.location.search,
-            "languageName": ""
-        }
-        this.handleChange = this.handleChange.bind(this);
-    }
-    async componentDidMount() {
-        let search_pattern = this.state.search ? this.state.search : '';
-        const data = await LemmaService.getAll(search_pattern, this.props.match.params.lang);
-        pages = parseInt(data.count/72) + 1;
-        const lang = JSON.parse(window.localStorage.getItem("language"));
-        this.setState({
-            "lemmas": data.results.map(lemma => lemma.name), 
-            "language": this.props.match.params.lang,
-            "languageName": lang.name
-        })
-    }
-    async handleChange(event, value) {
+const AllLemmasComponent = (props) => {
+    const [lemmas, setLemmas] = useState([]);
+    const [language, setLanguage] = useState({walsCode: "all", name: "All"});
+    const [currentPage, setCurrentPage] = useState(query.page ? Number(query.page): 1);
+    const search = props.location.search;
+
+    useEffect(() => {
+        const getLemmas = async () => {
+            let searchPattern = search || "";
+            const data = await LemmaService.getAll(searchPattern, props.match.params.lang);
+            pages = parseInt(data.count/72) + 1;
+            setLemmas(data.results.map(lemma => lemma.name));
+            const selectedLanguage = window.localStorage.getItem("language");
+            setLanguage(selectedLanguage ? JSON.parse(selectedLanguage) : language);
+        };
+        getLemmas();
+    }, []);
+
+    const handleChange = async (event, value) => {
         const pattern = `?page=${value}`;
-        const data = await LemmaService.getAll(pattern, this.props.match.params.lang);
-        this.setState({
-            "lemmas": data.results.map(lemma => lemma.name),
-            "currentPage": value
-        })
+        const data = await LemmaService.getAll(pattern, props.match.params.lang);
+        setLemmas(data.results.map(lemma => lemma.name));
+        setCurrentPage(value);
     }
 
-    render(){
-        if(this.state.lemmas.length === 0){
-            return(
-                <div>
-                    <h3 className="centered_text">No lemmas were found based on your search: {query.search}/</h3>
-                </div>
-            );
-        }
-        var quartile = this.state.lemmas.length/4
-        var lemmas_0 = this.state.lemmas.slice(0, quartile)
-        var lemmas_1 = this.state.lemmas.slice(quartile, 2*quartile)
-        var lemmas_2 = this.state.lemmas.slice(2*quartile, 3*quartile)
-        var lemmas_3 = this.state.lemmas.slice(3*quartile, 4*quartile)
+    if(lemmas.length === 0){
         return(
+            <div>
+                <h3 className="centered_text">No lemmas were found based on your search: {query.search}/</h3>
+            </div>
+        );
+    }
+    else{
+        const quartile = lemmas.length/4;
+        const lemmas0 = lemmas.slice(0, quartile);
+        const lemmas1 = lemmas.slice(quartile, 2*quartile);
+        const lemmas2 = lemmas.slice(2*quartile, 3*quartile);
+        const lemmas3 = lemmas.slice(3*quartile, 4*quartile);
+        return (
             <>
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-4 col-sm-4 col-lg-4">
                         </div>
                         <div className="col-md-4 col-sm-4 col-lg-4">
-                            <h3 className="centered_text">Language: {this.state.languageName}</h3>
+                            <h3 className="centered_text">Language: {language.name}</h3>
                             {query.search ? <h4 className="centered_text">Search: {query.search}</h4> : null}
                         </div>
                         <div className="col-md-4 col-sm-4 col-lg-4">
@@ -72,37 +63,37 @@ class AllLemmasComponent extends React.Component {
                     </div>
 
                     <div className="d-flex justify-content-sm-center">
-                        <SubmitLemmaDialog language={this.state.language} handleSubmit={this.handleWordAdd}/> 
+                        <SubmitLemmaDialog language={language.name} handleSubmit={() => {}}/> 
                     </div>
 
                     <div className="row margin_top">
                         <div className="col-md-2 col-sm-2 col-lg-2">
                         </div>
                         <div className="col-md-2 col-sm-2 col-lg-2">
-                            {lemmas_0.map((value,index) => {return(
+                            {lemmas0.map((value, index) => {return(
                                 <div key={index}>
-                                    <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
+                                    <p className="centered_text"><a href={`/${language.walsCode}/lemmas/${value}`}>{value}</a></p>
                                 </div>
                             )})}
                         </div>
                         <div className="col-md-2 col-sm-2 col-lg-2">
-                            {lemmas_1.map((value,index) => {return(
+                            {lemmas1.map((value,index) => {return(
                                     <div key={index}>
-                                        <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
+                                        <p className="centered_text"><a href={`/${language.walsCode}/lemmas/${value}`}>{value}</a></p>
                                     </div>
                                 )})}
                         </div>
                         <div className="col-md-2 col-sm-2 col-lg-2">
-                            {lemmas_2.map((value,index) => {return(
+                            {lemmas2.map((value,index) => {return(
                                         <div key={index}>
-                                            <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
+                                            <p className="centered_text"><a href={`/${language.walsCode}/lemmas/${value}`}>{value}</a></p>
                                         </div>
                                     )})}
                         </div>
                         <div className="col-md-2 col-sm-2 col-lg-2">
-                            {lemmas_3.map((value,index) => {return(
+                            {lemmas3.map((value,index) => {return(
                                             <div key={index}>
-                                                <p className="centered_text"><a href={`/${this.state.language}/lemmas/${value}`}>{value}</a></p>
+                                                <p className="centered_text"><a href={`/${language.walsCode}/lemmas/${value}`}>{value}</a></p>
                                             </div>
                                         )})}
                         </div>
@@ -111,7 +102,7 @@ class AllLemmasComponent extends React.Component {
                     </div>
                     </div>
                     <div className="d-flex justify-content-center">
-                    <Pagination count={pages} page={this.state.currentPage}
+                    <Pagination count={pages} page={currentPage}
                         renderItem={(item) => (
                             <PaginationItem 
                             component={Link}
@@ -119,11 +110,11 @@ class AllLemmasComponent extends React.Component {
                             {...item}
                             />
                         )}
-                        onChange={this.handleChange}
+                        onChange={handleChange}
                     />
                     </div>
             </> 
-            );
+        )
     }
 }
 

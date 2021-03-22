@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Redirect } from 'react-router';
 import UserService from '../../services/user';
+import { Context } from '../../store';
+import { login } from '../../store/actions/user';
 import "./styles/Login.css";
 
 const LoginComponent = (props) => {
+    const [state, dispatch] = useContext(Context);
+    
     useEffect(() => {
         const user = window.localStorage.getItem("user");
         if(user){
-            setLoggedIn(true);
+            dispatch(login(JSON.parse(user)));
         }
     }, []);
 
@@ -28,6 +32,7 @@ const LoginComponent = (props) => {
         const response = await UserService.login({ email, password });
         if (response.name !== "Error"){
             window.localStorage.setItem("user", JSON.stringify({ email, token: response.data.token }));
+            dispatch(login({ email, token: response.data.token }));
             setLoggedIn(true);
         }
         else{
@@ -66,7 +71,7 @@ const LoginComponent = (props) => {
                     </Button>
                     <div style={{color: "#919191",paddingBottom: 10, paddingTop: 20}}>
 				        {/* <p>forgot your password? <a href="/register">click here</a></p> */}
-				        <p>new user? <a href="/register">create new account</a></p>
+				        <p>New user? <a href="/register">Create new account</a></p>
 			        </div>
                 </Form>
             </div>

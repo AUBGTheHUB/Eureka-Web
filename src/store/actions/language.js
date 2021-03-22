@@ -1,4 +1,4 @@
-import { GET_ALL_LANGUAGES } from './actionTypes';
+import { GET_ALL_LANGUAGES, SET_LANGUAGE } from './actionTypes';
 
 export const initializeLanguages = (data) => {
     return {
@@ -9,7 +9,7 @@ export const initializeLanguages = (data) => {
 
 export const setLanguage = (language) => {
     return {
-        action: SET_URL,
+        type: SET_LANGUAGE,
         data: language
     }
 }
