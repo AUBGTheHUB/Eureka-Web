@@ -1,11 +1,3 @@
-export const formatLemmaDataTable = (lemma) => {
-    let columns = [];
-    let data = [];
-
-    // for 
-}
-
-
 /**
  * Format dimension object for the editable table
  * {
