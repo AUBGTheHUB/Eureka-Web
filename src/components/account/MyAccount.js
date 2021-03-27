@@ -28,8 +28,8 @@ const MyAccount = (props) => {
                             <th>#</th>
                             <th>Language</th>
                             <th>Lemma</th>
-                            <th>Word</th>
-                            <th>Proposed Word</th>
+                            <th>Wordform</th>
+                            <th>Proposed Wordform</th>
                             <th>Date</th>
                             <th>Status</th>
                             <th>Note</th>
@@ -44,7 +44,7 @@ const MyAccount = (props) => {
                                         <td><a href={`${post.word.language.walsCode}/lemmas/${post.word.lemma.name}`}>{post.word.lemma.name}</a></td>
                                         <td>{post.word.name}</td>
                                         <td>{post.proposedWord}</td>
-                                        <td>{post.date}</td>
+                                        <td>{(new Date(post.date)).toLocaleDateString()}</td>
                                         <td>{post.status}</td>
                                         <td>{post.note}</td>
                                     </tr>

@@ -45,36 +45,34 @@ const LoginComponent = (props) => {
         );
     }
     return (
-        <div>
-            <div className="Login">
-                {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
-                <Form onSubmit={handleSubmit}>
-                    <Form.Group size="lg" controlId="email">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                        autoFocus
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    </Form.Group>
-                    <Form.Group size="lg" controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    </Form.Group>
-                    <Button block size="lg" type="submit" disabled={!validateForm()}>
-                    Login
-                    </Button>
-                    <div style={{color: "#919191",paddingBottom: 10, paddingTop: 20}}>
-				        {/* <p>forgot your password? <a href="/register">click here</a></p> */}
-				        <p>New user? <a href="/register">Create new account</a></p>
-			        </div>
-                </Form>
-            </div>
+        <div className="Login">
+            {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
+            <Form onSubmit={handleSubmit}>
+                <Form.Group size="lg" controlId="email">
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                    autoFocus
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                </Form.Group>
+                <Form.Group size="lg" controlId="password">
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                </Form.Group>
+                <Button block size="lg" type="submit" disabled={!validateForm()}>
+                Login
+                </Button>
+                <div style={{color: "#919191",paddingBottom: 10, paddingTop: 20}}>
+                    {/* <p>forgot your password? <a href="/register">click here</a></p> */}
+                    <p>New user? <a href="/register">Create new account</a></p>
+                </div>
+            </Form>
         </div>
     );
 }

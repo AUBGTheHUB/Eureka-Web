@@ -10,7 +10,6 @@ export default {
                 }
             }
         );
-        console.log('response' + data);
         return data;
     },
     sendProposals: async (lang, proposals, token, note) => {
