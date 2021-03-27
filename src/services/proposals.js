@@ -1,8 +1,32 @@
-import { get } from './api';
+import { get, post } from './api';
 
 export default {
-    getAll: async (user) => {
-        const { data, error } = await get(`/proposals?user=id`);
+    getAll: async (lang, token) => {
+        const { data, error } = await get(
+            `/${lang}/proposals/`,                 
+            {
+                headers: {
+                    Authorization: `Token ${token}`
+                }
+            }
+        );
+        console.log('response' + data);
         return data;
+    },
+    sendProposals: async (lang, proposals, token, note) => {
+        try{
+            const { data, error } = await post(
+                `/${lang}/proposals/`,
+                proposals.map(proposal => {return {...proposal, note}}),
+                {
+                    headers: {
+                        Authorization: `Token ${token}`
+                    }
+                }
+            );
+            return data;
+        } catch(error) {
+            throw new Error('Error' + error.message);
+        }
     }
 }

@@ -11,6 +11,7 @@ const initialState = {
         walsCode: "all",
         name: "All" 
     },
+    editedForms: {},
     error: null
 }
 

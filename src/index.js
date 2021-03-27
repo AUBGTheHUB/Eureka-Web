@@ -34,7 +34,6 @@ function LandingComponent() {
 
 const Routing = () => {
     const [state, dispatch] = useContext(Context);
-    console.log(state);
     useEffect(() => {
         const user = window.localStorage.getItem("user");
         if(user) {
@@ -53,7 +52,7 @@ const Routing = () => {
                         <Route exact path="/:lang/lemmas" component={AllLemmasComponent} />
                         <Route exact path="/:lang/lemmas/:slug/" component={LemmaDetailPage} />
                         <Route exact path="/languages" component={LanguagesList}/>
-                        <Route exact path="/me"  component={MyAccount} />
+                        <Route exact path="/me"  render={() => <MyAccount user={state.user}/>} />
                         <Route exact path="/contact" component={ContactUs} />
                         <Route exact path="/login" component={LoginComponent}/>
                         <Route exact path="/register" component={RegisterComponent}/>

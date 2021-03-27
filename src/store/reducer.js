@@ -2,7 +2,10 @@ const {
     LOGIN_SUCCESS, SIGNOUT_SUCCESS, 
     SIGNUP_SUCCESS, 
     SET_LANGUAGE, 
-    GET_ALL_LANGUAGES
+    GET_ALL_LANGUAGES,
+    ADD_EDITED_FORM,
+    SET_ERROR,
+    EMPTY_EDITED_FORMS
 } = require("./actions/actionTypes");
 
 const GlobalReducer = (state = initialState, action) => {
@@ -41,10 +44,30 @@ const GlobalReducer = (state = initialState, action) => {
             }
         }
         case SET_LANGUAGE: {
-            console.log(action.data);
             return {
                 ...state,
                 selectedLanguage: action.data
+            }
+        }
+        case ADD_EDITED_FORM: {
+            return {
+                ...state,
+                editedForms: {
+                    ...state.editedForms,
+                    [action.data[0]]: action.data[1]
+                }
+            }
+        }
+        case EMPTY_EDITED_FORMS: {
+            return {
+                ...state,
+                editedForms: {}
+            }
+        }
+        case SET_ERROR: {
+            return {
+                ...state,
+                error: action.data
             }
         }
         default:{

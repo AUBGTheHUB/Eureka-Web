@@ -20,7 +20,7 @@ const useStyles = makeStyles({
 const LanguagesList = (props) => {
     const [state, dispatch] = useContext(Context);
     const classes = useStyles();
-    const [chosen, setChosen] = useState(false);
+    const [chosen, setChosen] = useState("");
 
     useEffect(() => {
         const getLangs = async () => {
@@ -35,12 +35,12 @@ const LanguagesList = (props) => {
     const onClick = (event, lang) => {
         event.preventDefault();
         window.localStorage.setItem("language", JSON.stringify({name: lang.name, walsCode: lang.walsCode}));
-        setChosen(true);
+        setChosen(lang.walsCode);
     }
 
-    if(chosen){
+    if(chosen !== ""){
         return (
-            <Redirect push to={`${state.selectedLanguage.walsCode}/lemmas`}/>
+            <Redirect push to={`${chosen}/lemmas`}/>
         )
     }
 

@@ -6,7 +6,6 @@ import '../../styles.css';
 
 
 export default function NavbarUnimorph(props) {
-    console.log(props.user);
     const handleClick = () => {
         window.localStorage.removeItem("user");
         props.dispatch(signOut());
