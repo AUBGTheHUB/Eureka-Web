@@ -11,24 +11,10 @@ jobs:
     name: Create Release Front-End
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Read CHANGELOG
-        id: release_body
-        run: |
-            echo "::set-output name=body::$(cat CHANGELOG.md)"
-            # Parse changelog
-            CHANGELOG=$(cat CHANGELOG.md)
-            CHANGELOG="${CHANGELOG//'%'/'%25'}"
-            CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-            CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
-            echo "Got changelog: $CHANGELOG"
-            echo "::set-output name=body::$CHANGELOG"
-      - name: Create Release
-        id: create_release
-        uses: ncipollo/release-action@v1
+      - uses: actions/checkout@v2
+      - uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref }}
           name: Release ${{ github.ref }}
-          body: CHANGELOG.md
+          bodyFile: "CHANGELOG.md"
           token: ${{ secrets.PERSONAL_TOKEN }}
