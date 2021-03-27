@@ -12,9 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ncipollo/release-action@v1
+      - uses: softprops/action-gh-release@v1
         with:
-          tag: ${{ github.ref }}
-          name: Release ${{ github.ref }}
-          bodyFile: "CHANGELOG.md"
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          body_path: "CHANGELOG.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
