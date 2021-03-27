@@ -26,12 +26,9 @@ jobs:
             echo "::set-output name=body::$CHANGELOG"
       - name: Create Release
         id: create_release
-        uses: actions/create-release@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          body: ${{ steps.release_body.outputs.body }}
-          draft: false
-          prerelease: false
+          tag: ${{ github.ref }}
+          name: Release ${{ github.ref }}
+          body: CHANGELOG.md
+          token: ${{ secrets.PERSONAL_TOKEN }}
