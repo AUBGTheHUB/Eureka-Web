@@ -1,7 +1,6 @@
 .communication_div{
     margin: auto;
     padding: 10px;
-
     margin-top: 20px;
     width: 700px;
 }
@@ -13,6 +12,7 @@
 
 .single_comment{
     max-width: 400px;
+    padding:10px;
 }
 
 .single_comment:hover{
@@ -22,4 +22,13 @@
 .comment_user{
     font-size: 14px;
     color: gray;
+}
+
+.time_posted{
+    font-size: 12px;
+    float: right;
+}
+
+.comment_content{
+    margin-top: 5px;
 }

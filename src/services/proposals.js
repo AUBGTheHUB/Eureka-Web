@@ -60,6 +60,27 @@ export default {
             config
         )
         return res.data
+    },
+    get_comments: async (id, token) => {
+        const config = {
+            headers: { Authorization: `Token ${token}`},
+        }
+        const res = await get(
+            `/dd/comments/${id}`,
+            config
+        )
+        return res.data.results
+    },
+    create_comment: async (payload, token) => {
+        const config = {
+            headers: { Authorization: `Token ${token}`},
+        }
+        const res = await post(
+            `/dd/comments/`,
+            payload,
+            config
+        )
+        return res.data.results
     }
 
 }

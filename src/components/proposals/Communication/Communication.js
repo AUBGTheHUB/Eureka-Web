@@ -1,18 +1,47 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './communication.css'
 import SingleComment from './SingleComment'
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { Button } from 'react-bootstrap';
-
-
+import proposalService from '../../../services/proposals'
+import { Context } from '../../../store';
+import { useParams } from 'react-router';
 
 
 const Communication = () => {
     const [reply_text, set_reply_text] = useState('')
     const [reply, set_reply] = useState(false)
-    const handle_reply = (e) => {
-        e.preventDefault()
+    const [comments, set_comments] = useState([])
+    const [state, dispatch] = useContext(Context);
+    const proposal_id = useParams().id
 
+    const fetch_comments = async () => {
+        const comments_temp = await proposalService.get_comments(proposal_id, state.user.token)
+        set_comments(comments_temp)
+    }
+
+    useEffect(()=>{
+        if(state.user.token && proposal_id)
+            fetch_comments()
+    },[proposal_id, state.user])
+
+
+    const handle_reply = async (e) => {
+        e.preventDefault()
+        const payload = {
+            content: reply_text,
+            proposal_id
+        }
+        console.log(payload);
+        try{
+            const data = await proposalService.create_comment(payload, state.user.token)
+            fetch_comments()
+            set_reply_text('')
+            set_reply(false)
+        }catch(err){
+            console.log(err);
+            console.log('Problem commenting');
+        }
     }
 
     const render_my_comment = () => {
@@ -46,13 +75,17 @@ const Communication = () => {
         </button>
 
         {reply && render_my_comment()}
+        
+        {comments.map(comment => {
+            return (
+                <div key={comment.id}>
+                    <br/>
+                    <SingleComment comment={comment} />
+                    <hr/>
+                </div>
+            )
+        })}
 
-        <hr/>
-        <SingleComment/>
-        <hr/>
-        <SingleComment/>
-        <hr/>
-        <SingleComment/>
       </div>
     )
 }
