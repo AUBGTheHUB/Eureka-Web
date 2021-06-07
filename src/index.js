@@ -16,6 +16,7 @@ import PageNotFound from './components/core/PageNotFound';
 import LanguagesList from './components/LanguageComponent';
 import AllLemmasComponent from './components/lemma/AllLemmasComponent';
 import LemmaDetailPage from './components/lemma/LemmaDetail';
+import ProposalDetail from './components/proposals/ProposalDetail';
 import Proposals from './components/proposals/Proposals';
 import SearchSection from './components/SearchComponent';
 import Store, { Context } from './store';
@@ -43,7 +44,7 @@ const Routing = () => {
     }, []);
 
     return (
-        <>
+        <div>
             <NavbarUnimorph user={state.user} dispatch={dispatch}/>
             <Router>
                 <div style={{ height: "100%", paddingBottom: 50 }}>
@@ -59,12 +60,13 @@ const Routing = () => {
                         <Route exact path="/forgotpassword" component={ForgotPassword}/>
                         <Route exact path="/register" component={RegisterComponent}/>
                         <Route exact path="/proposals" component={Proposals} />
+                        <Route exact path="/proposals/:id" component={ProposalDetail} />
                         <Route render={() => <PageNotFound />} />
                     </Switch>
                     <Footer />
                 </div>
             </Router>
-            </>
+            </div>
 )};
 
 ReactDOM.render(

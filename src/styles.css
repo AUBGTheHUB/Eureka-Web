@@ -208,6 +208,7 @@ tr.row-class>td{
     width: 100%;
     margin: 0 auto;
   }
+ 
 }
 @media only screen and (max-width: 1139px) {
   .contain .social {
@@ -243,5 +244,16 @@ tr.row-class>td{
 @media only screen and (max-width: 340px) {
   .footer .col {
     width: 100%;
+  }
+  
+}
+
+.header_logo{
+  width:100%;
+}
+
+@media (max-width: 1300px) {
+  .jumbotronstyle{
+    min-height: 0px;
   }
 }
