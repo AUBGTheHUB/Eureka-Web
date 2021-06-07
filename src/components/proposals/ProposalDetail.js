@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import proposalService from '../../services/proposals'
 import UserService from '../../services/user'
 import { Context } from '../../store';
+import Communication from './Communication/Communication';
 import './proposal.css'
 
 const styles = {
@@ -85,6 +86,7 @@ const ProposalDetail = () => {
     if(!proposal)return 'Loading...'
 
     return (
+        <>
         <div className='single_proposal__div'>   
             <p style={{textAlign:'center', fontWeight:800}}> Proposal from {proposal.author.email}</p>
             <p style={{fontSize:12, textAlign:'center'}}>{new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short' }).format(Date.parse(proposal.date))}</p>
@@ -114,7 +116,7 @@ const ProposalDetail = () => {
     
                 <tr>
                     <td style={styles.leftTable}>Status</td>
-                    <td style={styles.rightTable}>{proposal.status}</td>
+                    <td style={{...styles.rightTable, color:proposal.status==='Approved' ? 'green': 'black'}}>{proposal.status}</td>
                 </tr>
 
                 <tr>
@@ -130,7 +132,11 @@ const ProposalDetail = () => {
                 <button onClick={handle_approve} style={styles.approve_btn}>Approve</button>
                 <button onClick={handle_decline} style={styles.decline_btn}>Decline</button>
             </div>
+
         </div>
+        <Communication/>
+        </>
+
     )
 }
 
