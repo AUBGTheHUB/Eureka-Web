@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import 'regenerator-runtime/runtime.js';
+import ForgotPassword from './components/account/ForgotPassword';
 import LoginComponent from './components/account/Login';
 import MyAccount from './components/account/MyAccount';
 import RegisterComponent from './components/account/Register';
@@ -55,6 +56,7 @@ const Routing = () => {
                         <Route exact path="/me"  render={() => <MyAccount user={state.user}/>} />
                         <Route exact path="/contact" component={ContactUs} />
                         <Route exact path="/login" component={LoginComponent}/>
+                        <Route exact path="/forgotpassword" component={ForgotPassword}/>
                         <Route exact path="/register" component={RegisterComponent}/>
                         <Route exact path="/proposals" component={Proposals} />
                         <Route render={() => <PageNotFound />} />
