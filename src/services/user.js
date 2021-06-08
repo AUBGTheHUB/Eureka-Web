@@ -46,5 +46,17 @@ export default {
             console.error(Error("Error getting user: " + error.message));
             return error;
         }
+    },
+    forgot_password: async (email) => {
+        const response = await apiClient.patch(`/forgotpassword/`,{email})
+        console.log(response);
+        return response.data
+    },
+    change_password: async (payload, token) => {
+        const config = {
+            headers: { Authorization: `Token ${token}`},
+        }
+        const response = await apiClient.patch(`/changepassword/`, payload, config)
+        return response.data
     }
 }

@@ -7,6 +7,6 @@ const apiClient = axios.create({
     baseURL: config.url.API_URL
 });
 
-const { get, post, put, delete: remove } = apiClient;
+const {patch, get, post, put, delete: remove } = apiClient;
 
-export { get, post, put, remove };
+export { get, post, put, remove, patch };

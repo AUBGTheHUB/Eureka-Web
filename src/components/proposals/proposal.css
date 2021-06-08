@@ -1,0 +1,13 @@
+.single_proposal__div{
+    margin: auto;
+    width: 600px;
+    background-color: rgb(235, 235, 235);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    .single_proposal__div{
+        width: 100%;
+    }
+}

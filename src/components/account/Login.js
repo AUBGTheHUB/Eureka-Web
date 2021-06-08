@@ -47,6 +47,8 @@ const LoginComponent = (props) => {
     return (
         <div className="Login">
             {error ? <p className="text-center" style={{ color: "red" }}>Incorrect password or email</p> : null}
+            <h3 style={{textAlign:"center"}}>Login</h3> <br/>
+
             <Form onSubmit={handleSubmit}>
                 <Form.Group size="lg" controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -71,6 +73,7 @@ const LoginComponent = (props) => {
                 <div style={{color: "#919191",paddingBottom: 10, paddingTop: 20}}>
                     {/* <p>forgot your password? <a href="/register">click here</a></p> */}
                     <p>New user? <a href="/register">Create new account</a></p>
+                    <p> <a href="/forgotpassword">Forgot Password?</a></p>
                 </div>
             </Form>
         </div>
