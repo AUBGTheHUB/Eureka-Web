@@ -42,6 +42,7 @@ const RegisterComponent = (props) => {
         <div>
             <div className="Login">
                 {error ? <p className="text-center" style={{ color: "red" }}>Invalid password or email</p> : null}
+                <h3 style={{textAlign:"center"}}>Create Account</h3> <br/>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group size="lg" controlId="email">
                     <Form.Label>Email</Form.Label>

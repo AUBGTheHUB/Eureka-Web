@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Navbar } from 'react-bootstrap';
+import { DropdownButton, Nav, Dropdown, Navbar } from 'react-bootstrap';
 import { Redirect } from 'react-router';
 import { signOut } from '../../store/actions/user';
 import '../../styles.css';
@@ -29,7 +29,7 @@ export default function NavbarUnimorph(props) {
                 <Nav className="mr-auto">
                 </Nav>
 
-                <Nav>
+                <Nav className='nav_links'>
                     <Nav.Link href="/about">About the project</Nav.Link>
                     <Nav.Link href="/languages">Languages</Nav.Link>
                     <Nav.Link href="/contact">Contact Us</Nav.Link>
@@ -44,6 +44,25 @@ export default function NavbarUnimorph(props) {
                         </>
                     )}
                 </Nav>
+
+                <DropdownButton drop={'left'} variant={'Info'} className='nav_dropdown' id="dropdown-basic-button" title="Menu">
+                <Dropdown.Item href="/about">About the project</Dropdown.Item>
+                <Dropdown.Item href="/languages">Languages</Dropdown.Item>
+                <Dropdown.Item href="/contact">Contact Us</Dropdown.Item>
+                { props.user.token ? (
+                        <>
+                            <Dropdown.Item href="/me">Account</Dropdown.Item>
+                            <Dropdown.Item href="/" as="a" onClick={() => handleClick()}>Log out</Dropdown.Item>
+                        </>
+                    ) : (
+                        <>
+                            <Nav.Link href="/login" as="a">Log in</Nav.Link>
+                        </>
+                    )}
+                
+
+                </DropdownButton>
+
 
             </Navbar>
         </div>

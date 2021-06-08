@@ -29,6 +29,7 @@ const MyAccount = (props) => {
     return (
         <div className="container">
             {user.is_linguist ? <p>Role: Linguist</p> : <p> Role: Regular user</p> }
+            <Link to='/changepassword'>Change Password</Link>
             <div className="header clearfix">
                 {!user.is_linguist ? <h3 className="text-center">Requested changes in lemma paradigms {state.user ? state.user.email : ""}</h3>
                 : 

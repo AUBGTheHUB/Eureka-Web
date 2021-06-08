@@ -230,7 +230,11 @@ tr.row-class>td{
     font-size: 13px;
   }
 }
-@media only screen and (max-width: 500px) {
+
+.nav_dropdown{
+  display: none;
+}
+@media only screen and (max-width: 600px) {
     .footer .col {
       width: 50%;
     }
@@ -239,6 +243,12 @@ tr.row-class>td{
     }
     .footer .col ul li {
       font-size: 13px;
+    }
+    .nav_links{
+      display: none;
+    }
+    .nav_dropdown{
+      display: block;
     }
 }
 @media only screen and (max-width: 340px) {
@@ -256,4 +266,5 @@ tr.row-class>td{
   .jumbotronstyle{
     min-height: 0px;
   }
+  
 }

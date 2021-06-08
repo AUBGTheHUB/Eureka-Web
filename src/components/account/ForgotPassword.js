@@ -7,7 +7,6 @@ const ForgotPassword = () => {
 
     const handle_reset = async (e) => {
         e.preventDefault()
-        alert(email)
         set_show_message(true)
 
         await userService.forgot_password(email)
@@ -16,6 +15,8 @@ const ForgotPassword = () => {
         <div className="Login">
             <Form onSubmit={handle_reset}>
                 {show_message && <p style={{color:'green'}}>If email you entered is correct, you will receive further instructions!</p> }<br/><br/>
+                <h3 style={{textAlign:"center"}}>Password Reset</h3> <br/>
+
                 <Form.Label>Enter email to reset your password</Form.Label>
                 <Form.Control
                     autoFocus
