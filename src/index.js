@@ -36,7 +36,6 @@ function LandingComponent() {
 
 const NeedToAuthenticateRoute = ({ path, component}) => {
     const user = window.localStorage.getItem('user')
-    console.log(user);
     if(!user)
       return <Redirect to='/login'/>
     return <Route exact path={path} component={component}/>

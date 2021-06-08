@@ -32,7 +32,6 @@ const Communication = () => {
             content: reply_text,
             proposal_id
         }
-        console.log(payload);
         try{
             const data = await proposalService.create_comment(payload, state.user.token)
             fetch_comments()

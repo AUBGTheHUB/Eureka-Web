@@ -49,7 +49,6 @@ export default {
     },
     forgot_password: async (email) => {
         const response = await apiClient.patch(`/forgotpassword/`,{email})
-        console.log(response);
         return response.data
     },
     change_password: async (payload, token) => {

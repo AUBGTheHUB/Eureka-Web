@@ -47,7 +47,6 @@ const ProposalDetail = () => {
     const [user, set_user] = useState(null)
 
     const get_proposal = async () => {
-        console.log(id, state.user.token);
         const data = await proposalService.getProposalDetail(id,state.user.token)
         set_proposal(data)
     }
